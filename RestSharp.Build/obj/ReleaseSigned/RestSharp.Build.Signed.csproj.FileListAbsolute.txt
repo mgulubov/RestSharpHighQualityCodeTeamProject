@@ -1,0 +1,5 @@
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Build\bin\ReleaseSigned\RestSharp.Build.dll
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Build\bin\ReleaseSigned\RestSharp.Build.pdb
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Build\obj\ReleaseSigned\RestSharp.Build.Signed.csprojResolveAssemblyReference.cache
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Build\obj\ReleaseSigned\RestSharp.Build.dll
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Build\obj\ReleaseSigned\RestSharp.Build.pdb

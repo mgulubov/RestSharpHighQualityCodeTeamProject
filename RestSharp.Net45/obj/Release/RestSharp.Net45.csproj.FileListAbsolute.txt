@@ -1,0 +1,6 @@
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Net45\bin\Release\RestSharp.xml
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Net45\bin\Release\RestSharp.dll
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Net45\bin\Release\RestSharp.pdb
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Net45\obj\Release\RestSharp.Net45.csprojResolveAssemblyReference.cache
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Net45\obj\Release\RestSharp.dll
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Net45\obj\Release\RestSharp.pdb

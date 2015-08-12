@@ -1,0 +1,5 @@
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\Bin\Release\RestSharp.WindowsPhone.xml
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\Bin\Release\RestSharp.WindowsPhone.dll
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\Bin\Release\RestSharp.WindowsPhone.pdb
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\obj\Release\RestSharp.WindowsPhone.dll
+C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\obj\Release\RestSharp.WindowsPhone.pdb
