@@ -318,12 +318,12 @@ namespace RestSharp.Deserializers
 
         private void PopulateListFromElements(Type t, IEnumerable<XElement> elements, IList list)
         {
-            // Uncomment to make tests pass
-            // foreach (var element in elements)
-            // {
-            //     var item = CreateAndMap(t, element);
-            //     list.Add(item);
-            // }
+             //Uncomment to make tests pass
+             foreach (var element in elements)
+             {
+                 var item = CreateAndMap(t, element);
+                 list.Add(item);
+             }
         }
 
         private object HandleListDerivative(object x, XElement root, string propName, Type type)
