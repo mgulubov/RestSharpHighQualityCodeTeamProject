@@ -21,8 +21,12 @@ namespace RestSharp.Validation
     /// <summary>
     /// Helper methods for validating required values
     /// </summary>
-    public class Require
+    public sealed class Require
     {
+        private Require()
+        {
+        }
+
         /// <summary>
         /// Require a parameter to not be null
         /// </summary>

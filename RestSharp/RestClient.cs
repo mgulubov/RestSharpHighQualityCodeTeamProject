@@ -42,7 +42,7 @@ namespace RestSharp
 #else
         private static readonly Version version = new AssemblyName(Assembly.GetExecutingAssembly().FullName).Version;
 #endif
-        public IHttpFactory HttpFactory = new SimpleFactory<Http>();
+        private IHttpFactory HttpFactory = new SimpleFactory<Http>();
 
 
         /// <summary>

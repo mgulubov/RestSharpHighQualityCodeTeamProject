@@ -50,12 +50,12 @@ namespace RestSharp
         /// Container of all HTTP parameters to be passed with the request. 
         /// See AddParameter() for explanation of the types of parameters that can be passed
         /// </summary>
-        List<Parameter> Parameters { get; }
+        IList<Parameter> Parameters { get; }
 
         /// <summary>
         /// Container of all the files to be uploaded with the request.
         /// </summary>
-        List<FileParameter> Files { get; }
+        IList<FileParameter> Files { get; }
 
         /// <summary>
         /// Determines what HTTP method to use for this request. Supported methods: GET, POST, PUT, DELETE, HEAD, OPTIONS

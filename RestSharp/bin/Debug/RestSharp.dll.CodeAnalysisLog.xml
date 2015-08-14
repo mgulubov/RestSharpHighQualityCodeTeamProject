@@ -1,0 +1,993 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.dll">
+   <Modules>
+    <Module Name="restsharp.dll">
+     <Namespaces>
+      <Namespace Name="RestSharp">
+       <Types>
+        <Type Name="DateFormat" Kind="Struct" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+           <Issue Name="Equals" Certainty="75" Level="Warning">'DateFormat' should override Equals.</Issue>
+           <Issue Name="op_Equality" Certainty="75" Level="Warning">'DateFormat' should override the equality (==) and inequality (!=) operators.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="Http" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AddAsyncHeaderActions()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.Async.cs" Line="385">'Http.AddAsyncHeaderActions()' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.Async.cs" Line="385">The 'this' parameter (or 'Me' in Visual Basic) of 'Http.AddAsyncHeaderActions()' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ClientCertificates" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.cs" Line="136">Change 'Http.ClientCertificates' to be read-only by removing the property setter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExtractErrorResponse(RestSharp.HttpResponse,System.Exception)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.Sync.cs" Line="161">The 'this' parameter (or 'Me' in Visual Basic) of 'Http.ExtractErrorResponse(HttpResponse, Exception)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExtractResponseData(RestSharp.HttpResponse,System.Net.HttpWebResponse)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.cs" Line="459">Object 'this' can be disposed more than once in method 'Http.ExtractResponseData(HttpResponse, HttpWebResponse)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 459</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetResponse(System.Net.HttpWebRequest)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.Sync.cs" Line="186">Modify 'Http.GetResponse(HttpWebRequest)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetStyleMethodInternalAsync(System.String,System.Action`1&lt;RestSharp.HttpResponse&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.Async.cs" Line="140">Modify 'Http.GetStyleMethodInternalAsync(string, Action&lt;HttpResponse&gt;)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PutPostInternalAsync(System.String,System.Action`1&lt;RestSharp.HttpResponse&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.Async.cs" Line="175">Modify 'Http.PutPostInternalAsync(string, Action&lt;HttpResponse&gt;)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RequestStreamCallback(System.IAsyncResult,System.Action`1&lt;RestSharp.HttpResponse&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.Async.cs" Line="260">Modify 'Http.RequestStreamCallback(IAsyncResult, Action&lt;HttpResponse&gt;)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ResponseCallback(System.IAsyncResult,System.Action`1&lt;RestSharp.HttpResponse&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="Http.Async.cs" Line="363">Modify 'Http.ResponseCallback(IAsyncResult, Action&lt;HttpResponse&gt;)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IHttp" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ClientCertificates" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning">Change 'IHttp.ClientCertificates' to be read-only by removing the property setter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Get()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Get" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Rename virtual/interface member 'IHttp.Get()' so that it no longer conflicts with the reserved language keyword 'Get'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RequestBodyBytes" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Warning">Change 'IHttp.RequestBodyBytes' to return a collection or make it a method.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IHttpResponse" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#RawBytes" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Warning">Change 'IHttpResponse.RawBytes' to return a collection or make it a method.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IRestClient" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AddHandler(System.String,RestSharp.Deserializers.IDeserializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="AddHandler" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Rename virtual/interface member 'IRestClient.AddHandler(string, IDeserializer)' so that it no longer conflicts with the reserved language keyword 'AddHandler'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ClientCertificates" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning">Change 'IRestClient.ClientCertificates' to be read-only by removing the property setter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteAsync`1(RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError">Consider a design where 'IRestClient.ExecuteAsync&lt;T&gt;(IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteAsyncGet`1(RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError">Consider a design where 'IRestClient.ExecuteAsyncGet&lt;T&gt;(IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;, string)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteAsyncPost`1(RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError">Consider a design where 'IRestClient.ExecuteAsyncPost&lt;T&gt;(IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;, string)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RemoveHandler(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="RemoveHandler" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Rename virtual/interface member 'IRestClient.RemoveHandler(string)' so that it no longer conflicts with the reserved language keyword 'RemoveHandler'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IRestRequest" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AddFile(System.String,System.Action`1&lt;System.IO.Stream&gt;,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error">Replace method 'IRestRequest.AddFile(string, Action&lt;Stream&gt;, string, string)' with an overload that supplies all default arguments.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AddFile(System.String,System.Byte[],System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error">Replace method 'IRestRequest.AddFile(string, byte[], string, string)' with an overload that supplies all default arguments.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AddFile(System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error">Replace method 'IRestRequest.AddFile(string, string, string)' with an overload that supplies all default arguments.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IRestResponse" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#RawBytes" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Warning">Change 'IRestResponse.RawBytes' to return a collection or make it a method.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RestClient" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.cs" Line="163">'RestClient.RestClient(string)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;RestClient..ctor(String)&#xD;&#xA;RestClient.set_BaseUrl(Uri):Void</Issue>
+            </Message>
+            <Message TypeName="StringUriOverloadsCallSystemUriOverloads" Category="Microsoft.Design" CheckId="CA1057" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.cs" Line="163">Refactor 'RestClient.RestClient(string)' so that it builds a System.Uri object from 'baseUrl', and then calls 'RestClient.RestClient(Uri)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#.ctor(System.Uri)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.cs" Line="154">'RestClient.RestClient(Uri)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;RestClient..ctor(Uri)&#xD;&#xA;RestClient.set_BaseUrl(Uri):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#BuildUri(RestSharp.IRestRequest)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Name="Reserved" Certainty="95" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.cs" Line="286">'RestClient.BuildUri(IRestRequest)' creates an exception of type 'NullReferenceException', an exception type that is reserved by the runtime and should never be raised by managed code. If this exception instance might be thrown, use a different exception type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ClientCertificates" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.cs" Line="57">Change 'RestClient.ClientCertificates' to be read-only by removing the property setter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ConfigureHttp(RestSharp.IRestRequest,RestSharp.IHttp)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.cs" Line="365">'RestClient.ConfigureHttp(IRestRequest, IHttp)' has a cyclomatic complexity of 43. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Deserialize`1(RestSharp.IRestRequest,RestSharp.IRestResponse)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.cs" Line="616">Modify 'RestClient.Deserialize&lt;T&gt;(IRestRequest, IRestResponse)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DeserializeResponse`1(RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;,RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.Async.cs" Line="176">Modify 'RestClient.DeserializeResponse&lt;T&gt;(IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;, IRestResponse, RestRequestAsyncHandle)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Execute(RestSharp.IRestRequest,System.String,System.Func`3&lt;RestSharp.IHttp,System.String,RestSharp.HttpResponse&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.Sync.cs" Line="73">Modify 'RestClient.Execute(IRestRequest, string, Func&lt;IHttp, string, HttpResponse&gt;)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ProcessResponse(RestSharp.IRestRequest,RestSharp.HttpResponse,RestSharp.RestRequestAsyncHandle,System.Action`2&lt;RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClient.Async.cs" Line="120">The 'this' parameter (or 'Me' in Visual Basic) of 'RestClient.ProcessResponse(IRestRequest, HttpResponse, RestRequestAsyncHandle, Action&lt;IRestResponse, RestRequestAsyncHandle&gt;)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RestClientExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DeleteAsync`1(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClientExtensions.cs" Line="80">Consider a design where 'RestClientExtensions.DeleteAsync&lt;T&gt;(this IRestClient, IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteAsync`1(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action`1&lt;RestSharp.IRestResponse`1&lt;!!0&gt;&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClientExtensions.cs" Line="32">Consider a design where 'RestClientExtensions.ExecuteAsync&lt;T&gt;(this IRestClient, IRestRequest, Action&lt;IRestResponse&lt;T&gt;&gt;)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetAsync`1(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClientExtensions.cs" Line="38">Consider a design where 'RestClientExtensions.GetAsync&lt;T&gt;(this IRestClient, IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#HeadAsync`1(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClientExtensions.cs" Line="59">Consider a design where 'RestClientExtensions.HeadAsync&lt;T&gt;(this IRestClient, IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#OptionsAsync`1(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClientExtensions.cs" Line="66">Consider a design where 'RestClientExtensions.OptionsAsync&lt;T&gt;(this IRestClient, IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PatchAsync`1(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClientExtensions.cs" Line="73">Consider a design where 'RestClientExtensions.PatchAsync&lt;T&gt;(this IRestClient, IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PostAsync`1(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClientExtensions.cs" Line="45">Consider a design where 'RestClientExtensions.PostAsync&lt;T&gt;(this IRestClient, IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PutAsync`1(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action`2&lt;RestSharp.IRestResponse`1&lt;!!0&gt;,RestSharp.RestRequestAsyncHandle&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestClientExtensions.cs" Line="52">Consider a design where 'RestClientExtensions.PutAsync&lt;T&gt;(this IRestClient, IRestRequest, Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;)' doesn't nest generic type 'Action&lt;IRestResponse&lt;T&gt;, RestRequestAsyncHandle&gt;'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RestRequest" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="StringUriOverloadsCallSystemUriOverloads" Category="Microsoft.Design" CheckId="CA1057" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestRequest.cs" Line="87">Refactor 'RestRequest.RestRequest(string)' so that it builds a System.Uri object from 'resource', and then calls 'RestRequest.RestRequest(Uri)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#.ctor(System.String,RestSharp.Method)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="StringUriOverloadsCallSystemUriOverloads" Category="Microsoft.Design" CheckId="CA1057" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestRequest.cs" Line="94">Refactor 'RestRequest.RestRequest(string, Method)' so that it builds a System.Uri object from 'resource', and then calls 'RestRequest.RestRequest(Uri, Method)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AddFile(System.String,System.Action`1&lt;System.IO.Stream&gt;,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestRequest.cs" Line="168">Replace method 'RestRequest.AddFile(string, Action&lt;Stream&gt;, string, string)' with an overload that supplies all default arguments.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AddFile(System.String,System.Byte[],System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestRequest.cs" Line="155">Replace method 'RestRequest.AddFile(string, byte[], string, string)' with an overload that supplies all default arguments.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AddFile(System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestRequest.cs" Line="126">Replace method 'RestRequest.AddFile(string, string, string)' with an overload that supplies all default arguments.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RestResponse`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#op_Explicit(RestSharp.RestResponse):RestSharp.RestResponse`1&lt;!0&gt;" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Name="Multiple" Certainty="50" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestResponse.cs" Line="150">Provide a method named 'ToXXX' or 'FromXXX' as an alternate for operator 'RestResponse&lt;T&gt;.explicit operator RestResponse&lt;T&gt;(RestResponse)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RestResponseBase" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Cookies" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestResponse.cs" Line="108">Change 'RestResponseBase.Cookies' to be read-only by removing the property setter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Headers" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestResponse.cs" Line="113">Change 'RestResponseBase.Headers' to be read-only by removing the property setter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RawBytes" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp" File="RestResponse.cs" Line="93">Change 'RestResponseBase.RawBytes' to return a collection or make it a method.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="RestSharp.Authenticators">
+       <Types>
+        <Type Name="OAuth1Authenticator" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AddOAuthData(RestSharp.IRestClient,RestSharp.IRestRequest,RestSharp.Authenticators.OAuth.OAuthWorkflow)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Authenticators" File="OAuth1Authenticator.cs" Line="186">'OAuth1Authenticator.AddOAuthData(IRestClient, IRestRequest, OAuthWorkflow)' has a cyclomatic complexity of 38. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+            <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Name="NoArguments" Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Authenticators" File="OAuth1Authenticator.cs" Line="257">Call the 'ArgumentOutOfRangeException' constructor that contains a message and/or paramName parameter.</Issue>
+             <Issue Name="NoArguments" Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Authenticators" File="OAuth1Authenticator.cs" Line="279">Call the 'ArgumentOutOfRangeException' constructor that contains a message and/or paramName parameter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ForRequestToken(System.String,System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="2#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Authenticators" File="OAuth1Authenticator.cs" Line="81">Change the type of parameter 'callbackUrl' of method 'OAuth1Authenticator.ForRequestToken(string, string, string)' from string to System.Uri, or provide an overload of 'OAuth1Authenticator.ForRequestToken(string, string, string)', that allows 'callbackUrl' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="RestSharp.Authenticators.OAuth">
+       <Types>
+        <Type Name="OAuthTools" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#.cctor()" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="CriticalWarning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Authenticators\OAuth" File="OAuthTools.cs" Line="21">Initialize all static fields in 'OAuthTools' when those fields are declared and remove the explicit static constructor.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetSignature(RestSharp.Authenticators.OAuth.OAuthSignatureMethod,System.String,System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message Id="signatureBase" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Authenticators\OAuth" File="OAuthTools.cs" Line="283">Parameter 'signatureBase' of 'OAuthTools.GetSignature(OAuthSignatureMethod, string, string, string)' is never used. Remove the parameter or use it in the method body.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="RestSharp.Authenticators.OAuth.Extensions">
+       <Types>
+        <Type Name="StringExtensions" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#IsNullOrBlank(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Authenticators\OAuth\Extensions" File="StringExtensions.cs" Line="14">Replace the call to 'string.operator ==(string, string)' in 'StringExtensions.IsNullOrBlank(this string)' with a call to 'String.IsNullOrEmpty'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ParseQueryString(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Authenticators\OAuth\Extensions" File="StringExtensions.cs" Line="85">Replace the call to 'string.Equals(string)' in 'StringExtensions.ParseQueryString(this string)' with a call to 'String.IsNullOrEmpty'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="RestSharp.Contrib">
+       <Types>
+        <Type Name="HttpEncoder" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#.cctor()" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="CriticalWarning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HtmlEncoder.cs" Line="48">Initialize all static fields in 'HttpEncoder' when those fields are declared and remove the explicit static constructor.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#HtmlDecode(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HtmlEncoder.cs" Line="417">'HttpEncoder.HtmlDecode(string)' has a cyclomatic complexity of 28. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="HttpUtility" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#HtmlAttributeEncode(System.String,System.IO.TextWriter)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Name="Reserved" Certainty="95" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="87">'HttpUtility.HtmlAttributeEncode(string, TextWriter)' creates an exception of type 'NullReferenceException', an exception type that is reserved by the runtime and should never be raised by managed code. If this exception instance might be thrown, use a different exception type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#HtmlDecode(System.String,System.IO.TextWriter)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Name="Reserved" Certainty="95" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="575">'HttpUtility.HtmlDecode(string, TextWriter)' creates an exception of type 'NullReferenceException', an exception type that is reserved by the runtime and should never be raised by managed code. If this exception instance might be thrown, use a different exception type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#HtmlEncode(System.String,System.IO.TextWriter)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Name="Reserved" Certainty="95" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="617">'HttpUtility.HtmlEncode(string, TextWriter)' creates an exception of type 'NullReferenceException', an exception type that is reserved by the runtime and should never be raised by managed code. If this exception instance might be thrown, use a different exception type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlDecode(System.Byte[],System.Int32,System.Int32,System.Text.Encoding)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="259">Change the return type of 'HttpUtility.UrlDecode(byte[], int, int, Encoding)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlDecode(System.Byte[],System.Text.Encoding)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="194">Change the return type of 'HttpUtility.UrlDecode(byte[], Encoding)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlDecode(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="115">Change the return type of 'HttpUtility.UrlDecode(string)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlDecode(System.String,System.Text.Encoding)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="136">Change the return type of 'HttpUtility.UrlDecode(string, Encoding)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlEncode(System.Byte[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="448">Change the return type of 'HttpUtility.UrlEncode(byte[])' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlEncode(System.Byte[],System.Int32,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="461">Change the return type of 'HttpUtility.UrlEncode(byte[], int, int)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlEncode(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="407">Change the return type of 'HttpUtility.UrlEncode(string)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlEncode(System.String,System.Text.Encoding)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="416">Replace the call to 'string.operator ==(string, string)' in 'HttpUtility.UrlEncode(string, Encoding)' with a call to 'String.IsNullOrEmpty'.</Issue>
+            </Message>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="412">Change the return type of 'HttpUtility.UrlEncode(string, Encoding)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlEncodeUnicode(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="515">Change the return type of 'HttpUtility.UrlEncodeUnicode(string)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlPathEncode(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions\MonoHttp" File="HttpUtility.cs" Line="730">Change the return type of 'HttpUtility.UrlPathEncode(string)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="RestSharp.Deserializers">
+       <Types>
+        <Type Name="IDeserializer" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Namespace" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Namespace" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Rename virtual/interface member 'IDeserializer.Namespace' so that it no longer conflicts with the reserved language keyword 'Namespace'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JsonDeserializer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ConvertValue(System.Type,System.Object)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Deserializers" File="JsonDeserializer.cs" Line="193">'JsonDeserializer.ConvertValue(Type, object)' has a cyclomatic complexity of 28. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="XmlDeserializer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#HandleListDerivative(System.Object,System.Xml.Linq.XElement,System.String,System.Type)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="x" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Deserializers" File="XmlDeserializer.cs" Line="330">Parameter 'x' of 'XmlDeserializer.HandleListDerivative(object, XElement, string, Type)' is never used. Remove the parameter or use it in the method body.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Map(System.Object,System.Xml.Linq.XElement)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Deserializers" File="XmlDeserializer.cs" Line="104">'XmlDeserializer.Map(object, XElement)' has a cyclomatic complexity of 34. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Deserializers" File="XmlDeserializer.cs" Line="214">Modify 'XmlDeserializer.Map(object, XElement)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RemoveNamespace(System.Xml.Linq.XDocument)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Deserializers" File="XmlDeserializer.cs" Line="80">The 'this' parameter (or 'Me' in Visual Basic) of 'XmlDeserializer.RemoveNamespace(XDocument)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="RestSharp.Extensions">
+       <Types>
+        <Type Name="ReflectionExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ChangeType(System.Object,System.Type,System.Globalization.CultureInfo)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions" File="ReflectionExtensions.cs" Line="84">Consider changing the type of parameter 'culture' in 'ReflectionExtensions.ChangeType(this object, Type, CultureInfo)' from 'CultureInfo' to its base type 'IFormatProvider'. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetAttribute`1(System.Type)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions" File="ReflectionExtensions.cs" Line="47">Consider changing the type of parameter 'type' in 'ReflectionExtensions.GetAttribute&lt;T&gt;(this Type)' from 'Type' to its base type 'MemberInfo'. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="StringExtensions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ParseJsonDate(System.String,System.Globalization.CultureInfo)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions" File="StringExtensions.cs" Line="132">Modify 'StringExtensions.ParseJsonDate(this string, CultureInfo)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlDecode(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions" File="StringExtensions.cs" Line="42">Change the return type of 'StringExtensions.UrlDecode(this string)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UrlEncode(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Extensions" File="StringExtensions.cs" Line="52">Change the return type of 'StringExtensions.UrlEncode(this string)' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="RestSharp.Serializers">
+       <Types>
+        <Type Name="ISerializer" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Namespace" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Namespace" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Rename virtual/interface member 'ISerializer.Namespace' so that it no longer conflicts with the reserved language keyword 'Namespace'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="XmlSerializer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Map(System.Xml.Linq.XElement,System.Object)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Serializers" File="XmlSerializer.cs" Line="110">'XmlSerializer.Map(XElement, object)' has a cyclomatic complexity of 28. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Serializers" File="XmlSerializer.cs" Line="170">Replace the call to 'string.operator ==(string, string)' in 'XmlSerializer.Map(XElement, object)' with a call to 'String.IsNullOrEmpty'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Serialize(System.Object)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-08-14 11:11:04Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\Serializers" File="XmlSerializer.cs" Line="82">Replace the call to 'string.operator ==(string, string)' in 'XmlSerializer.Serialize(object)' with a call to 'String.IsNullOrEmpty'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502">
+   <Name>Avoid excessive complexity</Name>
+   <Description>Method implementations that are exceedingly complex increase the challenge of understanding and maintaining code.</Description>
+   <Resolution Name="Default">{0} has a cyclomatic complexity of {1}. Rewrite or refactor the method to reduce complexity to {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182212.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="maintainabilityrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>Avoid uncalled private code</Name>
+   <Description>There is uncalled code that is not externally visible and is not a known runtime entry point. If this violation fires in error, please send a problem report to the Visual Studio Code Analysis team.</Description>
+   <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182264.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227">
+   <Name>Collection properties should be read only</Name>
+   <Description>Properties that return collections should be read-only so that users cannot entirely replace the backing store. Users can still modify the contents of the collection by calling relevant methods on the collection. Note that the XmlSerializer class has special support for deserializing read-only collections. See the XmlSerializer overview for more information.</Description>
+   <Resolution Name="Default">Change {0} to be read-only by removing the property setter.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182327.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011">
+   <Name>Consider passing base types as parameters</Name>
+   <Description>Using base types as parameters to methods improves re-use of these methods if you only use methods &amp; properties from the parameter's base class. E.g. use Stream instead of FileStream as a parameter when only calling Stream.Read(), this makes the method work on all kind of streams instead of just File streams.</Description>
+   <Resolution Name="Default">Consider changing the type of parameter {0} in {1} from {2} to its base type {3}. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/3hk32yyz.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026">
+   <Name>Default parameters should not be used</Name>
+   <Description>Some programming languages do not support default parameters. Replace default parameters with method overloads that supply the default argument.</Description>
+   <Resolution Name="Default">Replace method {0} with an overload that supplies all default arguments.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182135.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 459</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
+   <Name>Do not call overridable methods in constructors</Name>
+   <Description>Virtual methods defined on the class should not be called from constructors. If a derived class has overridden the method, the derived class version will be called (before the derived class constructor is called).</Description>
+   <Resolution Name="Default">{0} contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: {1}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182331.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+   <Name>Do not catch general exception types</Name>
+   <Description>You should not catch Exception or SystemException. Catching generic exception types can hide run-time problems from the library user, and can complicate debugging. You should catch only those exceptions that you can handle gracefully.</Description>
+   <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182137.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006">
+   <Name>Do not nest generic types in member signatures</Name>
+   <Description>Avoid API that require users to instantiate a generic type with another generic type as type argument. The syntax gets too complex.</Description>
+   <Resolution Name="Default">Consider a design where {0} doesn't nest generic type {1}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182144.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201">
+   <Name>Do not raise reserved exception types</Name>
+   <Description>User code should not create and raise exceptions of certain types that are reserved by the runtime or which are of a too general exception type. Exception types that are too general include Exception, SystemException, and ApplicationException. Exception types that are reserved by the runtime include ThreadAbortException, OutOfMemoryException, ExecutionEngineException, and IndexOutOfRangeException.</Description>
+   <Resolution Name="Reserved">{0} creates an exception of type {1}, an exception type that is reserved by the runtime and should never be raised by managed code. If this exception instance might be thrown, use a different exception type.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182338.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716">
+   <Name>Identifiers should not match keywords</Name>
+   <Description>Identifiers which conflict with reserved language keywords should be avoided. Using a reserved keyword as an identifier makes it harder for consumers in other languages to use your API.</Description>
+   <Resolution Name="Member">Rename virtual/interface member {0} so that it no longer conflicts with the reserved language keyword '{1}'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182248.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810">
+   <Name>Initialize reference type static fields inline</Name>
+   <Description>Static fields should be initialized when declared. Initializing static data in explicit static constructors results in less performant code.</Description>
+   <Resolution Name="Default">Initialize all static fields in {0} when those fields are declared and remove the explicit static constructor.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182275.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">CriticalWarning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208">
+   <Name>Instantiate argument exceptions correctly</Name>
+   <Description>String arguments passed to constructors of ArgumentException and its derived types should be correct. Types derived from ArgumentException have inconsistent constructor overloads with respect to the message and paramName parameters as compared to ArgumentException.</Description>
+   <Resolution Name="NoArguments">Call the {0} constructor that contains a message and/or paramName parameter.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182347.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+   <Name>Mark members as static</Name>
+   <Description>Methods which do not access instance data or call instance methods can be marked as static (Shared in Visual Basic). After doing so, the compiler will emit non-virtual call sites to these members which will prevent a check at runtime for each call that ensures the current object pointer is non-null. This can result in a measurable performance gain for performance-sensitive code. In some cases, the failure to access the current object instance represents a correctness issue.</Description>
+   <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms245046.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225">
+   <Name>Operator overloads have named alternates</Name>
+   <Description>When redefining operators, implement named methods to provide access to the operator functionality from languages that do not support operator overloading. For example, the functionality of the '+' operator should also be accessible using an 'Add' method.</Description>
+   <Resolution Name="Multiple">Provide a method named '{0}' or '{1}' as an alternate for operator {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182355.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">Error</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815">
+   <Name>Override equals and operator equals on value types</Name>
+   <Description>The default System.ValueType implementation might not perform as well as a custom implementation.</Description>
+   <Resolution Name="Equals">{0} should override Equals.</Resolution>
+   <Resolution Name="op_Equality">{0} should override the equality (==) and inequality (!=) operators.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182276.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819">
+   <Name>Properties should not return arrays</Name>
+   <Description>Properties that return arrays are prone to code inefficiencies. Consider using a collection or making this a method. See the design guidelines for more information.</Description>
+   <Resolution Name="Default">Change {0} to return a collection or make it a method.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/0fss9skc.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+   <Name>Review unused parameters</Name>
+   <Description>Review parameters in non-virtual methods that are not used in the method body to ensure no correctness exists around failure to access them. Unused parameters incur maintenance and performance costs. Sometimes a violation of this rule can point to an implementation bug in the method (i.e. the parameter should actually have been used in the method body). Exclude warnings of this rule if the parameter has to exist because of backward compatibility.</Description>
+   <Resolution Name="Default">Parameter {0} of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182268.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="StringUriOverloadsCallSystemUriOverloads" Category="Microsoft.Design" CheckId="CA1057">
+   <Name>String URI overloads call System.Uri overloads</Name>
+   <Description>If a method overloads another method by replacing a System.Uri parameter with a string, then the string overload should simply build a Uri object from the string, and pass the result to the string overload.</Description>
+   <Resolution Name="Default">Refactor {0} so that it builds a System.Uri object from {1}, and then calls {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182170.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820">
+   <Name>Test for empty strings using string length</Name>
+   <Description>To test for empty strings, check if String.Length is equal to zero. Constructs such as "".Equals(someString) and String.Empty.Equals(someString) are less efficient than testing the string length. Replace these with checks for someString.Length == 0.</Description>
+   <Resolution Name="IsNullOrEmpty">Replace the call to {0} in {1} with a call to 'String.IsNullOrEmpty'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182279.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054">
+   <Name>URI parameters should not be strings</Name>
+   <Description>If a parameter name contains "uri" or "url" or "urn", and it's typed as string, the parameter type should be changed to System.Uri, unless there is an overload method where the same parameter is typed as System.Uri.</Description>
+   <Resolution Name="Default">Change the type of parameter {0} of method {1} from string to System.Uri, or provide an overload of {1}, that allows {0} to be passed as a System.Uri object.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182174.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="60">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="UriReturnValuesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1055">
+   <Name>URI return values should not be strings</Name>
+   <Description>If a function name contains "uri" or "url" or "urn" and the return type is string, the return type should be changed to System.Uri.</Description>
+   <Resolution Name="Default">Change the return type of {0} from string to System.Uri.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182176.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="60">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

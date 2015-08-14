@@ -44,7 +44,7 @@
     <DefineConstants>TRACE;DEBUG;FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Debug\RestSharp.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
     <NoWarn>1591,1584,1572,1574,1658</NoWarn>

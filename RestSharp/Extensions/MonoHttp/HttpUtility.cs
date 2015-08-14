@@ -71,7 +71,7 @@ namespace RestSharp.Contrib
 
         #region Constructors
 
-        public HttpUtility() { }
+        private HttpUtility() { }
 
         #endregion // Constructors
 
