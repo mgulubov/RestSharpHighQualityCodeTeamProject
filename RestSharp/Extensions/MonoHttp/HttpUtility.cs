@@ -111,9 +111,9 @@ namespace RestSharp.Contrib
 #endif
         }
 
-        public static string UrlDecode(string str)
+        public static string UrlDecode(string url)
         {
-            return UrlDecode(str, Encoding.UTF8);
+            return UrlDecode(url, Encoding.UTF8);
         }
 
         static char[] GetChars(MemoryStream b, Encoding e)
@@ -132,70 +132,70 @@ namespace RestSharp.Contrib
                 buf.Add((byte)ch);
         }
 
-        public static string UrlDecode(string s, Encoding e)
+        public static string UrlDecode(string url, Encoding encoding)
         {
-            if (null == s)
+            if (null == url)
                 return null;
 
-            if (s.IndexOf('%') == -1 && s.IndexOf('+') == -1)
-                return s;
+            if (url.IndexOf('%') == -1 && url.IndexOf('+') == -1)
+                return url;
 
-            if (e == null)
-                e = Encoding.UTF8;
+            if (encoding == null)
+                encoding = Encoding.UTF8;
 
-            long len = s.Length;
+            long len = url.Length;
             var bytes = new List<byte>();
             int xchar;
             char ch;
 
             for (int i = 0; i < len; i++)
             {
-                ch = s[i];
+                ch = url[i];
 
-                if (ch == '%' && i + 2 < len && s[i + 1] != '%')
+                if (ch == '%' && i + 2 < len && url[i + 1] != '%')
                 {
-                    if (s[i + 1] == 'u' && i + 5 < len)
+                    if (url[i + 1] == 'u' && i + 5 < len)
                     {
                         // unicode hex sequence
-                        xchar = GetChar(s, i + 2, 4);
+                        xchar = GetChar(url, i + 2, 4);
                         if (xchar != -1)
                         {
-                            WriteCharBytes(bytes, (char)xchar, e);
+                            WriteCharBytes(bytes, (char)xchar, encoding);
                             i += 5;
                         }
                         else
-                            WriteCharBytes(bytes, '%', e);
+                            WriteCharBytes(bytes, '%', encoding);
                     }
-                    else if ((xchar = GetChar(s, i + 1, 2)) != -1)
+                    else if ((xchar = GetChar(url, i + 1, 2)) != -1)
                     {
-                        WriteCharBytes(bytes, (char)xchar, e);
+                        WriteCharBytes(bytes, (char)xchar, encoding);
                         i += 2;
                     }
                     else
                     {
-                        WriteCharBytes(bytes, '%', e);
+                        WriteCharBytes(bytes, '%', encoding);
                     }
 
                     continue;
                 }
 
                 if (ch == '+')
-                    WriteCharBytes(bytes, ' ', e);
+                    WriteCharBytes(bytes, ' ', encoding);
                 else
-                    WriteCharBytes(bytes, ch, e);
+                    WriteCharBytes(bytes, ch, encoding);
             }
 
             byte[] buf = bytes.ToArray();
             bytes = null;
-            return e.GetString(buf, 0, buf.Length);
+            return encoding.GetString(buf, 0, buf.Length);
         }
 
-        public static string UrlDecode(byte[] bytes, Encoding e)
+        public static string UrlDecode(byte[] bytes, Encoding encoding)
         {
             if (bytes == null)
                 return null;
 
-            return UrlDecode(bytes, 0, bytes.Length, e);
+            return UrlDecode(bytes, 0, bytes.Length, encoding);
         }
 
         static int GetInt(byte b)

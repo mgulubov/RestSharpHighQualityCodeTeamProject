@@ -30,10 +30,10 @@ namespace RestSharp
 #endif
             switch (request.Method)
             {
-                case Method.POST:
-                case Method.PUT:
-                case Method.PATCH:
-                case Method.MERGE:
+                case Method.Post:
+                case Method.Put:
+                case Method.Patch:
+                case Method.Merge:
                     return Execute(request, method, DoExecuteAsPost);
 
                 default:
@@ -48,7 +48,7 @@ namespace RestSharp
 
         public IRestResponse ExecuteAsPost(IRestRequest request, string httpMethod)
         {
-            request.Method = Method.POST; // Required by RestClient.BuildUri... 
+            request.Method = Method.Post; // Required by RestClient.BuildUri... 
             return Execute(request, httpMethod, DoExecuteAsPost);
         }
 

@@ -45,46 +45,46 @@ namespace RestSharp
 
         public HttpWebRequest DeleteAsync(Action<HttpResponse> action)
         {
-            return GetStyleMethodInternalAsync("DELETE", action);
+            return GetStyleMethodInternalAsync("Delete", action);
         }
 
         public HttpWebRequest GetAsync(Action<HttpResponse> action)
         {
-            return GetStyleMethodInternalAsync("GET", action);
+            return GetStyleMethodInternalAsync("Get", action);
         }
 
         public HttpWebRequest HeadAsync(Action<HttpResponse> action)
         {
-            return GetStyleMethodInternalAsync("HEAD", action);
+            return GetStyleMethodInternalAsync("Head", action);
         }
 
         public HttpWebRequest OptionsAsync(Action<HttpResponse> action)
         {
-            return GetStyleMethodInternalAsync("OPTIONS", action);
+            return GetStyleMethodInternalAsync("Options", action);
         }
 
         public HttpWebRequest PostAsync(Action<HttpResponse> action)
         {
-            return PutPostInternalAsync("POST", action);
+            return PutPostInternalAsync("Post", action);
         }
 
         public HttpWebRequest PutAsync(Action<HttpResponse> action)
         {
-            return PutPostInternalAsync("PUT", action);
+            return PutPostInternalAsync("Put", action);
         }
 
         public HttpWebRequest PatchAsync(Action<HttpResponse> action)
         {
-            return PutPostInternalAsync("PATCH", action);
+            return PutPostInternalAsync("Patch", action);
         }
 
         public HttpWebRequest MergeAsync(Action<HttpResponse> action)
         {
-            return PutPostInternalAsync("MERGE", action);
+            return PutPostInternalAsync("Merge", action);
         }
 
         /// <summary>
-        /// Execute an async POST-style request with the specified HTTP Method.  
+        /// Execute an async Post-style request with the specified HTTP Method.  
         /// </summary>
         /// <param name="action"></param>
         /// <param name="httpMethod">The HTTP method to execute.</param>
@@ -99,7 +99,7 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Execute an async GET-style request with the specified HTTP Method.  
+        /// Execute an async Get-style request with the specified HTTP Method.  
         /// </summary>
         /// <param name="action"></param>
         /// <param name="httpMethod">The HTTP method to execute.</param>
@@ -123,7 +123,7 @@ namespace RestSharp
 
                 webRequest = ConfigureAsyncWebRequest(method, url);
 
-                if (HasBody && (method == "DELETE" || method == "OPTIONS"))
+                if (HasBody && (method == "Delete" || method == "Options"))
                 {
                     webRequest.ContentType = RequestContentType;
                     WriteRequestBodyAsync(webRequest, callback);

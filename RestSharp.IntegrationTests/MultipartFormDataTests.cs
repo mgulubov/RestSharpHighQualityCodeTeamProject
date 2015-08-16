@@ -29,7 +29,7 @@
             using (SimpleServer.Create(baseUrl, EchoHandler))
             {
                 var client = new RestClient(baseUrl);
-                var request = new RestRequest("/", Method.POST) { AlwaysMultipartFormData = true };
+                var request = new RestRequest("/", Method.Post) { AlwaysMultipartFormData = true };
 
                 this.AddParameters(request);
 
@@ -49,7 +49,7 @@
             using (SimpleServer.Create(baseUrl, EchoHandler))
             {
                 var client = new RestClient(baseUrl);
-                var request = new RestRequest("/", Method.POST) { AlwaysMultipartFormData = true };
+                var request = new RestRequest("/", Method.Post) { AlwaysMultipartFormData = true };
 
                 this.AddParameters(request);
 
@@ -70,7 +70,7 @@
                 var request = new RestRequest("?json_route=/posts")
                                   {
                                       AlwaysMultipartFormData = true,
-                                      Method = Method.POST,
+                                      Method = Method.Post,
                                   };
                 request.AddParameter("title", "test", ParameterType.RequestBody);
 
@@ -90,7 +90,7 @@
                 var request = new RestRequest("?json_route=/posts")
                                   {
                                       AlwaysMultipartFormData = true,
-                                      Method = Method.POST,
+                                      Method = Method.Post,
                                   };
                 request.AddParameter("title", "test", ParameterType.RequestBody);
 
@@ -115,7 +115,7 @@
                 var request = new RestRequest("?json_route=/posts")
                 {
                     AlwaysMultipartFormData = true,
-                    Method = Method.POST,
+                    Method = Method.Post,
                 };
                 request.AddParameter("title", "test", ParameterType.RequestBody);
                 IRestResponse syncResponse = null;

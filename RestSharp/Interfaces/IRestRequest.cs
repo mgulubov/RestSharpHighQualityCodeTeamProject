@@ -14,14 +14,14 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using RestSharp.Serializers;
-
 namespace RestSharp
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Net;
+    using Serializers;
+
     public interface IRestRequest
     {
         /// <summary>
@@ -58,8 +58,8 @@ namespace RestSharp
         IList<FileParameter> Files { get; }
 
         /// <summary>
-        /// Determines what HTTP method to use for this request. Supported methods: GET, POST, PUT, DELETE, HEAD, OPTIONS
-        /// Default is GET
+        /// Determines what HTTP method to use for this request. Supported methods: Get, Post, Put, Delete, Head, Options
+        /// Default is Get
         /// </summary>
         Method Method { get; set; }
 
@@ -131,7 +131,7 @@ namespace RestSharp
 
 #if FRAMEWORK
         /// <summary>
-        /// Adds a file to the Files collection to be included with a POST or PUT request 
+        /// Adds a file to the Files collection to be included with a Post or Put request 
         /// (other methods do not support file uploads).
         /// </summary>
         /// <param name="name">The parameter name to use in the request</param>
@@ -227,7 +227,7 @@ namespace RestSharp
         IRestRequest AddParameter(Parameter p);
 
         /// <summary>
-        /// Adds a HTTP parameter to the request (QueryString for GET, DELETE, OPTIONS and HEAD; Encoded form for POST and PUT)
+        /// Adds a HTTP parameter to the request (QueryString for Get, Delete, Options and Head; Encoded form for Post and Put)
         /// </summary>
         /// <param name="name">Name of the parameter</param>
         /// <param name="value">Value of the parameter</param>

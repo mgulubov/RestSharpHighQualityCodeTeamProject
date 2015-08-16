@@ -32,71 +32,71 @@ namespace RestSharp
     public partial class Http
     {
         /// <summary>
-        /// Execute a POST request
+        /// Execute a Post request
         /// </summary>
         public HttpResponse Post()
         {
-            return PostPutInternal("POST");
+            return PostPutInternal("Post");
         }
 
         /// <summary>
-        /// Execute a PUT request
+        /// Execute a Put request
         /// </summary>
         public HttpResponse Put()
         {
-            return PostPutInternal("PUT");
+            return PostPutInternal("Put");
         }
 
         /// <summary>
-        /// Execute a GET request
+        /// Execute a Get request
         /// </summary>
         public HttpResponse Get()
         {
-            return GetStyleMethodInternal("GET");
+            return GetStyleMethodInternal("Get");
         }
 
         /// <summary>
-        /// Execute a HEAD request
+        /// Execute a Head request
         /// </summary>
         public HttpResponse Head()
         {
-            return GetStyleMethodInternal("HEAD");
+            return GetStyleMethodInternal("Head");
         }
 
         /// <summary>
-        /// Execute an OPTIONS request
+        /// Execute an Options request
         /// </summary>
         public HttpResponse Options()
         {
-            return GetStyleMethodInternal("OPTIONS");
+            return GetStyleMethodInternal("Options");
         }
 
         /// <summary>
-        /// Execute a DELETE request
+        /// Execute a Delete request
         /// </summary>
         public HttpResponse Delete()
         {
-            return GetStyleMethodInternal("DELETE");
+            return GetStyleMethodInternal("Delete");
         }
 
         /// <summary>
-        /// Execute a PATCH request
+        /// Execute a Patch request
         /// </summary>
         public HttpResponse Patch()
         {
-            return PostPutInternal("PATCH");
+            return PostPutInternal("Patch");
         }
 
         /// <summary>
-        /// Execute a MERGE request
+        /// Execute a Merge request
         /// </summary>
         public HttpResponse Merge()
         {
-            return PostPutInternal("MERGE");
+            return PostPutInternal("Merge");
         }
 
         /// <summary>
-        /// Execute a GET-style request with the specified HTTP Method.  
+        /// Execute a Get-style request with the specified HTTP Method.  
         /// </summary>
         /// <param name="httpMethod">The HTTP method to execute.</param>
         /// <returns></returns>
@@ -110,7 +110,7 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Execute a POST-style request with the specified HTTP Method.  
+        /// Execute a Post-style request with the specified HTTP Method.  
         /// </summary>
         /// <param name="httpMethod">The HTTP method to execute.</param>
         /// <returns></returns>
@@ -127,7 +127,7 @@ namespace RestSharp
         {
             var webRequest = ConfigureWebRequest(method, Url);
 
-            if (HasBody && (method == "DELETE" || method == "OPTIONS"))
+            if (HasBody && (method == "Delete" || method == "Options"))
             {
                 webRequest.ContentType = RequestContentType;
                 WriteRequestBody(webRequest);

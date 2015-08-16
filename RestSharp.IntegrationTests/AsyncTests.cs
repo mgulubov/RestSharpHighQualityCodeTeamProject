@@ -214,7 +214,7 @@ namespace RestSharp.IntegrationTests
             using (SimpleServer.Create(baseUrl, Handlers.Generic<ResponseHandler>()))
             {
                 var client = new RestClient(baseUrl);
-                var request = new RestRequest("timeout", Method.GET).AddBody("Body_Content");
+                var request = new RestRequest("timeout", Method.Get).AddBody("Body_Content");
 
                 //Half the value of ResponseHandler.Timeout
                 request.Timeout = 500;
@@ -236,7 +236,7 @@ namespace RestSharp.IntegrationTests
             using (SimpleServer.Create(baseUrl, Handlers.Generic<ResponseHandler>()))
             {
                 var client = new RestClient(baseUrl);
-                var request = new RestRequest("timeout", Method.PUT).AddBody("Body_Content");
+                var request = new RestRequest("timeout", Method.Put).AddBody("Body_Content");
 
                 //Half the value of ResponseHandler.Timeout
                 request.Timeout = 500;

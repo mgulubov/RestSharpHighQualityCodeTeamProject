@@ -14,12 +14,13 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Linq;
-using System.Text;
 
 namespace RestSharp
 {
+    using System;
+    using System.Linq;
+    using System.Text;
+
     public class HttpBasicAuthenticator : IAuthenticator
     {
         private readonly string _authHeader;

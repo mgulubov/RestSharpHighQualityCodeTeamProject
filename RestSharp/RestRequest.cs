@@ -84,7 +84,7 @@ namespace RestSharp
         /// Sets Resource property
         /// </summary>
         /// <param name="resource">Resource to use for this request</param>
-        public RestRequest(string resource) : this(resource, Method.GET) { }
+        public RestRequest(string resource) : this(resource, Method.Get) { }
 
         /// <summary>
         /// Sets Resource and Method properties
@@ -101,7 +101,7 @@ namespace RestSharp
         /// Sets Resource property
         /// </summary>
         /// <param name="resource">Resource to use for this request</param>
-        public RestRequest(Uri resource) : this(resource, Method.GET) { }
+        public RestRequest(Uri resource) : this(resource, Method.Get) { }
 
         /// <summary>
         /// Sets Resource and Method properties
@@ -115,7 +115,7 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Adds a file to the Files collection to be included with a POST or PUT request 
+        /// Adds a file to the Files collection to be included with a Post or Put request 
         /// (other methods do not support file uploads).
         /// </summary>
         /// <param name="name">The parameter name to use in the request</param>
@@ -344,7 +344,7 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Adds a HTTP parameter to the request (QueryString for GET, DELETE, OPTIONS and HEAD; Encoded form for POST and PUT)
+        /// Adds a HTTP parameter to the request (QueryString for Get, Delete, Options and Head; Encoded form for Post and Put)
         /// </summary>
         /// <param name="name">Name of the parameter</param>
         /// <param name="value">Value of the parameter</param>
@@ -445,11 +445,11 @@ namespace RestSharp
         /// </summary>
         public IList<FileParameter> Files { get; private set; }
 
-        private Method method = Method.GET;
+        private Method method = Method.Get;
 
         /// <summary>
-        /// Determines what HTTP method to use for this request. Supported methods: GET, POST, PUT, DELETE, HEAD, OPTIONS
-        /// Default is GET
+        /// Determines what HTTP method to use for this request. Supported methods: Get, Post, Put, Delete, Head, Options
+        /// Default is Get
         /// </summary>
         public Method Method
         {

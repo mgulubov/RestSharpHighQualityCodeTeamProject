@@ -13,7 +13,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Can_Not_Be_Added_To_GET_Request()
         {
-            const Method httpMethod = Method.GET;
+            const Method httpMethod = Method.Get;
 
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestBodyCapturer>()))
             {
@@ -37,7 +37,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Can_Be_Added_To_POST_Request()
         {
-            const Method httpMethod = Method.POST;
+            const Method httpMethod = Method.Post;
 
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestBodyCapturer>()))
             {
@@ -61,7 +61,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Can_Be_Added_To_PUT_Request()
         {
-            const Method httpMethod = Method.PUT;
+            const Method httpMethod = Method.Put;
 
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestBodyCapturer>()))
             {
@@ -85,7 +85,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Can_Be_Added_To_DELETE_Request()
         {
-            const Method httpMethod = Method.DELETE;
+            const Method httpMethod = Method.Delete;
 
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestBodyCapturer>()))
             {
@@ -109,7 +109,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Can_Not_Be_Added_To_HEAD_Request()
         {
-            const Method httpMethod = Method.HEAD;
+            const Method httpMethod = Method.Head;
 
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestBodyCapturer>()))
             {
@@ -133,7 +133,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Can_Be_Added_To_OPTIONS_Request()
         {
-            const Method httpMethod = Method.OPTIONS;
+            const Method httpMethod = Method.Options;
 
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestBodyCapturer>()))
             {
@@ -157,7 +157,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Can_Be_Added_To_PATCH_Request()
         {
-            const Method httpMethod = Method.PATCH;
+            const Method httpMethod = Method.Patch;
 
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestBodyCapturer>()))
             {

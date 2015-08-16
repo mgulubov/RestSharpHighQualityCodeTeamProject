@@ -323,7 +323,7 @@ namespace RestSharp
 
             IEnumerable<Parameter> parameters;
 
-            if (request.Method != Method.POST && request.Method != Method.PUT && request.Method != Method.PATCH)
+            if (request.Method != Method.Post && request.Method != Method.Put && request.Method != Method.Patch)
             {
                 parameters = request.Parameters.Where(
                     p => p.Type == ParameterType.GetOrPost || p.Type == ParameterType.QueryString).ToList();

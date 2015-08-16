@@ -36,98 +36,98 @@ namespace RestSharp
         public static RestRequestAsyncHandle GetAsync<T>(this IRestClient client, IRestRequest request,
             Action<IRestResponse<T>, RestRequestAsyncHandle> callback) where T : new()
         {
-            request.Method = Method.GET;
+            request.Method = Method.Get;
             return client.ExecuteAsync<T>(request, callback);
         }
 
         public static RestRequestAsyncHandle PostAsync<T>(this IRestClient client, IRestRequest request,
             Action<IRestResponse<T>, RestRequestAsyncHandle> callback) where T : new()
         {
-            request.Method = Method.POST;
+            request.Method = Method.Post;
             return client.ExecuteAsync<T>(request, callback);
         }
 
         public static RestRequestAsyncHandle PutAsync<T>(this IRestClient client, IRestRequest request,
             Action<IRestResponse<T>, RestRequestAsyncHandle> callback) where T : new()
         {
-            request.Method = Method.PUT;
+            request.Method = Method.Put;
             return client.ExecuteAsync<T>(request, callback);
         }
 
         public static RestRequestAsyncHandle HeadAsync<T>(this IRestClient client, IRestRequest request,
             Action<IRestResponse<T>, RestRequestAsyncHandle> callback) where T : new()
         {
-            request.Method = Method.HEAD;
+            request.Method = Method.Head;
             return client.ExecuteAsync<T>(request, callback);
         }
 
         public static RestRequestAsyncHandle OptionsAsync<T>(this IRestClient client, IRestRequest request,
             Action<IRestResponse<T>, RestRequestAsyncHandle> callback) where T : new()
         {
-            request.Method = Method.OPTIONS;
+            request.Method = Method.Options;
             return client.ExecuteAsync<T>(request, callback);
         }
 
         public static RestRequestAsyncHandle PatchAsync<T>(this IRestClient client, IRestRequest request,
             Action<IRestResponse<T>, RestRequestAsyncHandle> callback) where T : new()
         {
-            request.Method = Method.PATCH;
+            request.Method = Method.Patch;
             return client.ExecuteAsync<T>(request, callback);
         }
 
         public static RestRequestAsyncHandle DeleteAsync<T>(this IRestClient client, IRestRequest request,
             Action<IRestResponse<T>, RestRequestAsyncHandle> callback) where T : new()
         {
-            request.Method = Method.DELETE;
+            request.Method = Method.Delete;
             return client.ExecuteAsync<T>(request, callback);
         }
 
         public static RestRequestAsyncHandle GetAsync(this IRestClient client, IRestRequest request,
             Action<IRestResponse, RestRequestAsyncHandle> callback)
         {
-            request.Method = Method.GET;
+            request.Method = Method.Get;
             return client.ExecuteAsync(request, callback);
         }
 
         public static RestRequestAsyncHandle PostAsync(this IRestClient client, IRestRequest request,
             Action<IRestResponse, RestRequestAsyncHandle> callback)
         {
-            request.Method = Method.POST;
+            request.Method = Method.Post;
             return client.ExecuteAsync(request, callback);
         }
 
         public static RestRequestAsyncHandle PutAsync(this IRestClient client, IRestRequest request,
             Action<IRestResponse, RestRequestAsyncHandle> callback)
         {
-            request.Method = Method.PUT;
+            request.Method = Method.Put;
             return client.ExecuteAsync(request, callback);
         }
 
         public static RestRequestAsyncHandle HeadAsync(this IRestClient client, IRestRequest request,
             Action<IRestResponse, RestRequestAsyncHandle> callback)
         {
-            request.Method = Method.HEAD;
+            request.Method = Method.Head;
             return client.ExecuteAsync(request, callback);
         }
 
         public static RestRequestAsyncHandle OptionsAsync(this IRestClient client, IRestRequest request,
             Action<IRestResponse, RestRequestAsyncHandle> callback)
         {
-            request.Method = Method.OPTIONS;
+            request.Method = Method.Options;
             return client.ExecuteAsync(request, callback);
         }
 
         public static RestRequestAsyncHandle PatchAsync(this IRestClient client, IRestRequest request,
             Action<IRestResponse, RestRequestAsyncHandle> callback)
         {
-            request.Method = Method.PATCH;
+            request.Method = Method.Patch;
             return client.ExecuteAsync(request, callback);
         }
 
         public static RestRequestAsyncHandle DeleteAsync(this IRestClient client, IRestRequest request,
             Action<IRestResponse, RestRequestAsyncHandle> callback)
         {
-            request.Method = Method.DELETE;
+            request.Method = Method.Delete;
             return client.ExecuteAsync(request, callback);
         }
 
@@ -144,31 +144,31 @@ namespace RestSharp
 
         public static Task<T> PutTaskAsync<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.PUT;
+            request.Method = Method.Put;
             return client.ExecuteTaskAsync<T>(request).ContinueWith(x => x.Result.Data);
         }
 
         public static Task<T> HeadTaskAsync<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.HEAD;
+            request.Method = Method.Head;
             return client.ExecuteTaskAsync<T>(request).ContinueWith(x => x.Result.Data);
         }
 
         public static Task<T> OptionsTaskAsync<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.OPTIONS;
+            request.Method = Method.Options;
             return client.ExecuteTaskAsync<T>(request).ContinueWith(x => x.Result.Data);
         }
 
         public static Task<T> PatchTaskAsync<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.PATCH;
+            request.Method = Method.Patch;
             return client.ExecuteTaskAsync<T>(request).ContinueWith(x => x.Result.Data);
         }
 
         public static Task<T> DeleteTaskAsync<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.DELETE;
+            request.Method = Method.Delete;
             return client.ExecuteTaskAsync<T>(request).ContinueWith(x => x.Result.Data);
         }
 #endif
@@ -176,85 +176,85 @@ namespace RestSharp
 #if FRAMEWORK
         public static IRestResponse<T> Get<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.GET;
+            request.Method = Method.Get;
             return client.Execute<T>(request);
         }
 
         public static IRestResponse<T> Post<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.POST;
+            request.Method = Method.Post;
             return client.Execute<T>(request);
         }
 
         public static IRestResponse<T> Put<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.PUT;
+            request.Method = Method.Put;
             return client.Execute<T>(request);
         }
 
         public static IRestResponse<T> Head<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.HEAD;
+            request.Method = Method.Head;
             return client.Execute<T>(request);
         }
 
         public static IRestResponse<T> Options<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.OPTIONS;
+            request.Method = Method.Options;
             return client.Execute<T>(request);
         }
 
         public static IRestResponse<T> Patch<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.PATCH;
+            request.Method = Method.Patch;
             return client.Execute<T>(request);
         }
 
         public static IRestResponse<T> Delete<T>(this IRestClient client, IRestRequest request) where T : new()
         {
-            request.Method = Method.DELETE;
+            request.Method = Method.Delete;
             return client.Execute<T>(request);
         }
 
         public static IRestResponse Get(this IRestClient client, IRestRequest request)
         {
-            request.Method = Method.GET;
+            request.Method = Method.Get;
             return client.Execute(request);
         }
 
         public static IRestResponse Post(this IRestClient client, IRestRequest request)
         {
-            request.Method = Method.POST;
+            request.Method = Method.Post;
             return client.Execute(request);
         }
 
         public static IRestResponse Put(this IRestClient client, IRestRequest request)
         {
-            request.Method = Method.PUT;
+            request.Method = Method.Put;
             return client.Execute(request);
         }
 
         public static IRestResponse Head(this IRestClient client, IRestRequest request)
         {
-            request.Method = Method.HEAD;
+            request.Method = Method.Head;
             return client.Execute(request);
         }
 
         public static IRestResponse Options(this IRestClient client, IRestRequest request)
         {
-            request.Method = Method.OPTIONS;
+            request.Method = Method.Options;
             return client.Execute(request);
         }
 
         public static IRestResponse Patch(this IRestClient client, IRestRequest request)
         {
-            request.Method = Method.PATCH;
+            request.Method = Method.Patch;
             return client.Execute(request);
         }
 
         public static IRestResponse Delete(this IRestClient client, IRestRequest request)
         {
-            request.Method = Method.DELETE;
+            request.Method = Method.Delete;
             return client.Execute(request);
         }
 #endif
@@ -295,7 +295,7 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Adds a HTTP parameter (QueryString for GET, DELETE, OPTIONS and HEAD; Encoded form for POST and PUT)
+        /// Adds a HTTP parameter (QueryString for Get, Delete, Options and Head; Encoded form for Post and Put)
         /// Used on every request made by this client instance
         /// </summary>
         /// <param name="restClient">The IRestClient instance</param>

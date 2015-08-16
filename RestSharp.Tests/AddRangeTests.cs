@@ -8,7 +8,7 @@
         public void ShouldParseOutRangeSpecifier()
         {
             var restClient = new RestClient("http://localhost");
-            var req = new RestRequest("bob", Method.GET);
+            var req = new RestRequest("bob", Method.Get);
             
             req.AddHeader("Range", "pages=1-2");
             var resp = restClient.Execute(req);

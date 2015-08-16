@@ -26,7 +26,7 @@ namespace RestSharp.IntegrationTests
 
             client.Authenticator = OAuth1Authenticator.ForRequestToken(consumerKey, consumerSecret);
 
-            var request = new RestRequest("oauth/request_token", Method.POST);
+            var request = new RestRequest("oauth/request_token", Method.Post);
             var response = client.Execute(request);
 
             Assert.NotNull(response);
@@ -48,7 +48,7 @@ namespace RestSharp.IntegrationTests
 
             var verifier = "123456"; // <-- Breakpoint here (set verifier in debugger)
 
-            request = new RestRequest("oauth/access_token", Method.POST);
+            request = new RestRequest("oauth/access_token", Method.Post);
             client.Authenticator = OAuth1Authenticator.ForAccessToken(
                 consumerKey, consumerSecret, oauth_token, oauth_token_secret, verifier
             );
@@ -74,7 +74,7 @@ namespace RestSharp.IntegrationTests
             Assert.NotNull(response);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
-            //request = new RestRequest("statuses/update.json", Method.POST);
+            //request = new RestRequest("statuses/update.json", Method.Post);
             //request.AddParameter("status", "Hello world! " + DateTime.Now.Ticks.ToString());
             //client.Authenticator = OAuth1Authenticator.ForProtectedResource(
             //    consumerKey, consumerSecret, oauth_token, oauth_token_secret

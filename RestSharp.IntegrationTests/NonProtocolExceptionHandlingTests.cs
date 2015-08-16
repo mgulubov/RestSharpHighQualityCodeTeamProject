@@ -34,7 +34,7 @@ namespace RestSharp.IntegrationTests
             var request = new RestRequest("/")
             {
                 RequestFormat = DataFormat.Json,
-                Method = Method.GET
+                Method = Method.Get
             };
 
             var task = client.ExecuteTaskAsync<StupidClass>(request);

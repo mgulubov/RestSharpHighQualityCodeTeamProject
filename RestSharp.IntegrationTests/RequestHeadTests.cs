@@ -18,7 +18,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Does_Not_Pass_Default_Credentials_When_Server_Does_Not_Negotiate()
         {
-            const Method httpMethod = Method.GET;
+            const Method httpMethod = Method.Get;
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestHeadCapturer>()))
             {
                 var client = new RestClient(BASE_URL);
@@ -41,7 +41,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Passes_Default_Credentials_When_UseDefaultCredentials_Is_True()
         {
-            const Method httpMethod = Method.GET;
+            const Method httpMethod = Method.Get;
 
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestHeadCapturer>(), AuthenticationSchemes.Negotiate))
             {
@@ -65,7 +65,7 @@ namespace RestSharp.IntegrationTests
         [Fact]
         public void Does_Not_Pass_Default_Credentials_When_UseDefaultCredentials_Is_False()
         {
-            const Method httpMethod = Method.GET;
+            const Method httpMethod = Method.Get;
 
             using (SimpleServer.Create(BASE_URL, Handlers.Generic<RequestHeadCapturer>(), AuthenticationSchemes.Negotiate))
             {
