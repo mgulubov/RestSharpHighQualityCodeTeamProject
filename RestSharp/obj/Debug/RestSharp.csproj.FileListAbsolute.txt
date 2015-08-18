@@ -17,8 +17,6 @@ C:\Users\wolfn_000\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestShar
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.xml
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.dll
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.pdb
-C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.dll.CodeAnalysisLog.xml
-C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.dll.lastcodeanalysissucceeded
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.Build.dll
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.Build.pdb
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\obj\Debug\RestSharp.csprojResolveAssemblyReference.cache

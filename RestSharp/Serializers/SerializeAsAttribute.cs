@@ -86,7 +86,7 @@ namespace RestSharp.Serializers
     }
 
     /// <summary>
-    /// Options for transforming casing of element names
+    /// OPTIONS for transforming casing of element names
     /// </summary>
     public enum NameStyle
     {

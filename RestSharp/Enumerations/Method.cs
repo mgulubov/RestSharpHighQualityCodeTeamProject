@@ -21,13 +21,13 @@ namespace RestSharp
     /// </summary>
     public enum Method
     {
-        Get,
-        Post,
-        Put,
-        Delete,
-        Head,
-        Options,
-        Patch,
-        Merge,
+        GET,
+        POST,
+        PUT,
+        DELETE,
+        HEAD,
+        OPTIONS,
+        PATCH,
+        MERGE,
     }
 }

@@ -141,16 +141,16 @@
       <Link>DateFormat.cs</Link>
     </Compile>
     <Compile Include="..\RestSharp\Enumerations\DataFormat.cs">
-      <Link>Enumarations\DataFormat.cs</Link>
+      <Link>Enumerations\DataFormat.cs</Link>
     </Compile>
       <Compile Include="..\RestSharp\Enumerations\Method.cs">
-      <Link>Enumarations\Method.cs</Link>
+      <Link>Enumerations\Method.cs</Link>
     </Compile>
     <Compile Include="..\RestSharp\Enumerations\ParameterType.cs">
-      <Link>Enumarations\ParameterType.cs</Link>
+      <Link>Enumerations\ParameterType.cs</Link>
     </Compile>
     <Compile Include="..\RestSharp\Enumerations\ResponseStatus.cs">
-      <Link>Enumarations\ResponseStatus.cs</Link>
+      <Link>Enumerations\ResponseStatus.cs</Link>
     </Compile>
     <Compile Include="..\restsharp\extensions\MiscExtensions.cs">
       <Link>Extensions\MiscExtensions.cs</Link>

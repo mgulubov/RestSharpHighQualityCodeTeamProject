@@ -117,7 +117,7 @@ namespace RestSharp.Compression.ZLib
         }
 
         /// <summary>
-        /// Get the CRC32 for the given (word,byte) combo.  This is a computation
+        /// GET the CRC32 for the given (word,byte) combo.  This is a computation
         /// defined by PKzip.
         /// </summary>
         /// <param name="W">The word to start with.</param>

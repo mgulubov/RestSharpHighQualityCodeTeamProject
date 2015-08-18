@@ -206,7 +206,7 @@ namespace RestSharp.Authenticators
 
             var parameters = new WebParameterCollection();
 
-            // include all Get and Post parameters before generating the signature
+            // include all GET and POST parameters before generating the signature
             // according to the RFC 5849 - The OAuth 1.0 Protocol
             // http://tools.ietf.org/html/rfc5849#section-3.4.1
             // if this change causes trouble we need to introduce a flag indicating the specific OAuth implementation level,

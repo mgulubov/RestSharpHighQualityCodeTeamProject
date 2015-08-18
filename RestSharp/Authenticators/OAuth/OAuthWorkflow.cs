@@ -241,7 +241,7 @@ namespace RestSharp.Authenticators.OAuth
                 switch (method.ToUpperInvariant())
 #endif
                 {
-                    case "Post":
+                    case "POST":
                         parameters.Add(new HttpPostParameter(parameter, urlParameters[parameter]));
                         break;
 

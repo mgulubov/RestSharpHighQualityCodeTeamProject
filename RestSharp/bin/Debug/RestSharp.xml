@@ -632,7 +632,7 @@
         </member>
         <member name="M:RestSharp.RestClientExtensions.AddDefaultParameter(RestSharp.IRestClient,System.String,System.Object)">
             <summary>
-            Adds a HTTP parameter (QueryString for Get, Delete, Options and Head; Encoded form for Post and Put)
+            Adds a HTTP parameter (QueryString for GET, DELETE, OPTIONS and HEAD; Encoded form for POST and PUT)
             Used on every request made by this client instance
             </summary>
             <param name="restClient">The IRestClient instance</param>
@@ -685,54 +685,54 @@
         </member>
         <member name="M:RestSharp.Http.Post">
             <summary>
-            Execute a Post request
+            Execute a POST request
             </summary>
         </member>
         <member name="M:RestSharp.Http.Put">
             <summary>
-            Execute a Put request
+            Execute a PUT request
             </summary>
         </member>
         <member name="M:RestSharp.Http.Get">
             <summary>
-            Execute a Get request
+            Execute a GET request
             </summary>
         </member>
         <member name="M:RestSharp.Http.Head">
             <summary>
-            Execute a Head request
+            Execute a HEAD request
             </summary>
         </member>
         <member name="M:RestSharp.Http.Options">
             <summary>
-            Execute an Options request
+            Execute an OPTIONS request
             </summary>
         </member>
         <member name="M:RestSharp.Http.Delete">
             <summary>
-            Execute a Delete request
+            Execute a DELETE request
             </summary>
         </member>
         <member name="M:RestSharp.Http.Patch">
             <summary>
-            Execute a Patch request
+            Execute a PATCH request
             </summary>
         </member>
         <member name="M:RestSharp.Http.Merge">
             <summary>
-            Execute a Merge request
+            Execute a MERGE request
             </summary>
         </member>
         <member name="M:RestSharp.Http.AsGet(System.String)">
             <summary>
-            Execute a Get-style request with the specified HTTP Method.  
+            Execute a GET-style request with the specified HTTP Method.  
             </summary>
             <param name="httpMethod">The HTTP method to execute.</param>
             <returns></returns>
         </member>
         <member name="M:RestSharp.Http.AsPost(System.String)">
             <summary>
-            Execute a Post-style request with the specified HTTP Method.  
+            Execute a POST-style request with the specified HTTP Method.  
             </summary>
             <param name="httpMethod">The HTTP method to execute.</param>
             <returns></returns>
@@ -881,7 +881,7 @@
         </member>
         <member name="M:RestSharp.Http.AsPostAsync(System.Action{RestSharp.HttpResponse},System.String)">
             <summary>
-            Execute an async Post-style request with the specified HTTP Method.  
+            Execute an async POST-style request with the specified HTTP Method.  
             </summary>
             <param name="action"></param>
             <param name="httpMethod">The HTTP method to execute.</param>
@@ -889,7 +889,7 @@
         </member>
         <member name="M:RestSharp.Http.AsGetAsync(System.Action{RestSharp.HttpResponse},System.String)">
             <summary>
-            Execute an async Get-style request with the specified HTTP Method.  
+            Execute an async GET-style request with the specified HTTP Method.  
             </summary>
             <param name="action"></param>
             <param name="httpMethod">The HTTP method to execute.</param>
@@ -1258,7 +1258,7 @@
         </member>
         <member name="M:RestSharp.IRestClient.ExecuteAsyncGet(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle},System.String)">
             <summary>
-            Executes a Get-style request and callback asynchronously, authenticating if needed
+            Executes a GET-style request and callback asynchronously, authenticating if needed
             </summary>
             <param name="request">Request to be executed</param>
             <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
@@ -1266,7 +1266,7 @@
         </member>
         <member name="M:RestSharp.IRestClient.ExecuteAsyncPost(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle},System.String)">
             <summary>
-            Executes a Post-style request and callback asynchronously, authenticating if needed
+            Executes a POST-style request and callback asynchronously, authenticating if needed
             </summary>
             <param name="request">Request to be executed</param>
             <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
@@ -1274,7 +1274,7 @@
         </member>
         <member name="M:RestSharp.IRestClient.ExecuteAsyncGet``1(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse{``0},RestSharp.RestRequestAsyncHandle},System.String)">
             <summary>
-            Executes a Get-style request and callback asynchronously, authenticating if needed
+            Executes a GET-style request and callback asynchronously, authenticating if needed
             </summary>
             <typeparam name="T">Target deserialization type</typeparam>
             <param name="request">Request to be executed</param>
@@ -1283,7 +1283,7 @@
         </member>
         <member name="M:RestSharp.IRestClient.ExecuteAsyncPost``1(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse{``0},RestSharp.RestRequestAsyncHandle},System.String)">
             <summary>
-            Executes a Get-style request and callback asynchronously, authenticating if needed
+            Executes a GET-style request and callback asynchronously, authenticating if needed
             </summary>
             <typeparam name="T">Target deserialization type</typeparam>
             <param name="request">Request to be executed</param>
@@ -1325,8 +1325,8 @@
         </member>
         <member name="P:RestSharp.IRestRequest.Method">
             <summary>
-            Determines what HTTP method to use for this request. Supported methods: Get, Post, Put, Delete, Head, Options
-            Default is Get
+            Determines what HTTP method to use for this request. Supported methods: GET, POST, PUT, DELETE, HEAD, OPTIONS
+            Default is GET
             </summary>
         </member>
         <member name="P:RestSharp.IRestRequest.Resource">
@@ -1397,7 +1397,7 @@
         </member>
         <member name="M:RestSharp.IRestRequest.AddFile(System.String,System.String,System.String)">
             <summary>
-            Adds a file to the Files collection to be included with a Post or Put request 
+            Adds a file to the Files collection to be included with a POST or PUT request 
             (other methods do not support file uploads).
             </summary>
             <param name="name">The parameter name to use in the request</param>
@@ -1492,7 +1492,7 @@
         </member>
         <member name="M:RestSharp.IRestRequest.AddParameter(System.String,System.Object)">
             <summary>
-            Adds a HTTP parameter to the request (QueryString for Get, Delete, Options and Head; Encoded form for Post and Put)
+            Adds a HTTP parameter to the request (QueryString for GET, DELETE, OPTIONS and HEAD; Encoded form for POST and PUT)
             </summary>
             <param name="name">Name of the parameter</param>
             <param name="value">Value of the parameter</param>
@@ -1907,7 +1907,7 @@
         </member>
         <member name="M:RestSharp.RestClient.ExecuteAsyncGet(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle},System.String)">
             <summary>
-            Executes a Get-style request and callback asynchronously, authenticating if needed
+            Executes a GET-style request and callback asynchronously, authenticating if needed
             </summary>
             <param name="request">Request to be executed</param>
             <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
@@ -1915,7 +1915,7 @@
         </member>
         <member name="M:RestSharp.RestClient.ExecuteAsyncPost(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle},System.String)">
             <summary>
-            Executes a Post-style request and callback asynchronously, authenticating if needed
+            Executes a POST-style request and callback asynchronously, authenticating if needed
             </summary>
             <param name="request">Request to be executed</param>
             <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
@@ -1931,7 +1931,7 @@
         </member>
         <member name="M:RestSharp.RestClient.ExecuteAsyncGet``1(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse{``0},RestSharp.RestRequestAsyncHandle},System.String)">
             <summary>
-            Executes a Get-style request and callback asynchronously, authenticating if needed
+            Executes a GET-style request and callback asynchronously, authenticating if needed
             </summary>
             <typeparam name="T">Target deserialization type</typeparam>
             <param name="request">Request to be executed</param>
@@ -1940,7 +1940,7 @@
         </member>
         <member name="M:RestSharp.RestClient.ExecuteAsyncPost``1(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse{``0},RestSharp.RestRequestAsyncHandle},System.String)">
             <summary>
-            Executes a Post-style request and callback asynchronously, authenticating if needed
+            Executes a POST-style request and callback asynchronously, authenticating if needed
             </summary>
             <typeparam name="T">Target deserialization type</typeparam>
             <param name="request">Request to be executed</param>
@@ -2041,7 +2041,7 @@
         </member>
         <member name="M:RestSharp.RestRequest.AddFile(System.String,System.String,System.String)">
             <summary>
-            Adds a file to the Files collection to be included with a Post or Put request 
+            Adds a file to the Files collection to be included with a POST or PUT request 
             (other methods do not support file uploads).
             </summary>
             <param name="name">The parameter name to use in the request</param>
@@ -2136,7 +2136,7 @@
         </member>
         <member name="M:RestSharp.RestRequest.AddParameter(System.String,System.Object)">
             <summary>
-            Adds a HTTP parameter to the request (QueryString for Get, Delete, Options and Head; Encoded form for Post and Put)
+            Adds a HTTP parameter to the request (QueryString for GET, DELETE, OPTIONS and HEAD; Encoded form for POST and PUT)
             </summary>
             <param name="name">Name of the parameter</param>
             <param name="value">Value of the parameter</param>
@@ -2200,8 +2200,8 @@
         </member>
         <member name="P:RestSharp.RestRequest.Method">
             <summary>
-            Determines what HTTP method to use for this request. Supported methods: Get, Post, Put, Delete, Head, Options
-            Default is Get
+            Determines what HTTP method to use for this request. Supported methods: GET, POST, PUT, DELETE, HEAD, OPTIONS
+            Default is GET
             </summary>
         </member>
         <member name="P:RestSharp.RestRequest.Resource">
@@ -2482,7 +2482,7 @@
         </member>
         <member name="T:RestSharp.Serializers.NameStyle">
             <summary>
-            Options for transforming casing of element names
+            OPTIONS for transforming casing of element names
             </summary>
         </member>
         <member name="T:RestSharp.Serializers.XmlSerializer">

@@ -4,9 +4,7 @@
     using System.IO;
     using System.Net;
     using System.Threading;
-
-    using RestSharp.IntegrationTests.Helpers;
-
+    using Helpers;
     using Xunit;
 
     public class MultipartFormDataTests
@@ -24,12 +22,12 @@
         [Fact]
         public void MultipartFormDataAsync()
         {
-            const string baseUrl = "http://localhost:8888/";
+            const string BaseUrl = "http://localhost:8888/";
 
-            using (SimpleServer.Create(baseUrl, EchoHandler))
+            using (SimpleServer.Create(BaseUrl, EchoHandler))
             {
-                var client = new RestClient(baseUrl);
-                var request = new RestRequest("/", Method.Post) { AlwaysMultipartFormData = true };
+                var client = new RestClient(BaseUrl);
+                var request = new RestRequest("/", Method.POST) { AlwaysMultipartFormData = true };
 
                 this.AddParameters(request);
 
@@ -44,12 +42,12 @@
         [Fact]
         public void MultipartFormData()
         {
-            const string baseUrl = "http://localhost:8888/";
+            const string BaseUrl = "http://localhost:8888/";
 
-            using (SimpleServer.Create(baseUrl, EchoHandler))
+            using (SimpleServer.Create(BaseUrl, EchoHandler))
             {
-                var client = new RestClient(baseUrl);
-                var request = new RestRequest("/", Method.Post) { AlwaysMultipartFormData = true };
+                var client = new RestClient(BaseUrl);
+                var request = new RestRequest("/", Method.POST) { AlwaysMultipartFormData = true };
 
                 this.AddParameters(request);
 
@@ -62,15 +60,15 @@
         [Fact]
         public void AlwaysMultipartFormData_WithParameter_Execute()
         {
-            const string baseUrl = "http://localhost:8888/";
+            const string BaseUrl = "http://localhost:8888/";
 
-            using (SimpleServer.Create(baseUrl, EchoHandler))
+            using (SimpleServer.Create(BaseUrl, EchoHandler))
             {
-                var client = new RestClient(baseUrl);
+                var client = new RestClient(BaseUrl);
                 var request = new RestRequest("?json_route=/posts")
                                   {
                                       AlwaysMultipartFormData = true,
-                                      Method = Method.Post,
+                                      Method = Method.POST,
                                   };
                 request.AddParameter("title", "test", ParameterType.RequestBody);
 
@@ -82,15 +80,15 @@
         [Fact]
         public void AlwaysMultipartFormData_WithParameter_ExecuteTaskAsync()
         {
-            const string baseUrl = "http://localhost:8888/";
+            const string BaseUrl = "http://localhost:8888/";
 
-            using (SimpleServer.Create(baseUrl, EchoHandler))
+            using (SimpleServer.Create(BaseUrl, EchoHandler))
             {
-                var client = new RestClient(baseUrl);
+                var client = new RestClient(BaseUrl);
                 var request = new RestRequest("?json_route=/posts")
                                   {
                                       AlwaysMultipartFormData = true,
-                                      Method = Method.Post,
+                                      Method = Method.POST,
                                   };
                 request.AddParameter("title", "test", ParameterType.RequestBody);
 
@@ -107,15 +105,15 @@
         [Fact]
         public void AlwaysMultipartFormData_WithParameter_ExecuteAsync()
         {
-            const string baseUrl = "http://localhost:8888/";
+            const string BaseUrl = "http://localhost:8888/";
 
-            using (SimpleServer.Create(baseUrl, EchoHandler))
+            using (SimpleServer.Create(BaseUrl, EchoHandler))
             {
-                var client = new RestClient(baseUrl);
+                var client = new RestClient(BaseUrl);
                 var request = new RestRequest("?json_route=/posts")
                 {
                     AlwaysMultipartFormData = true,
-                    Method = Method.Post,
+                    Method = Method.POST,
                 };
                 request.AddParameter("title", "test", ParameterType.RequestBody);
                 IRestResponse syncResponse = null;

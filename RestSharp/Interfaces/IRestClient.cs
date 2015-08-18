@@ -84,7 +84,7 @@ namespace RestSharp
         Uri BuildUri(IRestRequest request);
 
         /// <summary>
-        /// Executes a Get-style request and callback asynchronously, authenticating if needed
+        /// Executes a GET-style request and callback asynchronously, authenticating if needed
         /// </summary>
         /// <param name="request">Request to be executed</param>
         /// <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
@@ -92,7 +92,7 @@ namespace RestSharp
         RestRequestAsyncHandle ExecuteAsyncGet(IRestRequest request, Action<IRestResponse, RestRequestAsyncHandle> callback, string httpMethod);
 
         /// <summary>
-        /// Executes a Post-style request and callback asynchronously, authenticating if needed
+        /// Executes a POST-style request and callback asynchronously, authenticating if needed
         /// </summary>
         /// <param name="request">Request to be executed</param>
         /// <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
@@ -100,7 +100,7 @@ namespace RestSharp
         RestRequestAsyncHandle ExecuteAsyncPost(IRestRequest request, Action<IRestResponse, RestRequestAsyncHandle> callback, string httpMethod);
 
         /// <summary>
-        /// Executes a Get-style request and callback asynchronously, authenticating if needed
+        /// Executes a GET-style request and callback asynchronously, authenticating if needed
         /// </summary>
         /// <typeparam name="T">Target deserialization type</typeparam>
         /// <param name="request">Request to be executed</param>
@@ -109,7 +109,7 @@ namespace RestSharp
         RestRequestAsyncHandle ExecuteAsyncGet<T>(IRestRequest request, Action<IRestResponse<T>, RestRequestAsyncHandle> callback, string httpMethod);
 
         /// <summary>
-        /// Executes a Get-style request and callback asynchronously, authenticating if needed
+        /// Executes a GET-style request and callback asynchronously, authenticating if needed
         /// </summary>
         /// <typeparam name="T">Target deserialization type</typeparam>
         /// <param name="request">Request to be executed</param>

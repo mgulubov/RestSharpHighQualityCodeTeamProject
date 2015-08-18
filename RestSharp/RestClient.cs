@@ -14,23 +14,23 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Text.RegularExpressions;
-using RestSharp.Deserializers;
-using RestSharp.Extensions;
-
-#if FRAMEWORK
-using System.Net.Cache;
-#endif
 
 namespace RestSharp
 {
+#if FRAMEWORK
+    using System.Net.Cache;
+#endif
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Reflection;
+    using System.Security.Cryptography.X509Certificates;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using Deserializers;
+    using Extensions;
+
     /// <summary>
     /// Client to translate RestRequests into Http requests and process response result
     /// </summary>
@@ -323,7 +323,7 @@ namespace RestSharp
 
             IEnumerable<Parameter> parameters;
 
-            if (request.Method != Method.Post && request.Method != Method.Put && request.Method != Method.Patch)
+            if (request.Method != Method.POST && request.Method != Method.PUT && request.Method != Method.PATCH)
             {
                 parameters = request.Parameters.Where(
                     p => p.Type == ParameterType.GetOrPost || p.Type == ParameterType.QueryString).ToList();
@@ -438,10 +438,10 @@ namespace RestSharp
             var headers = from p in request.Parameters
                           where p.Type == ParameterType.HttpHeader
                           select new HttpHeader
-                                 {
-                                     Name = p.Name,
-                                     Value = Convert.ToString(p.Value)
-                                 };
+                          {
+                              Name = p.Name,
+                              Value = Convert.ToString(p.Value)
+                          };
 
             foreach (var header in headers)
             {
@@ -451,10 +451,10 @@ namespace RestSharp
             var cookies = from p in request.Parameters
                           where p.Type == ParameterType.Cookie
                           select new HttpCookie
-                                 {
-                                     Name = p.Name,
-                                     Value = Convert.ToString(p.Value)
-                                 };
+                          {
+                              Name = p.Name,
+                              Value = Convert.ToString(p.Value)
+                          };
 
             foreach (var cookie in cookies)
             {
@@ -465,10 +465,10 @@ namespace RestSharp
                           where p.Type == ParameterType.GetOrPost
                                 && p.Value != null
                           select new HttpParameter
-                                 {
-                                     Name = p.Name,
-                                     Value = Convert.ToString(p.Value)
-                                 };
+                          {
+                              Name = p.Name,
+                              Value = Convert.ToString(p.Value)
+                          };
 
             foreach (var parameter in @params)
             {
@@ -478,13 +478,13 @@ namespace RestSharp
             foreach (var file in request.Files)
             {
                 http.Files.Add(new HttpFile
-                               {
-                                   Name = file.Name,
-                                   ContentType = file.ContentType,
-                                   Writer = file.Writer,
-                                   FileName = file.FileName,
-                                   ContentLength = file.ContentLength
-                               });
+                {
+                    Name = file.Name,
+                    ContentType = file.ContentType,
+                    Writer = file.Writer,
+                    FileName = file.FileName,
+                    ContentLength = file.ContentLength
+                });
             }
 
             var body = (from p in request.Parameters
@@ -509,10 +509,10 @@ namespace RestSharp
                 else
                 {
                     http.Parameters.Add(new HttpParameter
-                                        {
-                                            Name = body.Name,
-                                            Value = Convert.ToString(body.Value)
-                                        });
+                    {
+                        Name = body.Name,
+                        Value = Convert.ToString(body.Value)
+                    });
                 }
             }
 #if FRAMEWORK
@@ -533,51 +533,51 @@ namespace RestSharp
         private static RestResponse ConvertToRestResponse(IRestRequest request, HttpResponse httpResponse)
         {
             var restResponse = new RestResponse
-                               {
-                                   Content = httpResponse.Content,
-                                   ContentEncoding = httpResponse.ContentEncoding,
-                                   ContentLength = httpResponse.ContentLength,
-                                   ContentType = httpResponse.ContentType,
-                                   ErrorException = httpResponse.ErrorException,
-                                   ErrorMessage = httpResponse.ErrorMessage,
-                                   RawBytes = httpResponse.RawBytes,
-                                   ResponseStatus = httpResponse.ResponseStatus,
-                                   ResponseUri = httpResponse.ResponseUri,
-                                   Server = httpResponse.Server,
-                                   StatusCode = httpResponse.StatusCode,
-                                   StatusDescription = httpResponse.StatusDescription,
-                                   Request = request
-                               };
+            {
+                Content = httpResponse.Content,
+                ContentEncoding = httpResponse.ContentEncoding,
+                ContentLength = httpResponse.ContentLength,
+                ContentType = httpResponse.ContentType,
+                ErrorException = httpResponse.ErrorException,
+                ErrorMessage = httpResponse.ErrorMessage,
+                RawBytes = httpResponse.RawBytes,
+                ResponseStatus = httpResponse.ResponseStatus,
+                ResponseUri = httpResponse.ResponseUri,
+                Server = httpResponse.Server,
+                StatusCode = httpResponse.StatusCode,
+                StatusDescription = httpResponse.StatusDescription,
+                Request = request
+            };
 
             foreach (var header in httpResponse.Headers)
             {
                 restResponse.Headers.Add(new Parameter
-                                         {
-                                             Name = header.Name,
-                                             Value = header.Value,
-                                             Type = ParameterType.HttpHeader
-                                         });
+                {
+                    Name = header.Name,
+                    Value = header.Value,
+                    Type = ParameterType.HttpHeader
+                });
             }
 
             foreach (var cookie in httpResponse.Cookies)
             {
                 restResponse.Cookies.Add(new RestResponseCookie
-                                         {
-                                             Comment = cookie.Comment,
-                                             CommentUri = cookie.CommentUri,
-                                             Discard = cookie.Discard,
-                                             Domain = cookie.Domain,
-                                             Expired = cookie.Expired,
-                                             Expires = cookie.Expires,
-                                             HttpOnly = cookie.HttpOnly,
-                                             Name = cookie.Name,
-                                             Path = cookie.Path,
-                                             Port = cookie.Port,
-                                             Secure = cookie.Secure,
-                                             TimeStamp = cookie.TimeStamp,
-                                             Value = cookie.Value,
-                                             Version = cookie.Version
-                                         });
+                {
+                    Comment = cookie.Comment,
+                    CommentUri = cookie.CommentUri,
+                    Discard = cookie.Discard,
+                    Domain = cookie.Domain,
+                    Expired = cookie.Expired,
+                    Expires = cookie.Expires,
+                    HttpOnly = cookie.HttpOnly,
+                    Name = cookie.Name,
+                    Path = cookie.Path,
+                    Port = cookie.Port,
+                    Secure = cookie.Secure,
+                    TimeStamp = cookie.TimeStamp,
+                    Value = cookie.Value,
+                    Version = cookie.Version
+                });
             }
 
             return restResponse;

@@ -6,3 +6,4 @@ C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Bu
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Build\bin\Debug\RestSharp.Build.pdb
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Build\obj\Debug\RestSharp.Build.dll
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Build\obj\Debug\RestSharp.Build.pdb
+C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Build\obj\Debug\RestSharp.Build.csprojResolveAssemblyReference.cache

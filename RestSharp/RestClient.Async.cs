@@ -42,10 +42,10 @@ namespace RestSharp
 
             switch (request.Method)
             {
-                case Method.Merge:
-                case Method.Patch:
-                case Method.Post:
-                case Method.Put:
+                case Method.MERGE:
+                case Method.PATCH:
+                case Method.POST:
+                case Method.PUT:
                     return ExecuteAsync(request, callback, method, DoAsPostAsync);
 
                 default:
@@ -54,7 +54,7 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Executes a Get-style request and callback asynchronously, authenticating if needed
+        /// Executes a GET-style request and callback asynchronously, authenticating if needed
         /// </summary>
         /// <param name="request">Request to be executed</param>
         /// <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
@@ -66,7 +66,7 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Executes a Post-style request and callback asynchronously, authenticating if needed
+        /// Executes a POST-style request and callback asynchronously, authenticating if needed
         /// </summary>
         /// <param name="request">Request to be executed</param>
         /// <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
@@ -74,7 +74,7 @@ namespace RestSharp
         public virtual RestRequestAsyncHandle ExecuteAsyncPost(IRestRequest request,
             Action<IRestResponse, RestRequestAsyncHandle> callback, string httpMethod)
         {
-            request.Method = Method.Post; // Required by RestClient.BuildUri... 
+            request.Method = Method.POST; // Required by RestClient.BuildUri... 
             return ExecuteAsync(request, callback, httpMethod, DoAsPostAsync);
         }
 
@@ -136,7 +136,7 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Executes a Get-style request and callback asynchronously, authenticating if needed
+        /// Executes a GET-style request and callback asynchronously, authenticating if needed
         /// </summary>
         /// <typeparam name="T">Target deserialization type</typeparam>
         /// <param name="request">Request to be executed</param>
@@ -150,7 +150,7 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Executes a Post-style request and callback asynchronously, authenticating if needed
+        /// Executes a POST-style request and callback asynchronously, authenticating if needed
         /// </summary>
         /// <typeparam name="T">Target deserialization type</typeparam>
         /// <param name="request">Request to be executed</param>
@@ -211,7 +211,7 @@ namespace RestSharp
                 throw new ArgumentNullException("request");
             }
 
-            request.Method = Method.Get;
+            request.Method = Method.GET;
             return ExecuteTaskAsync<T>(request, token);
         }
 
@@ -238,7 +238,7 @@ namespace RestSharp
                 throw new ArgumentNullException("request");
             }
 
-            request.Method = Method.Post;
+            request.Method = Method.POST;
             return ExecuteTaskAsync<T>(request, token);
         }
 
@@ -326,7 +326,7 @@ namespace RestSharp
                 throw new ArgumentNullException("request");
             }
 
-            request.Method = Method.Get;
+            request.Method = Method.GET;
             return ExecuteTaskAsync(request, token);
         }
 
@@ -351,7 +351,7 @@ namespace RestSharp
                 throw new ArgumentNullException("request");
             }
 
-            request.Method = Method.Post;
+            request.Method = Method.POST;
             return ExecuteTaskAsync(request, token);
         }
 
