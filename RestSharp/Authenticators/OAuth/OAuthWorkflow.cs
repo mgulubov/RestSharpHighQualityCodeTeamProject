@@ -1,12 +1,12 @@
-using System;
-using System.Collections.Generic;
-using RestSharp.Authenticators.OAuth.Extensions;
-#if !WINDOWS_PHONE && !SILVERLIGHT && !PocketPC
-using RestSharp.Contrib;
-#endif
-
 namespace RestSharp.Authenticators.OAuth
 {
+    using System;
+    using System.Collections.Generic;
+    using RestSharp.Authenticators.OAuth.Extensions;
+#if !WINDOWS_PHONE && !SILVERLIGHT && !PocketPC
+    using RestSharp.Contrib;
+#endif
+
     /// <summary>
     /// A class to encapsulate OAuth authentication flow.
     /// <seealso cref="http://oauth.net/core/1.0#anchor9"/>

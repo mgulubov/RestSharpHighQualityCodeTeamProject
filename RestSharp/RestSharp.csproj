@@ -81,7 +81,9 @@
   <ItemGroup>
     <Compile Include="Authenticators\NtlmAuthenticator.cs" />
     <Compile Include="Authenticators\OAuth1Authenticator.cs" />
-    <Compile Include="Authenticators\OAuth2Authenticator.cs" />
+    <Compile Include="Authenticators\OAuth2Authenticators\OAuth2Authenticator.cs" />
+    <Compile Include="Authenticators\OAuth2Authenticators\OAuth2AuthorizationRequestHeaderAuthenticator.cs" />
+    <Compile Include="Authenticators\OAuth2Authenticators\OAuth2UriQueryParameterAuthenticator.cs" />
     <Compile Include="Authenticators\OAuth\Extensions\CollectionExtensions.cs" />
     <Compile Include="Authenticators\OAuth\Extensions\OAuthExtensions.cs" />
     <Compile Include="Authenticators\OAuth\Extensions\StringExtensions.cs" />
@@ -120,6 +122,7 @@
     <Compile Include="Extensions\MonoHttp\HttpUtility.cs" />
     <Compile Include="Extensions\ResponseExtensions.cs" />
     <Compile Include="Extensions\ResponseStatusExtensions.cs" />
+    <Compile Include="Interfaces\IRestResponseGeneric.cs" />
     <Compile Include="RestClientExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Http.Sync.cs" />
@@ -149,10 +152,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestClient.cs" />
     <Compile Include="RestRequest.cs" />
+    <Compile Include="RestResponseBase.cs" />
     <Compile Include="RestResponseCookie.cs" />
     <Compile Include="Authenticators\SimpleAuthenticator.cs" />
     <Compile Include="RestClient.Async.cs" />
     <Compile Include="Deserializers\DotNetXmlDeserializer.cs" />
+    <Compile Include="RestResponseGeneric.cs" />
     <Compile Include="Serializers\DotNetXmlSerializer.cs" />
     <Compile Include="Serializers\ISerializer.cs" />
     <Compile Include="Serializers\JsonSerializer.cs" />
@@ -167,6 +172,7 @@
     <None Include="T4Helper\T4Toolbox.tt">
     </None>
     <Compile Include="SharedAssemblyInfo.cs" />
+    <Compile Include="SimpleFactory.cs" />
     <Compile Include="SimpleJson.cs" />
     <Compile Include="Validation\Validate.cs" />
     <Compile Include="Validation\Require.cs" />

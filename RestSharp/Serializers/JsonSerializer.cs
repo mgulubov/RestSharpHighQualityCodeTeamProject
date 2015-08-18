@@ -1,5 +1,4 @@
-﻿
-namespace RestSharp.Serializers
+﻿namespace RestSharp.Serializers
 {
     /// <summary>
     /// Default JSON serializer for request bodies

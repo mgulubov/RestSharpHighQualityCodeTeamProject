@@ -83,8 +83,14 @@
     <Compile Include="..\RestSharp\Authenticators\OAuth1Authenticator.cs">
       <Link>Authenticators\OAuth1Authenticator.cs</Link>
     </Compile>
-    <Compile Include="..\RestSharp\Authenticators\OAuth2Authenticator.cs">
-      <Link>Authenticators\OAuth2Authenticator.cs</Link>
+    <Compile Include="..\restsharp\authenticators\OAuth2Authenticators\OAuth2Authenticator.cs">
+      <Link>Authenticators\OAuth2Authenticators\OAuth2Authenticator.cs</Link>
+    </Compile>
+    <Compile Include="..\restsharp\authenticators\OAuth2Authenticators\OAuth2AuthorizationRequestHeaderAuthenticator.cs">
+      <Link>Authenticators\OAuth2Authenticators\OAuth2AuthorizationRequestHeaderAuthenticator.cs</Link>
+    </Compile>
+    <Compile Include="..\restsharp\authenticators\OAuth2Authenticators\OAuth2UriQueryParameterAuthenticator.cs">
+      <Link>Authenticators\OAuth2Authenticators\OAuth2UriQueryParameterAuthenticator.cs</Link>
     </Compile>
     <Compile Include="..\restsharp\authenticators\oauth\extensions\CollectionExtensions.cs">
       <Link>Authenticators\OAuth\Extensions\CollectionExtensions.cs</Link>
@@ -221,6 +227,9 @@
     <Compile Include="..\RestSharp\Interfaces\IHttpFactory.cs">
       <Link>Interfaces\IHttpFactory.cs</Link>
     </Compile>
+    <Compile Include="..\RestSharp\SimpleFactory.cs">
+      <Link>SimpleFactory.cs</Link>
+    </Compile>
     <Compile Include="..\RestSharp\Interfaces\IHttpResponse.cs">
       <Link>Interfaces\IHttpResponse.cs</Link>
     </Compile>
@@ -232,6 +241,9 @@
     </Compile>
     <Compile Include="..\RestSharp\Interfaces\IRestResponse.cs">
       <Link>Interfaces\IRestResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\RestSharp\Interfaces\IRestResponseGeneric.cs">
+      <Link>Interfaces\IRestResponseGeneric.cs</Link>
     </Compile>
     <Compile Include="..\RestSharp\Parameter.cs">
       <Link>Parameter.cs</Link>
@@ -250,6 +262,12 @@
     </Compile>
     <Compile Include="..\RestSharp\RestResponse.cs">
       <Link>RestResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\RestSharp\RestResponseBase.cs">
+      <Link>RestResponseBase.cs</Link>
+    </Compile>
+    <Compile Include="..\RestSharp\RestResponseGeneric.cs">
+      <Link>RestResponseGeneric.cs</Link>
     </Compile>
     <Compile Include="..\RestSharp\Serializers\DotNetXmlSerializer.cs">
       <Link>Serializers\DotNetXmlSerializer.cs</Link>

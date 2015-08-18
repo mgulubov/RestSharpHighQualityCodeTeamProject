@@ -1,7 +1,7 @@
-using System;
-
 namespace RestSharp.Authenticators.OAuth.Extensions
 {
+    using System;
+
     internal static class TimeExtensions
     {
         public static DateTime FromNow(this TimeSpan value)

@@ -1,9 +1,8 @@
-﻿using System.IO;
-using System.Text;
-using System.Xml.Serialization;
-
-namespace RestSharp.Serializers
+﻿namespace RestSharp.Serializers
 {
+    using System.IO;
+    using System.Text;
+    using System.Xml.Serialization;
     /// <summary>
     /// Wrapper for System.Xml.Serialization.XmlSerializer.
     /// </summary>

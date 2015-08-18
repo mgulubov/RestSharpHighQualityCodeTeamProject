@@ -1,6 +1,7 @@
 namespace RestSharp
 {
     using System.Net;
+
     public class RestRequestAsyncHandle
     {
         public RestRequestAsyncHandle()

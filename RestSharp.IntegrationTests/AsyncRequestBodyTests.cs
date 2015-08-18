@@ -183,14 +183,14 @@
 
             public static string CapturedEntityBody { get; set; }
 
-            //private static void Capture(HttpListenerContext context)
-            //{
-            //    var request = context.Request;
+            private static void Capture(HttpListenerContext context)
+            {
+                var request = context.Request;
 
-            //    CapturedContentType = request.ContentType;
-            //    CapturedHasEntityBody = request.HasEntityBody;
-            //    CapturedEntityBody = StreamToString(request.InputStream);
-            //}
+                CapturedContentType = request.ContentType;
+                CapturedHasEntityBody = request.HasEntityBody;
+                CapturedEntityBody = StreamToString(request.InputStream);
+            }
 
             private static string StreamToString(Stream stream)
             {

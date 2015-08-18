@@ -14,19 +14,19 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Xml;
-using System.Xml.Linq;
-using RestSharp.Extensions;
-
 namespace RestSharp.Deserializers
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Globalization;
+    using System.Linq;
+    using System.Reflection;
+    using System.Xml;
+    using System.Xml.Linq;
+    using RestSharp.Extensions;
+
     public class XmlDeserializer : IDeserializer
     {
         public string RootElement { get; set; }
@@ -318,12 +318,12 @@ namespace RestSharp.Deserializers
 
         private void PopulateListFromElements(Type t, IEnumerable<XElement> elements, IList list)
         {
-             //Uncomment to make tests pass
-             foreach (var element in elements)
-             {
-                 var item = CreateAndMap(t, element);
-                 list.Add(item);
-             }
+            //Uncomment to make tests pass
+            foreach (var element in elements)
+            {
+                var item = CreateAndMap(t, element);
+                list.Add(item);
+            }
         }
 
         private object HandleListDerivative(object x, XElement root, string propName, Type type)
@@ -456,7 +456,7 @@ namespace RestSharp.Deserializers
             // try looking for element that matches sanitized property name (Order by depth)
             return root.Descendants()
                        .OrderBy(d => d.Ancestors().Count())
-                       .FirstOrDefault(d => d.Name.LocalName.RemoveUnderscoresAndDashes() == name.LocalName) ?? 
+                       .FirstOrDefault(d => d.Name.LocalName.RemoveUnderscoresAndDashes() == name.LocalName) ??
                    root.Descendants()
                        .OrderBy(d => d.Ancestors().Count())
                        .FirstOrDefault(d => d.Name.LocalName.RemoveUnderscoresAndDashes() == name.LocalName.ToLower());

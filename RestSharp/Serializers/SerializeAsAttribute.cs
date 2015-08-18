@@ -14,12 +14,12 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using RestSharp.Extensions;
-using System.Globalization;
-
 namespace RestSharp.Serializers
 {
+    using System;
+    using System.Globalization;
+    using Extensions;
+
     /// <summary>
     /// Allows control how class and property names and values are serialized by XmlSerializer
     /// Currently not supported with the JsonSerializer

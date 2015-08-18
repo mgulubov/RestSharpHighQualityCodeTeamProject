@@ -1,5 +1,4 @@
-﻿// 
-// System.Web.HttpUtility
+﻿// System.Web.HttpUtility
 //
 // Authors:
 //   Patrik Torstensson (Patrik.Torstensson@labs2.com)
@@ -29,15 +28,15 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.IO;
-using System.Text;
 
 namespace RestSharp.Contrib
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.IO;
+    using System.Text;
 
     //#if !MONOTOUCH
     //    // CAS - no InheritanceDemand here as the class is sealed
@@ -54,18 +53,18 @@ namespace RestSharp.Contrib
                 if (count == 0)
                     return "";
 
-                StringBuilder sb = new StringBuilder();
+                StringBuilder output = new StringBuilder();
                 string[] keys = AllKeys;
 
                 for (int i = 0; i < count; i++)
                 {
-                    sb.AppendFormat("{0}={1}&", keys[i], this[keys[i]]);
+                    output.AppendFormat("{0}={1}&", keys[i], this[keys[i]]);
                 }
 
-                if (sb.Length > 0)
-                    sb.Length--;
+                if (output.Length > 0)
+                    output.Length--;
 
-                return sb.ToString();
+                return output.ToString();
             }
         }
 

@@ -1,7 +1,8 @@
-using System.IO;
 
 namespace RestSharp.Authenticators.OAuth
 {
+    using System.IO;
+
     internal class HttpPostParameter : WebParameter
     {
         public HttpPostParameter(string name, string value) : base(name, value) { }
@@ -25,6 +26,7 @@ namespace RestSharp.Authenticators.OAuth
                 FilePath = filePath,
                 ContentType = contentType,
             };
+
             return parameter;
         }
 

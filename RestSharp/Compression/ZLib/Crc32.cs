@@ -34,11 +34,12 @@
 
 #if WINDOWS_PHONE
 
-using System;
-using Interop = System.Runtime.InteropServices;
 
 namespace RestSharp.Compression.ZLib
 {
+    using System;
+    using Interop = System.Runtime.InteropServices;
+
     /// <summary>
     /// Calculates a 32bit Cyclic Redundancy Checksum (CRC) using the same polynomial
     /// used by Zip. This type is used internally by DotNetZip; it is generally not used

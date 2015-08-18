@@ -1,15 +1,10 @@
-﻿//
+﻿// Copyright (C) 2005-2010 Novell, Inc (http://novell.com/)
 // Authors:
 //   Patrik Torstensson (Patrik.Torstensson@labs2.com)
 //   Wictor WilÃ©n (decode/encode functions) (wictor@ibizkit.se)
 //   Tim Coleman (tim@timcoleman.com)
 //   Gonzalo Paniagua Javier (gonzalo@ximian.com)
-
 //   Marek Habersack <mhabersack@novell.com>
-//
-// (C) 2005-2010 Novell, Inc (http://novell.com/)
-//
-
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -29,17 +24,18 @@
 // LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-#if NET_4_0
-using System.Web.Configuration;
-#endif
 
 namespace RestSharp.Contrib
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text;
+
+#if NET_4_0
+    using System.Web.Configuration;
+#endif
+
 #if NET_4_0
     public
 #endif
@@ -137,29 +133,29 @@ namespace RestSharp.Contrib
                 encodedHeaderValue = EncodeHeaderString(headerValue);
         }
 
-        static void StringBuilderAppend(string s, ref StringBuilder sb)
+        static void StringBuilderAppend(string s, ref StringBuilder output)
         {
-            if (sb == null)
-                sb = new StringBuilder(s);
+            if (output == null)
+                output = new StringBuilder(s);
             else
-                sb.Append(s);
+                output.Append(s);
         }
 
         static string EncodeHeaderString(string input)
         {
-            StringBuilder sb = null;
-            char ch;
+            StringBuilder output = null;
+            char character;
 
             for (int i = 0; i < input.Length; i++)
             {
-                ch = input[i];
+                character = input[i];
 
-                if ((ch < 32 && ch != 9) || ch == 127)
-                    StringBuilderAppend(String.Format("%{0:x2}", (int)ch), ref sb);
+                if ((character < 32 && character != 9) || character == 127)
+                    StringBuilderAppend(String.Format("%{0:x2}", (int)character), ref output);
             }
 
-            if (sb != null)
-                return sb.ToString();
+            if (output != null)
+                return output.ToString();
 
             return input;
         }

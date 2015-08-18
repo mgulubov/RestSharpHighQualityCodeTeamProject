@@ -63,9 +63,10 @@
 
 #if WINDOWS_PHONE
 
-using System;
 namespace RestSharp.Compression.ZLib
 {
+    using System;
+
     sealed internal class InflateBlocks
     {
         private const int MANY = 1440;

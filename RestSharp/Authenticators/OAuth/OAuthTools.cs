@@ -1,11 +1,11 @@
-using System;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using RestSharp.Authenticators.OAuth.Extensions;
-
 namespace RestSharp.Authenticators.OAuth
 {
+    using System;
+    using System.Linq;
+    using System.Security.Cryptography;
+    using System.Text;
+    using Extensions;
+
 #if !SILVERLIGHT && !WINDOWS_PHONE && !PocketPC
     [Serializable]
 #endif
@@ -17,21 +17,21 @@ namespace RestSharp.Authenticators.OAuth
         private const string Unreserved = AlphaNumeric + "-._~";
         private const string Upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        private static readonly Random _random;
-        private static readonly object _randomLock = new object();
+        private static readonly Random random;
+        private static readonly object randomLock = new object();
 
 #if !SILVERLIGHT && !WINDOWS_PHONE && !PocketPC
-        private static readonly RandomNumberGenerator _rng = RandomNumberGenerator.Create();
+        private static readonly RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create();
 #endif
 
         static OAuthTools()
         {
 #if !SILVERLIGHT && !WINDOWS_PHONE && !PocketPC
             var bytes = new byte[4];
-            _rng.GetNonZeroBytes(bytes);
-            _random = new Random(BitConverter.ToInt32(bytes, 0));
+            randomNumberGenerator.GetNonZeroBytes(bytes);
+            random = new Random(BitConverter.ToInt32(bytes, 0));
 #else
-            _random = new Random();
+            random = new Random();
 #endif
         }
 
@@ -51,11 +51,11 @@ namespace RestSharp.Authenticators.OAuth
             const string chars = (Lower + Digit);
             var nonce = new char[16];
 
-            lock (_randomLock)
+            lock (randomLock)
             {
                 for (var i = 0; i < nonce.Length; i++)
                 {
-                    nonce[i] = chars[_random.Next(0, chars.Length)];
+                    nonce[i] = chars[random.Next(0, chars.Length)];
                 }
             }
 
@@ -144,9 +144,9 @@ namespace RestSharp.Authenticators.OAuth
             String result = "";
             value.ForEach(c =>
             {
-                result += Unreserved.Contains(c) 
-                    ? c.ToString() 
-                    :  c.ToString().PercentEncode();
+                result += Unreserved.Contains(c)
+                    ? c.ToString()
+                    : c.ToString().PercentEncode();
             });
             return result;
         }
@@ -177,7 +177,12 @@ namespace RestSharp.Authenticators.OAuth
             var exclusions = copy.Where(n => n.Name.EqualsIgnoreCase("oauth_signature"));
 
             copy.RemoveAll(exclusions);
-            copy.ForEach(p => { p.Name = UrlEncodeStrict(p.Name); p.Value = UrlEncodeStrict(p.Value); });
+            copy.ForEach(
+                p => 
+                {
+                    p.Name = UrlEncodeStrict(p.Name);
+                    p.Value = UrlEncodeStrict(p.Value);
+                });
             copy.Sort(
                 (x, y) =>
                 string.CompareOrdinal(x.Name, y.Name) != 0
@@ -201,18 +206,18 @@ namespace RestSharp.Authenticators.OAuth
                 throw new ArgumentNullException("url");
             }
 
-            var sb = new StringBuilder();
+            var output = new StringBuilder();
 
             var requestUrl = "{0}://{1}".FormatWith(url.Scheme, url.Host);
             var qualified = ":{0}".FormatWith(url.Port);
             var basic = url.Scheme == "http" && url.Port == 80;
             var secure = url.Scheme == "https" && url.Port == 443;
 
-            sb.Append(requestUrl);
-            sb.Append(!basic && !secure ? qualified : "");
-            sb.Append(url.AbsolutePath);
+            output.Append(requestUrl);
+            output.Append(!basic && !secure ? qualified : "");
+            output.Append(url.AbsolutePath);
 
-            return sb.ToString(); //.ToLower();
+            return output.ToString(); //.ToLower();
         }
 
         /// <summary>
@@ -227,18 +232,18 @@ namespace RestSharp.Authenticators.OAuth
         /// <returns>A signature base string</returns>
         public static string ConcatenateRequestElements(string method, string url, WebParameterCollection parameters)
         {
-            var sb = new StringBuilder();
+            var output = new StringBuilder();
 
             // Separating &'s are not URL encoded
             var requestMethod = method.ToUpper().Then("&");
             var requestUrl = UrlEncodeRelaxed(ConstructRequestUrl(url.AsUri())).Then("&");
             var requestParameters = UrlEncodeRelaxed(NormalizeRequestParameters(parameters));
 
-            sb.Append(requestMethod);
-            sb.Append(requestUrl);
-            sb.Append(requestParameters);
+            output.Append(requestMethod);
+            output.Append(requestUrl);
+            output.Append(requestParameters);
 
-            return sb.ToString();
+            return output.ToString();
         }
 
         /// <summary>
@@ -265,7 +270,10 @@ namespace RestSharp.Authenticators.OAuth
         /// <param name="signatureBase">The signature base</param>
         /// <param name="consumerSecret">The consumer key</param>
         /// <returns></returns>
-        public static string GetSignature(OAuthSignatureMethod signatureMethod, OAuthSignatureTreatment signatureTreatment, string signatureBase, string consumerSecret)
+        public static string GetSignature(OAuthSignatureMethod signatureMethod, 
+            OAuthSignatureTreatment signatureTreatment, 
+            string signatureBase, 
+            string consumerSecret)
         {
             return GetSignature(signatureMethod, signatureTreatment, signatureBase, consumerSecret, null);
         }
@@ -279,7 +287,10 @@ namespace RestSharp.Authenticators.OAuth
         /// <param name="consumerSecret">The consumer secret</param>
         /// <param name="tokenSecret">The token secret</param>
         /// <returns></returns>
-        public static string GetSignature(OAuthSignatureMethod signatureMethod, string signatureBase, string consumerSecret, string tokenSecret)
+        public static string GetSignature(OAuthSignatureMethod signatureMethod,
+            string signatureBase, 
+            string consumerSecret, 
+            string tokenSecret)
         {
             return GetSignature(signatureMethod, OAuthSignatureTreatment.Escaped, consumerSecret, tokenSecret);
         }

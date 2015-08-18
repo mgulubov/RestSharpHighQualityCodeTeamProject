@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using RestSharp.Extensions;
-
-namespace RestSharp.Deserializers
+﻿namespace RestSharp.Deserializers
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
     using System.Xml;
+    using Extensions;
 
     public class JsonDeserializer : IDeserializer
     {
@@ -32,7 +31,7 @@ namespace RestSharp.Deserializers
             {
                 var objType = target.GetType();
 
-                if (RootElement.HasValue())
+                if (this.RootElement.HasValue())
                 {
                     var root = FindRoot(response.Content);
                     target = (T)BuildList(objType, root);
@@ -45,12 +44,12 @@ namespace RestSharp.Deserializers
             }
             else if (target is IDictionary)
             {
-                var root = FindRoot(response.Content);
+                var root = this.FindRoot(response.Content);
                 target = (T)BuildDictionary(target.GetType(), root);
             }
             else
             {
-                var root = FindRoot(response.Content);
+                var root = this.FindRoot(response.Content);
                 target = (T)Map(target, (IDictionary<string, object>)root);
             }
 
@@ -61,9 +60,9 @@ namespace RestSharp.Deserializers
         {
             var data = (IDictionary<string, object>)SimpleJson.DeserializeObject(content);
 
-            if (RootElement.HasValue() && data.ContainsKey(RootElement))
+            if (this.RootElement.HasValue() && data.ContainsKey(this.RootElement))
             {
-                return data[RootElement];
+                return data[this.RootElement];
             }
 
             return data;
@@ -122,8 +121,8 @@ namespace RestSharp.Deserializers
 
             foreach (var child in (IDictionary<string, object>)parent)
             {
-                var key = keyType != typeof (string) ? 
-                    Convert.ChangeType(child.Key, keyType, CultureInfo.InvariantCulture) : 
+                var key = keyType != typeof(string) ?
+                    Convert.ChangeType(child.Key, keyType, CultureInfo.InvariantCulture) :
                     child.Key;
 
                 object item;

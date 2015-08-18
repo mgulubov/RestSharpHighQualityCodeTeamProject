@@ -1,8 +1,8 @@
-﻿using System;
-using System.Net;
-
-namespace RestSharp.Extensions
+﻿namespace RestSharp.Extensions
 {
+    using System;
+    using System.Net;
+
     public static class ResponseStatusExtensions
     {
         /// <summary>
