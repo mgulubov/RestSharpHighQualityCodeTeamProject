@@ -14,15 +14,15 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Collections;
-using System.Globalization;
-using System.Linq;
-using System.Xml.Linq;
-using RestSharp.Extensions;
-
 namespace RestSharp.Serializers
 {
+    using System;
+    using System.Collections;
+    using System.Globalization;
+    using System.Linq;
+    using System.Xml.Linq;
+    using RestSharp.Extensions;
+
     /// <summary>
     /// Default XML Serializer
     /// </summary>
@@ -242,38 +242,20 @@ namespace RestSharp.Serializers
         /// </summary>
         static bool IsNumeric(object value)
         {
-            if (value is sbyte)
+            if (value is sbyte ||
+                value is byte ||
+                value is short ||
+                value is ushort ||
+                value is int ||
+                value is uint ||
+                value is long ||
+                value is ulong ||
+                value is float ||
+                value is double ||
+                value is decimal)
+            {
                 return true;
-
-            if (value is byte)
-                return true;
-
-            if (value is short)
-                return true;
-
-            if (value is ushort)
-                return true;
-
-            if (value is int)
-                return true;
-
-            if (value is uint)
-                return true;
-
-            if (value is long)
-                return true;
-
-            if (value is ulong)
-                return true;
-
-            if (value is float)
-                return true;
-
-            if (value is double)
-                return true;
-
-            if (value is decimal)
-                return true;
+            }
 
             return false;
         }

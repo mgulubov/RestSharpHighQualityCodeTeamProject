@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿namespace RestSharp
+{
+    using System;
+    using System.Linq;
 #if NET4 || MONODROID || MONOTOUCH || WP8
-using System.Threading.Tasks;
+    using System.Threading.Tasks;
 #endif
 
-namespace RestSharp
-{
     public static partial class RestClientExtensions
     {
         /// <summary>
@@ -304,7 +304,7 @@ namespace RestSharp
         /// <returns>This request</returns>
         public static void AddDefaultParameter(this IRestClient restClient, string name, object value)
         {
-            restClient.AddDefaultParameter(new Parameter {Name = name, Value = value, Type = ParameterType.GetOrPost});
+            restClient.AddDefaultParameter(new Parameter { Name = name, Value = value, Type = ParameterType.GetOrPost });
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace RestSharp
         public static void AddDefaultParameter(this IRestClient restClient, string name, object value,
             ParameterType type)
         {
-            restClient.AddDefaultParameter(new Parameter {Name = name, Value = value, Type = type});
+            restClient.AddDefaultParameter(new Parameter { Name = name, Value = value, Type = type });
         }
 
         /// <summary>

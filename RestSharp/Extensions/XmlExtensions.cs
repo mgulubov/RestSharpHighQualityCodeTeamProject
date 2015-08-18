@@ -14,10 +14,10 @@
 //   limitations under the License. 
 #endregion
 
-using System.Xml.Linq;
-
 namespace RestSharp.Extensions
 {
+    using System.Xml.Linq;
+
     /// <summary>
     /// XML Extension Methods
     /// </summary>

@@ -1,8 +1,8 @@
-﻿#if FRAMEWORK || PocketPC
-using System;
-
-namespace RestSharp
+﻿namespace RestSharp
 {
+#if FRAMEWORK || PocketPC
+    using System;
+
     public partial class RestClient
     {
         /// <summary>
@@ -26,7 +26,7 @@ namespace RestSharp
 #if PocketPC
             var method = request.Method.ToString();
 #else
-            var method = Enum.GetName(typeof (Method), request.Method);
+            var method = Enum.GetName(typeof(Method), request.Method);
 #endif
             switch (request.Method)
             {

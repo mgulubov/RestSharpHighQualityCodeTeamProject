@@ -22,3 +22,11 @@ C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bi
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\obj\Debug\RestSharp.csprojResolveAssemblyReference.cache
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\obj\Debug\RestSharp.dll
 C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\obj\Debug\RestSharp.pdb
+C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\bin\Debug\RestSharp.xml
+C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\bin\Debug\RestSharp.dll
+C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\bin\Debug\RestSharp.pdb
+C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\bin\Debug\RestSharp.Build.dll
+C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\bin\Debug\RestSharp.Build.pdb
+C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\obj\Debug\RestSharp.csprojResolveAssemblyReference.cache
+C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\obj\Debug\RestSharp.dll
+C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\obj\Debug\RestSharp.pdb

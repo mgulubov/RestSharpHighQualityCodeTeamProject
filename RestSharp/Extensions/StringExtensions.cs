@@ -14,25 +14,25 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Globalization;
+namespace RestSharp.Extensions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Globalization;
 
 #if SILVERLIGHT
-using System.Windows.Browser;
+    using System.Windows.Browser;
 #endif
 
 #if WINDOWS_PHONE
 #endif
 
 #if FRAMEWORK || MONOTOUCH || MONODROID
-using RestSharp.Contrib;
+    using RestSharp.Contrib;
 #endif
 
-namespace RestSharp.Extensions
-{
     public static class StringExtensions
     {
 #if !PocketPC
@@ -55,7 +55,7 @@ namespace RestSharp.Extensions
             if (input.Length <= maxLength)
                 return Uri.EscapeDataString(input);
 
-            StringBuilder sb = new StringBuilder(input.Length * 2);
+            StringBuilder output = new StringBuilder(input.Length * 2);
             int index = 0;
 
             while (index < input.Length)
@@ -63,11 +63,11 @@ namespace RestSharp.Extensions
                 int length = Math.Min(input.Length - index, maxLength);
                 string subString = input.Substring(index, length);
 
-                sb.Append(Uri.EscapeDataString(subString));
+                output.Append(Uri.EscapeDataString(subString));
                 index += subString.Length;
             }
 
-            return sb.ToString();
+            return output.ToString();
         }
 
 #if !PocketPC
@@ -143,7 +143,7 @@ namespace RestSharp.Extensions
             if (input.Contains("new Date("))
             {
                 input = input.Replace(" ", "");
-                // because all whitespace is removed, match against newDate( instead of new Date(
+                // because all whitespace is removed, match against newDate(instead of new Date)
                 return ExtractDate(input, @"newDate\((-?\d+)*\)", culture);
             }
 

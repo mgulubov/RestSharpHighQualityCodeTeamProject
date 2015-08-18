@@ -14,12 +14,12 @@
 //   limitations under the License. 
 #endregion
 
-using System.Reflection;
-using System.Xml.Linq;
-using RestSharp.Extensions;
-
 namespace RestSharp.Deserializers
 {
+    using System.Reflection;
+    using System.Xml.Linq;
+    using Extensions;
+
     public class XmlAttributeDeserializer : XmlDeserializer
     {
         protected override object GetValueFromXml(XElement root, XName name, PropertyInfo prop)

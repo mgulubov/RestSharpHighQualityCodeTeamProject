@@ -14,11 +14,11 @@
 //   limitations under the License. 
 #endregion
 
-using System.IO;
-using System.Text;
-
 namespace RestSharp.Extensions
 {
+    using System.IO;
+    using System.Text;
+
     /// <summary>
     /// Extension method overload!
     /// </summary>

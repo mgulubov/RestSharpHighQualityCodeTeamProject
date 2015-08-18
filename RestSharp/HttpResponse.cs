@@ -14,13 +14,13 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Net;
-using RestSharp.Extensions;
-
 namespace RestSharp
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+    using Extensions;
+
     /// <summary>
     /// HTTP response data
     /// </summary>

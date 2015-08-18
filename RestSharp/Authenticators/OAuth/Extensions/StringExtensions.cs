@@ -1,12 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-
 namespace RestSharp.Authenticators.OAuth.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
+
     internal static class StringExtensions
     {
         public static bool IsNullOrBlank(this string value)
@@ -69,12 +69,12 @@ namespace RestSharp.Authenticators.OAuth.Extensions
         public static string PercentEncode(this string s)
         {
             var bytes = s.GetBytes();
-            var sb = new StringBuilder();
+            var output = new StringBuilder();
             foreach (var b in bytes)
             {
-                sb.Append(String.Format("%{0:X2}", b));
+                output.Append(String.Format("%{0:X2}", b));
             }
-            return sb.ToString();
+            return output.ToString();
         }
 
         public static IDictionary<string, string> ParseQueryString(this string query)

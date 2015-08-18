@@ -14,28 +14,27 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using RestSharp.Extensions;
+namespace RestSharp
+{
+    using System;
+    using System.Linq;
+    using System.Net;
+    using System.Threading;
+    using Extensions;
 
 #if SILVERLIGHT
-using System.Windows.Browser;
-using System.Net.Browser;
+    using System.Windows.Browser;
+    using System.Net.Browser;
 #endif
 
 #if WINDOWS_PHONE
-using System.Windows.Threading;
-using System.Windows;
+    using System.Windows.Threading;
+    using System.Windows;
 #endif
 
 #if (FRAMEWORK && !MONOTOUCH && !MONODROID && !PocketPC)
-using System.Web;
+    using System.Web;
 #endif
-
-namespace RestSharp
-{
     /// <summary>
     /// HttpWebRequest wrapper (async methods)
     /// </summary>

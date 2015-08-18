@@ -14,22 +14,22 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Linq;
-using System.Text;
-using RestSharp.Authenticators.OAuth;
-using RestSharp.Authenticators.OAuth.Extensions;
+namespace RestSharp.Authenticators
+{
+    using System;
+    using System.Linq;
+    using System.Text;
+    using OAuth;
+    using OAuth.Extensions;
 
 #if WINDOWS_PHONE
 using System.Net;
 #elif SILVERLIGHT
 using System.Windows.Browser;
 #else
-using RestSharp.Contrib;
+    using Contrib;
 #endif
 
-namespace RestSharp.Authenticators
-{
     /// <seealso href="http://tools.ietf.org/html/rfc5849"/>
     public class OAuth1Authenticator : IAuthenticator
     {
@@ -289,11 +289,11 @@ namespace RestSharp.Authenticators
 
         private string GetAuthorizationHeader(WebPairCollection parameters)
         {
-            var sb = new StringBuilder("OAuth ");
+            var output = new StringBuilder("OAuth ");
 
             if (!Realm.IsNullOrBlank())
             {
-                sb.Append("realm=\"{0}\",".FormatWith(OAuthTools.UrlEncodeRelaxed(Realm)));
+                output.Append("realm=\"{0}\",".FormatWith(OAuthTools.UrlEncodeRelaxed(Realm)));
             }
 
             parameters.Sort((l, r) => l.Name.CompareTo(r.Name));
@@ -302,17 +302,17 @@ namespace RestSharp.Authenticators
             var oathParameters = parameters.Where(parameter =>
                 !parameter.Name.IsNullOrBlank() &&
                 !parameter.Value.IsNullOrBlank() &&
-                (parameter.Name.StartsWith("oauth_") || parameter.Name.StartsWith("x_auth_"))
-                ).ToList();
+                (parameter.Name.StartsWith("oauth_") || parameter.Name.StartsWith("x_auth_")))
+                .ToList();
 
             foreach (var parameter in oathParameters)
             {
                 parameterCount++;
                 var format = parameterCount < oathParameters.Count ? "{0}=\"{1}\"," : "{0}=\"{1}\"";
-                sb.Append(format.FormatWith(parameter.Name, parameter.Value));
+                output.Append(format.FormatWith(parameter.Name, parameter.Value));
             }
 
-            var authorization = sb.ToString();
+            var authorization = output.ToString();
             return authorization;
         }
     }

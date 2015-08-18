@@ -28,11 +28,11 @@
 
 #if WINDOWS_PHONE
 
-using System;
-using System.IO;
-
 namespace RestSharp.Compression.ZLib
 {
+    using System;
+    using System.IO;
+
     /// <summary>
     /// A class for compressing and decompressing GZIP streams.
     /// </summary>
@@ -276,7 +276,7 @@ namespace RestSharp.Compression.ZLib
             _baseStream = new ZlibBaseStream(stream, ZlibStreamFlavor.GZIP, false);
         }
 
-        #region Zlib properties
+#region Zlib properties
 
         /// <summary>
         /// This property sets the flush behavior on the stream.  
@@ -337,9 +337,9 @@ namespace RestSharp.Compression.ZLib
             get { return this._baseStream._z.TotalBytesOut; }
         }
 
-        #endregion
+#endregion
 
-        #region Stream methods
+#region Stream methods
 
         /// <summary>
         /// Dispose the stream.  
@@ -523,7 +523,7 @@ namespace RestSharp.Compression.ZLib
             throw new NotImplementedException();
         }
 
-        #endregion
+#endregion
 
         internal static System.DateTime _unixEpoch = new System.DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         internal static System.Text.Encoding iso8859dash1 = System.Text.Encoding.GetEncoding("iso-8859-1");
