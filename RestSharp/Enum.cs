@@ -16,9 +16,9 @@
 
 namespace RestSharp
 {
-    ///<summary>
+    /// <summary>
     /// Types of parameters that can be added to requests
-    ///</summary>
+    /// </summary>
     public enum ParameterType
     {
         Cookie,
@@ -54,22 +54,6 @@ namespace RestSharp
     }
 
     /// <summary>
-    /// Format strings for commonly-used date formats
-    /// </summary>
-    public struct DateFormat
-    {
-        /// <summary>
-        /// .NET format string for ISO 8601 date format
-        /// </summary>
-        public const string Iso8601 = "s";
-
-        /// <summary>
-        /// .NET format string for roundtrip date format
-        /// </summary>
-        public const string RoundTrip = "u";
-    }
-
-    /// <summary>
     /// Status for responses (surprised?)
     /// </summary>
     public enum ResponseStatus
@@ -79,5 +63,21 @@ namespace RestSharp
         Error,
         TimedOut,
         Aborted
+    }
+
+    /// <summary>
+    /// Format strings for commonly-used date formats
+    /// </summary>
+    public struct DateFormat
+    {
+        /// <summary>
+        /// .NET format string for ISO 8601 date format
+        /// </summary>
+        public const string Iso8601 = "value";
+
+        /// <summary>
+        /// .NET format string for roundtrip date format
+        /// </summary>
+        public const string RoundTrip = "u";
     }
 }

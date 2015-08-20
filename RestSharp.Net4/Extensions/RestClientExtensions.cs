@@ -1,6 +1,7 @@
-﻿
-namespace RestSharp.Extensions
+﻿namespace RestSharp.Extensions
 {
+    using RestSharp;
+
     public static partial class RestClientExtensions
     {
         public static RestResponse<dynamic> ExecuteDynamic(this IRestClient client, IRestRequest request)

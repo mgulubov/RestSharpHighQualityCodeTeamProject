@@ -44,7 +44,7 @@
     <DefineConstants>TRACE;DEBUG;FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Debug\RestSharp.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
     <NoWarn>1591,1584,1572,1574,1658</NoWarn>
@@ -81,7 +81,9 @@
   <ItemGroup>
     <Compile Include="Authenticators\NtlmAuthenticator.cs" />
     <Compile Include="Authenticators\OAuth1Authenticator.cs" />
-    <Compile Include="Authenticators\OAuth2Authenticator.cs" />
+    <Compile Include="Authenticators\OAuth2Authenticators\OAuth2Authenticator.cs" />
+    <Compile Include="Authenticators\OAuth2Authenticators\OAuth2AuthorizationRequestHeaderAuthenticator.cs" />
+    <Compile Include="Authenticators\OAuth2Authenticators\OAuth2UriQueryParameterAuthenticator.cs" />
     <Compile Include="Authenticators\OAuth\Extensions\CollectionExtensions.cs" />
     <Compile Include="Authenticators\OAuth\Extensions\OAuthExtensions.cs" />
     <Compile Include="Authenticators\OAuth\Extensions\StringExtensions.cs" />
@@ -108,14 +110,21 @@
     <Compile Include="Compression\ZLib\ZLibCodec.cs" />
     <Compile Include="Compression\ZLib\ZLibConstants.cs" />
     <Compile Include="Compression\ZLib\ZLibStream.cs" />
+    <Compile Include="DateFormat.cs" />
     <Compile Include="Deserializers\JsonDeserializer.cs" />
     <Compile Include="Deserializers\DeserializeAsAttribute.cs" />
     <Compile Include="Deserializers\XmlAttributeDeserializer.cs" />
+    <Compile Include="Enumerations\DataFormat.cs" />
+    <Compile Include="Enumerations\Method.cs" />
+    <Compile Include="Enumerations\NameStyle.cs" />
+    <Compile Include="Enumerations\ResponseStatus.cs" />
     <Compile Include="Extensions\MonoHttp\Helpers.cs" />
     <Compile Include="Extensions\MonoHttp\HtmlEncoder.cs" />
+    <Compile Include="Extensions\MonoHttp\HttpQSCollection.cs" />
     <Compile Include="Extensions\MonoHttp\HttpUtility.cs" />
     <Compile Include="Extensions\ResponseExtensions.cs" />
     <Compile Include="Extensions\ResponseStatusExtensions.cs" />
+    <Compile Include="Interfaces\IRestResponseGeneric.cs" />
     <Compile Include="RestClientExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Http.Sync.cs" />
@@ -123,32 +132,36 @@
     <Compile Include="HttpResponse.cs" />
     <Compile Include="Deserializers\IDeserializer.cs" />
     <Compile Include="Deserializers\XmlDeserializer.cs" />
-    <Compile Include="Enum.cs" />
+    <Compile Include="Enumerations\ParameterType.cs" />
     <Compile Include="Extensions\MiscExtensions.cs" />
     <Compile Include="Authenticators\HttpBasicAuthenticator.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
-    <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Extensions\XmlExtensions.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="FileParameter.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="HttpFile.cs" />
     <Compile Include="HttpHeader.cs" />
     <Compile Include="HttpParameter.cs" />
-    <Compile Include="IHttp.cs" />
-    <Compile Include="IHttpFactory.cs" />
-    <Compile Include="IHttpResponse.cs" />
-    <Compile Include="IRestClient.cs" />
-    <Compile Include="IRestRequest.cs" />
-    <Compile Include="IRestResponse.cs" />
+    <Compile Include="Interfaces\IHttp.cs" />
+    <Compile Include="Interfaces\IHttpFactory.cs" />
+    <Compile Include="Interfaces\IHttpResponse.cs" />
+    <Compile Include="Interfaces\IRestClient.cs" />
+    <Compile Include="Interfaces\IRestRequest.cs" />
+    <Compile Include="Interfaces\IRestResponse.cs" />
     <Compile Include="RestResponse.cs" />
     <Compile Include="Authenticators\IAuthenticator.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestClient.cs" />
     <Compile Include="RestRequest.cs" />
+    <Compile Include="RestResponseBase.cs" />
     <Compile Include="RestResponseCookie.cs" />
     <Compile Include="Authenticators\SimpleAuthenticator.cs" />
     <Compile Include="RestClient.Async.cs" />
     <Compile Include="Deserializers\DotNetXmlDeserializer.cs" />
+    <Compile Include="RestResponseGeneric.cs" />
     <Compile Include="Serializers\DotNetXmlSerializer.cs" />
     <Compile Include="Serializers\ISerializer.cs" />
     <Compile Include="Serializers\JsonSerializer.cs" />
@@ -163,6 +176,7 @@
     <None Include="T4Helper\T4Toolbox.tt">
     </None>
     <Compile Include="SharedAssemblyInfo.cs" />
+    <Compile Include="SimpleFactory.cs" />
     <Compile Include="SimpleJson.cs" />
     <Compile Include="Validation\Validate.cs" />
     <Compile Include="Validation\Require.cs" />

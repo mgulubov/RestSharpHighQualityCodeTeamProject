@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{E709A928-A45C-4622-A35C-CCD8EE44CA80}"
 	ProjectSection(SolutionItems) = preProject
@@ -119,7 +119,6 @@ Global
 		{11F84600-0978-48B9-A28F-63B3781E54B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11F84600-0978-48B9-A28F-63B3781E54B3}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{11F84600-0978-48B9-A28F-63B3781E54B3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{11F84600-0978-48B9-A28F-63B3781E54B3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{11F84600-0978-48B9-A28F-63B3781E54B3}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{11F84600-0978-48B9-A28F-63B3781E54B3}.DebugAppveyor|Any CPU.ActiveCfg = Debug|Any CPU
 		{11F84600-0978-48B9-A28F-63B3781E54B3}.DebugAppveyor|Any CPU.Build.0 = Debug|Any CPU
@@ -138,7 +137,6 @@ Global
 		{F4D48DF6-316E-4963-B5C1-59CA39B431B7}.Debug|ARM.ActiveCfg = Debug|ARM
 		{F4D48DF6-316E-4963-B5C1-59CA39B431B7}.Debug|ARM.Build.0 = Debug|ARM
 		{F4D48DF6-316E-4963-B5C1-59CA39B431B7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{F4D48DF6-316E-4963-B5C1-59CA39B431B7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{F4D48DF6-316E-4963-B5C1-59CA39B431B7}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{F4D48DF6-316E-4963-B5C1-59CA39B431B7}.DebugAppveyor|Any CPU.ActiveCfg = Debug|Any CPU
 		{F4D48DF6-316E-4963-B5C1-59CA39B431B7}.DebugAppveyor|Any CPU.Build.0 = Debug|Any CPU
@@ -158,7 +156,6 @@ Global
 		{5FF943A5-260F-4042-B4CE-C4977BAD4EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FF943A5-260F-4042-B4CE-C4977BAD4EBB}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{5FF943A5-260F-4042-B4CE-C4977BAD4EBB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5FF943A5-260F-4042-B4CE-C4977BAD4EBB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{5FF943A5-260F-4042-B4CE-C4977BAD4EBB}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{5FF943A5-260F-4042-B4CE-C4977BAD4EBB}.DebugAppveyor|Any CPU.ActiveCfg = Debug|Any CPU
 		{5FF943A5-260F-4042-B4CE-C4977BAD4EBB}.DebugAppveyor|Any CPU.Build.0 = Debug|Any CPU
@@ -194,7 +191,6 @@ Global
 		{D5D62FE9-1679-4697-BDC6-9574D907A717}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5D62FE9-1679-4697-BDC6-9574D907A717}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{D5D62FE9-1679-4697-BDC6-9574D907A717}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D5D62FE9-1679-4697-BDC6-9574D907A717}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{D5D62FE9-1679-4697-BDC6-9574D907A717}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{D5D62FE9-1679-4697-BDC6-9574D907A717}.DebugAppveyor|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5D62FE9-1679-4697-BDC6-9574D907A717}.DebugAppveyor|Any CPU.Build.0 = Debug|Any CPU
@@ -212,7 +208,6 @@ Global
 		{53F45A1D-088B-4A2C-A8E2-5901F0DB5EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53F45A1D-088B-4A2C-A8E2-5901F0DB5EA8}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{53F45A1D-088B-4A2C-A8E2-5901F0DB5EA8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{53F45A1D-088B-4A2C-A8E2-5901F0DB5EA8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{53F45A1D-088B-4A2C-A8E2-5901F0DB5EA8}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{53F45A1D-088B-4A2C-A8E2-5901F0DB5EA8}.DebugAppveyor|Any CPU.ActiveCfg = Debug|Any CPU
 		{53F45A1D-088B-4A2C-A8E2-5901F0DB5EA8}.DebugAppveyor|Any CPU.Build.0 = Debug|Any CPU
@@ -230,7 +225,6 @@ Global
 		{353349A9-4E6C-4706-A1C4-8363EAE0DBF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{353349A9-4E6C-4706-A1C4-8363EAE0DBF3}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{353349A9-4E6C-4706-A1C4-8363EAE0DBF3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{353349A9-4E6C-4706-A1C4-8363EAE0DBF3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{353349A9-4E6C-4706-A1C4-8363EAE0DBF3}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{353349A9-4E6C-4706-A1C4-8363EAE0DBF3}.DebugAppveyor|Any CPU.ActiveCfg = Debug|Any CPU
 		{353349A9-4E6C-4706-A1C4-8363EAE0DBF3}.DebugAppveyor|Any CPU.Build.0 = Debug|Any CPU

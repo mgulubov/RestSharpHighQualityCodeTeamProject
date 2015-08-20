@@ -14,10 +14,11 @@
 //   limitations under the License. 
 #endregion
 
-using System;
 
 namespace RestSharp.Deserializers
 {
+    using System;
+
     /// <summary>
     /// Allows control how class and property names and values are deserialized by XmlAttributeDeserializer
     /// </summary>

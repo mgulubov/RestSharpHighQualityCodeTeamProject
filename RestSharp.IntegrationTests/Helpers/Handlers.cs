@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-
-namespace RestSharp.IntegrationTests.Helpers
+﻿namespace RestSharp.IntegrationTests.Helpers
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Reflection;
+
     public static class Handlers
     {
         /// <summary>

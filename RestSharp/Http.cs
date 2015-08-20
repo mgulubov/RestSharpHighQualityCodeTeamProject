@@ -14,24 +14,24 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using RestSharp.Extensions;
-
-#if WINDOWS_PHONE
-using RestSharp.Compression.ZLib;
-#endif
-#if FRAMEWORK
-using System.Net.Cache;
-#endif
-
 namespace RestSharp
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Security.Cryptography.X509Certificates;
+    using System.Text;
+    using RestSharp.Extensions;
+
+#if WINDOWS_PHONE
+    using RestSharp.Compression.ZLib;
+#endif
+#if FRAMEWORK
+    using System.Net.Cache;
+#endif
+
     /// <summary>
     /// HttpWebRequest wrapper
     /// </summary>
@@ -61,7 +61,10 @@ namespace RestSharp
         /// </summary>
         protected bool HasCookies
         {
-            get { return Cookies.Any(); }
+            get
+            {
+                return Cookies.Any();
+            }
         }
 
         /// <summary>
@@ -69,7 +72,10 @@ namespace RestSharp
         /// </summary>
         protected bool HasBody
         {
-            get { return RequestBodyBytes != null || !string.IsNullOrEmpty(RequestBody); }
+            get
+            {
+                return RequestBodyBytes != null || !string.IsNullOrEmpty(RequestBody);
+            }
         }
 
         /// <summary>

@@ -14,19 +14,18 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-
-#if FRAMEWORK
-using System.Net.Cache;
-#endif
-
 namespace RestSharp
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Net;
+#if FRAMEWORK
+    using System.Net.Cache;
+#endif
+    using System.Security.Cryptography.X509Certificates;
+    using System.Text;
+
     public interface IHttp
     {
         Action<Stream> ResponseWriter { get; set; }
@@ -88,6 +87,9 @@ namespace RestSharp
         byte[] RequestBodyBytes { get; set; }
 
         Uri Url { get; set; }
+#if FRAMEWORK || PocketPc
+        IWebProxy Proxy { get; set; }
+#endif
 
         HttpWebRequest DeleteAsync(Action<HttpResponse> action);
 
@@ -129,8 +131,6 @@ namespace RestSharp
         HttpResponse AsPost(string httpMethod);
 
         HttpResponse AsGet(string httpMethod);
-
-        IWebProxy Proxy { get; set; }
 #endif
     }
 }

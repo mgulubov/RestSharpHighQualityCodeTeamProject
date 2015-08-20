@@ -43,7 +43,7 @@
             abstract class.
             </remarks>
         </member>
-        <member name="F:RestSharp.OAuth2Authenticator._accessToken">
+        <member name="F:RestSharp.OAuth2Authenticator.accessToken">
             <summary>
             Access token to be used when authenticating.
             </summary>
@@ -61,6 +61,38 @@
             Gets the access token.
             </summary>
         </member>
+        <member name="T:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator">
+            <summary>
+            The OAuth 2 authenticator using the authorization request header field.
+            </summary>
+            <remarks>
+            Based on http://tools.ietf.org/html/draft-ietf-oauth-v2-10#section-5.1.1
+            </remarks>
+        </member>
+        <member name="F:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator.authorizationValue">
+            <summary>
+            Stores the Authorization header value as "[tokenType] accessToken". used for performance.
+            </summary>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator"/> class.
+            </summary>
+            <param name="accessToken">
+            The access token.
+            </param>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator"/> class.
+            </summary>
+            <param name="accessToken">
+            The access token.
+            </param>
+            <param name="tokenType">
+            The token type.
+            </param>
+        </member>
         <member name="T:RestSharp.OAuth2UriQueryParameterAuthenticator">
             <summary>
             The OAuth 2 authenticator using URI query parameter.
@@ -77,47 +109,26 @@
             The access token.
             </param>
         </member>
-        <member name="T:RestSharp.OAuth2AuthorizationRequestHeaderAuthenticator">
+        <member name="T:RestSharp.Authenticators.OAuth.Extensions.CollectionExtensions">
             <summary>
-            The OAuth 2 authenticator using the authorization request header field.
-            </summary>
-            <remarks>
-            Based on http://tools.ietf.org/html/draft-ietf-oauth-v2-10#section-5.1.1
-            </remarks>
-        </member>
-        <member name="F:RestSharp.OAuth2AuthorizationRequestHeaderAuthenticator._authorizationValue">
-            <summary>
-            Stores the Authorization header value as "[tokenType] accessToken". used for performance.
+            Extensions for collections :)
             </summary>
         </member>
-        <member name="M:RestSharp.OAuth2AuthorizationRequestHeaderAuthenticator.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:RestSharp.OAuth2AuthorizationRequestHeaderAuthenticator"/> class.
-            </summary>
-            <param name="accessToken">
-            The access token.
-            </param>
-        </member>
-        <member name="M:RestSharp.OAuth2AuthorizationRequestHeaderAuthenticator.#ctor(System.String,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:RestSharp.OAuth2AuthorizationRequestHeaderAuthenticator"/> class.
-            </summary>
-            <param name="accessToken">
-            The access token.
-            </param>
-            <param name="tokenType">
-            The token type.
-            </param>
-        </member>
-        <member name="F:RestSharp.Authenticators.OAuth.OAuthTools._encoding">
+        <member name="F:RestSharp.Authenticators.OAuth.OAuthTools.Encoding">
             <summary>
             All text parameters are UTF-8 encoded (per section 5.1).
             </summary>
             <seealso cref="!:http://www.hueniverse.com/hueniverse/2008/10/beginners-gui-1.html"/> 
         </member>
+        <member name="F:RestSharp.Authenticators.OAuth.OAuthTools.UriRfc3986CharsToEscape">
+            <summary>
+            The set of characters that are unreserved in RFC 2396 but are NOT unreserved in RFC 3986.
+            </summary>
+            <seealso cref="!:http://stackoverflow.com/questions/846487/how-to-get-uri-escapedatastring-to-comply-with-rfc-3986"/>
+        </member>
         <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.GetNonce">
             <summary>
-            Generates a random 16-byte lowercase alphanumeric string. 
+            Generates a RandomGenerator 16-byte lowercase alphanumeric string. 
             </summary>
             <seealso cref="!:http://oauth.net/core/1.0#nonce"/>
             <returns></returns>
@@ -136,12 +147,6 @@
             <seealso cref="!:http://oauth.net/core/1.0#nonce"/>
             <param name="dateTime">A specified point in time.</param>
             <returns></returns>
-        </member>
-        <member name="F:RestSharp.Authenticators.OAuth.OAuthTools.UriRfc3986CharsToEscape">
-            <summary>
-            The set of characters that are unreserved in RFC 2396 but are NOT unreserved in RFC 3986.
-            </summary>
-            <seealso cref="!:http://stackoverflow.com/questions/846487/how-to-get-uri-escapedatastring-to-comply-with-rfc-3986"/>
         </member>
         <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.UrlEncodeRelaxed(System.String)">
             <summary>
@@ -203,9 +208,9 @@
             </summary>
             <seealso cref="!:http://oauth.net/core/1.0#rfc.section.9.1.3"/>
             <seealso cref="!:http://oauth.net/core/1.0#sig_base_example"/>
-            <param name="method">The request's HTTP method type</param>
+            <param name="method">The request'value HTTP method type</param>
             <param name="url">The request URL</param>
-            <param name="parameters">The request's parameters</param>
+            <param name="parameters">The request'value parameters</param>
             <returns>A signature base string</returns>
         </member>
         <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.GetSignature(RestSharp.Authenticators.OAuth.OAuthSignatureMethod,System.String,System.String)">
@@ -319,6 +324,21 @@
         <member name="P:RestSharp.Authenticators.OAuth.OAuthWorkflow.AuthorizationUrl">
             <seealso cref="!:http://oauth.net/core/1.0#request_urls"/>
         </member>
+        <member name="T:RestSharp.DateFormat">
+            <summary>
+            Format strings for commonly-used date formats
+            </summary>
+        </member>
+        <member name="F:RestSharp.DateFormat.Iso8601">
+            <summary>
+            .NET format string for ISO 8601 date format
+            </summary>
+        </member>
+        <member name="F:RestSharp.DateFormat.RoundTrip">
+            <summary>
+            .NET format string for roundtrip date format
+            </summary>
+        </member>
         <member name="T:RestSharp.Deserializers.DeserializeAsAttribute">
             <summary>
             Allows control how class and property names and values are deserialized by XmlAttributeDeserializer
@@ -334,25 +354,40 @@
             Sets if the property to Deserialize is an Attribute or Element (Default: false)
             </summary>
         </member>
+        <member name="T:RestSharp.DataFormat">
+            <summary>
+            Data formats
+            </summary>
+        </member>
+        <member name="T:RestSharp.Method">
+            <summary>
+            HTTP method to use when making requests
+            </summary>
+        </member>
+        <member name="T:RestSharp.Enumerations.NameStyle">
+            <summary>
+            OPTIONS for transforming casing of element names
+            </summary>
+        </member>
         <member name="M:RestSharp.Contrib.HttpUtility.HtmlDecode(System.String)">
             <summary>
             Decodes an HTML-encoded string and returns the decoded string.
             </summary>
-            <param name="s">The HTML string to decode. </param>
+            <param name="value">The HTML string to decode. </param>
             <returns>The decoded text.</returns>
         </member>
         <member name="M:RestSharp.Contrib.HttpUtility.HtmlDecode(System.String,System.IO.TextWriter)">
             <summary>
             Decodes an HTML-encoded string and sends the resulting output to a TextWriter output stream.
             </summary>
-            <param name="s">The HTML string to decode</param>
+            <param name="value">The HTML string to decode</param>
             <param name="output">The TextWriter output stream containing the decoded string. </param>
         </member>
         <member name="M:RestSharp.Contrib.HttpUtility.HtmlEncode(System.String,System.IO.TextWriter)">
             <summary>
             HTML-encodes a string and sends the resulting output to a TextWriter output stream.
             </summary>
-            <param name="s">The string to encode. </param>
+            <param name="value">The string to encode. </param>
             <param name="output">The TextWriter output stream containing the encoded string. </param>
         </member>
         <member name="M:RestSharp.Extensions.ResponseStatusExtensions.ToWebException(RestSharp.ResponseStatus)">
@@ -362,6 +397,103 @@
             <param name="responseStatus">The response status.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentOutOfRangeException">responseStatus</exception>
+        </member>
+        <member name="T:RestSharp.IRestResponse`1">
+            <summary>
+            Container for data sent back from API including deserialized data
+            </summary>
+            <typeparam name="T">Type of data to deserialize to</typeparam>
+        </member>
+        <member name="T:RestSharp.IRestResponse">
+            <summary>
+            Container for data sent back from API
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.Request">
+            <summary>
+            The RestRequest that was made to get this RestResponse
+            </summary>
+            <remarks>
+            Mainly for debugging if ResponseStatus is not OK
+            </remarks> 
+        </member>
+        <member name="P:RestSharp.IRestResponse.ContentType">
+            <summary>
+            MIME content type of response
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.ContentLength">
+            <summary>
+            Length in bytes of the response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.ContentEncoding">
+            <summary>
+            Encoding of the response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.Content">
+            <summary>
+            String representation of response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.StatusCode">
+            <summary>
+            HTTP response status code
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.StatusDescription">
+            <summary>
+            Description of HTTP status returned
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.RawBytes">
+            <summary>
+            Response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.ResponseUri">
+            <summary>
+            The URL that actually responded to the content (different from request if redirected)
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.Server">
+            <summary>
+            HttpWebResponse.Server
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.Cookies">
+            <summary>
+            Cookies returned by server with the response
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.Headers">
+            <summary>
+            Headers returned by server with the response
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.ResponseStatus">
+            <summary>
+            Status of the request. Will return Error for transport errors.
+            HTTP errors will still return ResponseStatus.Completed, check StatusCode instead
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.ErrorMessage">
+            <summary>
+            Transport or other non-HTTP error generated while attempting request
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestResponse.ErrorException">
+            <summary>
+            Exceptions thrown during the request, if any.  
+            </summary>
+            <remarks>Will contain only network transport or framework exceptions thrown during the request.
+            HTTP protocol errors are handled by RestSharp and will not appear here.</remarks>
+        </member>
+        <member name="P:RestSharp.IRestResponse`1.Data">
+            <summary>
+            Deserialized entity data
+            </summary>
         </member>
         <member name="M:RestSharp.RestClientExtensions.ExecuteAsync(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse})">
             <summary>
@@ -410,7 +542,7 @@
             <summary>
             Adds a parameter to the request. There are four types of parameters:
                - GetOrPost: Either a QueryString value or encoded form value based on method
-               - HttpHeader: Adds the name/value pair to the HTTP request's Headers collection
+               - HttpHeader: Adds the name/value pair to the HTTP request'value Headers collection
                - UrlSegment: Inserted into URL if there is a matching url token e.g. {AccountId}
                - RequestBody: Used by AddBody() (not recommended to use directly)
             </summary>
@@ -1023,37 +1155,7 @@
         </member>
         <member name="T:RestSharp.ParameterType">
             <summary>
-             Types of parameters that can be added to requests
-            </summary>
-        </member>
-        <member name="T:RestSharp.DataFormat">
-            <summary>
-            Data formats
-            </summary>
-        </member>
-        <member name="T:RestSharp.Method">
-            <summary>
-            HTTP method to use when making requests
-            </summary>
-        </member>
-        <member name="T:RestSharp.DateFormat">
-            <summary>
-            Format strings for commonly-used date formats
-            </summary>
-        </member>
-        <member name="F:RestSharp.DateFormat.Iso8601">
-            <summary>
-            .NET format string for ISO 8601 date format
-            </summary>
-        </member>
-        <member name="F:RestSharp.DateFormat.RoundTrip">
-            <summary>
-            .NET format string for roundtrip date format
-            </summary>
-        </member>
-        <member name="T:RestSharp.ResponseStatus">
-            <summary>
-            Status for responses (surprised?)
+            Types of parameters that can be added to requests
             </summary>
         </member>
         <member name="T:RestSharp.Extensions.MiscExtensions">
@@ -1149,20 +1251,20 @@
         </member>
         <member name="M:RestSharp.FileParameter.Create(System.String,System.Byte[],System.String,System.String)">
             <summary>
-             Creates a file parameter from an array of bytes.
+            Creates a file parameter from an array of bytes.
             </summary>
             <param name="name">The parameter name to use in the request.</param>
-            <param name="data">The data to use as the file's contents.</param>
+            <param name="data">The data to use as the file'value contents.</param>
             <param name="filename">The filename to use in the request.</param>
             <param name="contentType">The content type to use in the request.</param>
             <returns>The <see cref="T:RestSharp.FileParameter"/></returns>
         </member>
         <member name="M:RestSharp.FileParameter.Create(System.String,System.Byte[],System.String)">
             <summary>
-             Creates a file parameter from an array of bytes.
+            Creates a file parameter from an array of bytes.
             </summary>
             <param name="name">The parameter name to use in the request.</param>
-            <param name="data">The data to use as the file's contents.</param>
+            <param name="data">The data to use as the file'value contents.</param>
             <param name="filename">The filename to use in the request.</param>
             <returns>The <see cref="T:RestSharp.FileParameter"/> using the default content type.</returns>
         </member>
@@ -1397,9 +1499,9 @@
             <summary>
             Adds a parameter to the request. There are five types of parameters:
             - GetOrPost: Either a QueryString value or encoded form value based on method
-            - HttpHeader: Adds the name/value pair to the HTTP request's Headers collection
+            - HttpHeader: Adds the name/value pair to the HTTP request'value Headers collection
             - UrlSegment: Inserted into URL if there is a matching url token e.g. {AccountId}
-            - Cookie: Adds the name/value pair to the HTTP request's Cookies collection
+            - Cookie: Adds the name/value pair to the HTTP request'value Cookies collection
             - RequestBody: Used by AddBody() (not recommended to use directly)
             </summary>
             <param name="name">Name of the parameter</param>
@@ -1544,101 +1646,9 @@
             will be sent along to the server. The default is false.
             </summary>
         </member>
-        <member name="T:RestSharp.IRestResponse">
+        <member name="T:RestSharp.RestResponse">
             <summary>
             Container for data sent back from API
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.Request">
-            <summary>
-            The RestRequest that was made to get this RestResponse
-            </summary>
-            <remarks>
-            Mainly for debugging if ResponseStatus is not OK
-            </remarks> 
-        </member>
-        <member name="P:RestSharp.IRestResponse.ContentType">
-            <summary>
-            MIME content type of response
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.ContentLength">
-            <summary>
-            Length in bytes of the response content
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.ContentEncoding">
-            <summary>
-            Encoding of the response content
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.Content">
-            <summary>
-            String representation of response content
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.StatusCode">
-            <summary>
-            HTTP response status code
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.StatusDescription">
-            <summary>
-            Description of HTTP status returned
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.RawBytes">
-            <summary>
-            Response content
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.ResponseUri">
-            <summary>
-            The URL that actually responded to the content (different from request if redirected)
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.Server">
-            <summary>
-            HttpWebResponse.Server
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.Cookies">
-            <summary>
-            Cookies returned by server with the response
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.Headers">
-            <summary>
-            Headers returned by server with the response
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.ResponseStatus">
-            <summary>
-            Status of the request. Will return Error for transport errors.
-            HTTP errors will still return ResponseStatus.Completed, check StatusCode instead
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.ErrorMessage">
-            <summary>
-            Transport or other non-HTTP error generated while attempting request
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestResponse.ErrorException">
-            <summary>
-            Exceptions thrown during the request, if any.  
-            </summary>
-            <remarks>Will contain only network transport or framework exceptions thrown during the request.
-            HTTP protocol errors are handled by RestSharp and will not appear here.</remarks>
-        </member>
-        <member name="T:RestSharp.IRestResponse`1">
-            <summary>
-            Container for data sent back from API including deserialized data
-            </summary>
-            <typeparam name="T">Type of data to deserialize to</typeparam>
-        </member>
-        <member name="P:RestSharp.IRestResponse`1.Data">
-            <summary>
-            Deserialized entity data
             </summary>
         </member>
         <member name="T:RestSharp.RestResponseBase">
@@ -1728,22 +1738,6 @@
         <member name="P:RestSharp.RestResponseBase.ErrorException">
             <summary>
             The exception thrown during the request, if any
-            </summary>
-        </member>
-        <member name="T:RestSharp.RestResponse`1">
-            <summary>
-            Container for data sent back from API including deserialized data
-            </summary>
-            <typeparam name="T">Type of data to deserialize to</typeparam>
-        </member>
-        <member name="P:RestSharp.RestResponse`1.Data">
-            <summary>
-            Deserialized entity data
-            </summary>
-        </member>
-        <member name="T:RestSharp.RestResponse">
-            <summary>
-            Container for data sent back from API
             </summary>
         </member>
         <member name="T:RestSharp.Parameter">
@@ -2118,7 +2112,7 @@
             <summary>
             Adds a parameter to the request. There are four types of parameters:
             - GetOrPost: Either a QueryString value or encoded form value based on method
-            - HttpHeader: Adds the name/value pair to the HTTP request's Headers collection
+            - HttpHeader: Adds the name/value pair to the HTTP request'value Headers collection
             - UrlSegment: Inserted into URL if there is a matching url token e.g. {AccountId}
             - RequestBody: Used by AddBody() (not recommended to use directly)
             </summary>
@@ -2164,6 +2158,17 @@
             Internal Method so that RestClient can increase the number of attempts
             </summary>
         </member>
+        <member name="P:RestSharp.RestRequest.Parameters">
+            <summary>
+            Container of all HTTP parameters to be passed with the request. 
+            See AddParameter() for explanation of the types of parameters that can be passed
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestRequest.Files">
+            <summary>
+            Container of all the files to be uploaded with the request.
+            </summary>
+        </member>
         <member name="P:RestSharp.RestRequest.AlwaysMultipartFormData">
             <summary>
             Always send a multipart/form-data request - even when no Files are present.
@@ -2192,16 +2197,14 @@
             will be sent along to the server. The default is false.
             </summary>
         </member>
-        <member name="P:RestSharp.RestRequest.Parameters">
+        <member name="P:RestSharp.RestRequest.Attempts">
             <summary>
-            Container of all HTTP parameters to be passed with the request. 
-            See AddParameter() for explanation of the types of parameters that can be passed
+            How many attempts were made to send this Request?
             </summary>
-        </member>
-        <member name="P:RestSharp.RestRequest.Files">
-            <summary>
-            Container of all the files to be uploaded with the request.
-            </summary>
+            <remarks>
+            This Number is incremented each time the RestClient sends the request.
+            Useful when using Asynchronous Execution with Callbacks
+            </remarks>
         </member>
         <member name="P:RestSharp.RestRequest.Method">
             <summary>
@@ -2270,15 +2273,6 @@
             <summary>
             The number of milliseconds before the writing or reading times out.  This timeout value overrides a timeout set on the RestClient.
             </summary>
-        </member>
-        <member name="P:RestSharp.RestRequest.Attempts">
-            <summary>
-            How many attempts were made to send this Request?
-            </summary>
-            <remarks>
-            This Number is incremented each time the RestClient sends the request.
-            Useful when using Asynchronous Execution with Callbacks
-            </remarks>
         </member>
         <member name="P:RestSharp.RestResponseCookie.Comment">
             <summary>
@@ -2355,6 +2349,17 @@
             Wrapper for System.Xml.Serialization.XmlSerializer.
             </summary>
         </member>
+        <member name="T:RestSharp.RestResponse`1">
+            <summary>
+            Container for data sent back from API including deserialized data
+            </summary>
+            <typeparam name="T">Type of data to deserialize to</typeparam>
+        </member>
+        <member name="P:RestSharp.RestResponse`1.Data">
+            <summary>
+            Deserialized entity data
+            </summary>
+        </member>
         <member name="T:RestSharp.Serializers.DotNetXmlSerializer">
             <summary>
             Wrapper for System.Xml.Serialization.XmlSerializer.
@@ -2411,7 +2416,7 @@
         <member name="T:RestSharp.Serializers.JsonSerializer">
             <summary>
             Default JSON serializer for request bodies
-            Doesn't currently use the SerializeAs attribute, defers to Newtonsoft's attributes
+            Doesn't currently use the SerializeAs attribute, defers to Newtonsoft'value attributes
             </summary>
         </member>
         <member name="M:RestSharp.Serializers.JsonSerializer.#ctor">
@@ -2483,11 +2488,6 @@
         <member name="P:RestSharp.Serializers.SerializeAsAttribute.Index">
             <summary>
             The order to serialize the element. Default is int.MaxValue.
-            </summary>
-        </member>
-        <member name="T:RestSharp.Serializers.NameStyle">
-            <summary>
-            Options for transforming casing of element names
             </summary>
         </member>
         <member name="T:RestSharp.Serializers.XmlSerializer">

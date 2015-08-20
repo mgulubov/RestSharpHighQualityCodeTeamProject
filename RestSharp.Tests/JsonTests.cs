@@ -15,6 +15,7 @@
 #endregion
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -82,12 +83,30 @@ namespace RestSharp.Tests
         public void Can_Deserialize_Lists_of_Simple_Types()
         {
             // TODO: Implement me. You may need to use mocking for this test
+            const string content = "{\"junk\":[\"johnsheehan\",13,13.13]}";
+            var json = new JsonDeserializer { RootElement = "junk" };
+            var output = json.Deserialize<List<object>>(new RestResponse { Content = content });
+
+            Assert.NotEmpty(output);
+            Assert.Equal(3, output.Count);
+            Assert.Equal("johnsheehan", output[0]);
+            Assert.Equal(13, int.Parse(output[1].ToString()));
+            Assert.Equal(13.13, double.Parse(output[2].ToString()));
         }
 
         [Fact]
         public void Can_Deserialize_Simple_Generic_List_of_Simple_Types()
         {
             // TODO: Implement me. You may need to use mocking for this test
+            const string content = "{\"users\":[\"johnsheehan\",\"jagregory\",\"drusellers\"]}";
+            var json = new JsonDeserializer { RootElement = "users" };
+            var output = json.Deserialize<List<string>>(new RestResponse { Content = content });
+
+            Assert.NotEmpty(output);
+            Assert.Equal(3, output.Count);
+            Assert.Equal("johnsheehan", output[0]);
+            Assert.Equal("jagregory", output[1]);
+            Assert.Equal("drusellers", output[2]);
         }
 
         [Fact]
@@ -136,7 +155,16 @@ namespace RestSharp.Tests
         [Fact]
         public void Can_Deserialize_To_Dictionary_String_Object()
         {
-            // TODO: Implement me. You may need to use mocking for this test            
+            // TODO: Implement me. You may need to use mocking for this test
+            var doc = File.ReadAllText(Path.Combine("SampleData", "jsondictionary-StringObject.txt"));
+            var json = new JsonDeserializer();
+            var output = json.Deserialize<Dictionary<string, object>>(new RestResponse { Content = doc });
+
+            Assert.Equal(output.Keys.Count, 2);
+
+            var firstKeysVal = output.FirstOrDefault().Value;
+
+            Assert.IsAssignableFrom<System.Collections.IDictionary>(firstKeysVal);
         }
 
         [Fact]
@@ -184,7 +212,18 @@ namespace RestSharp.Tests
         [Fact]
         public void Can_Deserialize_Generic_List_of_DateTime()
         {
-            // TODO: Implement me            
+            // TODO: Implement me
+            DateTime dateA = new DateTime(2000, 12, 31);
+            DateTime dateB = new DateTime(1987, 11, 8);
+            var data = new JsonObject();
+
+            const string content = "{\"dates\":[\"12/31/2000 12:00:00 AM\",\"11/8/1987 12:00:00 AM\"]}";
+            var json = new JsonDeserializer { RootElement = "dates" };
+            var output = json.Deserialize<List<DateTime>>(new RestResponse { Content = content });
+
+            Assert.Equal(2, output.Count);
+            Assert.Equal(dateA, output[0]);
+            Assert.Equal(dateB, output[1]);
         }
 
         [Fact]

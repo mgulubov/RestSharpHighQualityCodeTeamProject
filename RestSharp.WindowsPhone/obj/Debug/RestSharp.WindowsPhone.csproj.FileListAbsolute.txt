@@ -3,3 +3,8 @@ C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.Win
 C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\Bin\Debug\RestSharp.WindowsPhone.pdb
 C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\obj\Debug\RestSharp.WindowsPhone.dll
 C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\obj\Debug\RestSharp.WindowsPhone.pdb
+C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\Bin\Debug\RestSharp.WindowsPhone.xml
+C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\Bin\Debug\RestSharp.WindowsPhone.dll
+C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\Bin\Debug\RestSharp.WindowsPhone.pdb
+C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\obj\Debug\RestSharp.WindowsPhone.dll
+C:\Users\astod\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp.WindowsPhone\obj\Debug\RestSharp.WindowsPhone.pdb

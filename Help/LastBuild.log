@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder" version="2015.1.12.0" projectFile="C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject\Documentation.shfbproj" started="16.8.2015 г. 20:47:53">
+<buildStep step="Initializing">
+Finding tools...
+The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
+Searching for HTML Help 1 compiler...
+Found HTML Help 1 compiler in &#39;C:\Program Files (x86)\HTML Help Workshop\&#39;
+Locating components in the following folder(s):
+   C:\Users\Asen\Documents\GitHub\RestSharpHighQualityCodeTeamProject
+    Last step completed in 00:00:00,7519
+</buildStep>
+<buildStep step="Failed">
+
+SHFB: Error BE0065: BUILD FAILED: Cannot cast the underlying exported value of type &#39;Microsoft.Ddue.Tools.BuildComponent.AdditionalHeaderResourcesComponent+Factory (ContractName=&quot;Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentFactory&quot;)&#39; to type &#39;Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentFactory&#39;.
+   at System.ComponentModel.Composition.ExportServices.CastExportedValue[T](ICompositionElement element, Object exportedValue)
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector)
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.Build()
+
+</buildStep>
+</shfbBuild>

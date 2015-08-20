@@ -18,7 +18,6 @@ namespace RestSharp.Serializers
 {
     public interface ISerializer
     {
-        string Serialize(object obj);
 
         string RootElement { get; set; }
 
@@ -27,5 +26,7 @@ namespace RestSharp.Serializers
         string DateFormat { get; set; }
 
         string ContentType { get; set; }
+
+        string Serialize(object obj);
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Net;
-using System.Threading;
-using RestSharp.IntegrationTests.Helpers;
-using Xunit;
-
-namespace RestSharp.IntegrationTests
+﻿namespace RestSharp.IntegrationTests
 {
+    using System.Net;
+    using System.Threading;
+    using Helpers;
+    using Xunit;
     public class NonProtocolExceptionHandlingTests
     {
         /// <summary>
@@ -22,7 +20,7 @@ namespace RestSharp.IntegrationTests
             Assert.Equal(ResponseStatus.Error, response.ResponseStatus);
         }
 
-        public class StupidClass
+        private class StupidClass
         {
             public string Property { get; set; }
         }
@@ -107,7 +105,7 @@ namespace RestSharp.IntegrationTests
                 var client = new RestClient(baseUrl);
                 var request = new RestRequest("404") { Timeout = 500 };
 
-                var task =  client.ExecuteTaskAsync(request);
+                var task = client.ExecuteTaskAsync(request);
                 task.Wait();
                 IRestResponse response = task.Result;
                 Assert.NotNull(response);

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿namespace RestSharp
+{
+    using System;
+    using System.Linq;
 #if NET4 || MONODROID || MONOTOUCH || WP8
-using System.Threading.Tasks;
+    using System.Threading.Tasks;
 #endif
 
-namespace RestSharp
-{
     public static partial class RestClientExtensions
     {
         /// <summary>
@@ -304,13 +304,13 @@ namespace RestSharp
         /// <returns>This request</returns>
         public static void AddDefaultParameter(this IRestClient restClient, string name, object value)
         {
-            restClient.AddDefaultParameter(new Parameter {Name = name, Value = value, Type = ParameterType.GetOrPost});
+            restClient.AddDefaultParameter(new Parameter { Name = name, Value = value, Type = ParameterType.GetOrPost });
         }
 
         /// <summary>
         /// Adds a parameter to the request. There are four types of parameters:
         ///    - GetOrPost: Either a QueryString value or encoded form value based on method
-        ///    - HttpHeader: Adds the name/value pair to the HTTP request's Headers collection
+        ///    - HttpHeader: Adds the name/value pair to the HTTP request'value Headers collection
         ///    - UrlSegment: Inserted into URL if there is a matching url token e.g. {AccountId}
         ///    - RequestBody: Used by AddBody() (not recommended to use directly)
         /// </summary>
@@ -322,7 +322,7 @@ namespace RestSharp
         public static void AddDefaultParameter(this IRestClient restClient, string name, object value,
             ParameterType type)
         {
-            restClient.AddDefaultParameter(new Parameter {Name = name, Value = value, Type = type});
+            restClient.AddDefaultParameter(new Parameter { Name = name, Value = value, Type = type });
         }
 
         /// <summary>

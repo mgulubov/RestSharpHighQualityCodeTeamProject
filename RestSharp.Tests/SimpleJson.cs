@@ -841,7 +841,7 @@ namespace RestSharp.Tests
                             // convert the integer codepoint to a unicode char and add to string
                             if (0xD800 <= codePoint && codePoint <= 0xDBFF)  // if high surrogate
                             {
-                                index += 4; // skip 4 chars
+                                index += 4; // skip 4 Chars
                                 remainingLength = json.Length - index;
                                 if (remainingLength >= 6)
                                 {
@@ -852,7 +852,7 @@ namespace RestSharp.Tests
                                         {
                                             s.Append((char)codePoint);
                                             s.Append((char)lowCodePoint);
-                                            index += 6; // skip 6 chars
+                                            index += 6; // skip 6 Chars
                                             continue;
                                         }
                                     }
@@ -861,7 +861,7 @@ namespace RestSharp.Tests
                                 return "";
                             }
                             s.Append(ConvertFromUtf32((int)codePoint));
-                            // skip 4 chars
+                            // skip 4 Chars
                             index += 4;
                         }
                         else
@@ -1092,7 +1092,7 @@ namespace RestSharp.Tests
 
         static bool SerializeString(string aString, StringBuilder builder)
         {
-            // Happy path if there's nothing to be escaped. IndexOfAny is highly optimized (and unmanaged)
+            // Happy path if there'value nothing to be escaped. IndexOfAny is highly optimized (and unmanaged)
             if (aString.IndexOfAny(EscapeCharacters) == -1)
             {
                 builder.Append('"');

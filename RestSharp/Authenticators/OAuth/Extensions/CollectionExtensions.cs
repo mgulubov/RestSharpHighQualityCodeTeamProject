@@ -1,12 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Text;
-
 namespace RestSharp.Authenticators.OAuth.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.Text;
+
+    /// <summary>
+    /// Extensions for collections :)
+    /// </summary>
     internal static class CollectionExtensions
     {
+
         public static IEnumerable<T> AsEnumerable<T>(this T item)
         {
             return new[] { item };
@@ -77,8 +81,10 @@ namespace RestSharp.Authenticators.OAuth.Extensions
                 {
                     continue;
                 }
+
                 sb.Append("&");
             }
+
             return sb.ToString();
         }
 
@@ -86,25 +92,25 @@ namespace RestSharp.Authenticators.OAuth.Extensions
 
         public static string Concatenate(this WebParameterCollection collection, string separator, string spacer)
         {
-            var sb = new StringBuilder();
+            var output = new StringBuilder();
 
             var total = collection.Count;
             var count = 0;
 
             foreach (var item in collection)
             {
-                sb.Append(item.Name);
-                sb.Append(separator);
-                sb.Append(item.Value);
+                output.Append(item.Name);
+                output.Append(separator);
+                output.Append(item.Value);
 
                 count++;
                 if (count < total)
                 {
-                    sb.Append(spacer);
+                    output.Append(spacer);
                 }
             }
 
-            return sb.ToString();
+            return output.ToString();
         }
     }
 }

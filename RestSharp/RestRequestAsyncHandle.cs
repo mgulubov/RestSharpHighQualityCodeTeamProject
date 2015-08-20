@@ -1,24 +1,24 @@
-using System.Net;
-
 namespace RestSharp
 {
+    using System.Net;
+
     public class RestRequestAsyncHandle
     {
-        public HttpWebRequest WebRequest;
-
         public RestRequestAsyncHandle()
         {
         }
 
         public RestRequestAsyncHandle(HttpWebRequest webRequest)
         {
-            WebRequest = webRequest;
+            this.WebRequest = webRequest;
         }
+
+        public HttpWebRequest WebRequest { get; set; }
 
         public void Abort()
         {
-            if (WebRequest != null)
-                WebRequest.Abort();
+            if (this.WebRequest != null)
+                this.WebRequest.Abort();
         }
     }
 }

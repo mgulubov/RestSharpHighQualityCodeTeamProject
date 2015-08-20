@@ -14,15 +14,19 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-
 namespace RestSharp.Validation
 {
+    using System;
+
     /// <summary>
     /// Helper methods for validating values
     /// </summary>
-    public class Validate
+    public sealed class Validate
     {
+        private Validate()
+        {
+        }
+
         /// <summary>
         /// Validate an integer value is between the specified values (exclusive of min/max)
         /// </summary>

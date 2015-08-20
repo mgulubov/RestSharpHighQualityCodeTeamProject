@@ -14,11 +14,11 @@
 //   limitations under the License. 
 #endregion
 
-using System.IO;
-using System.Text;
-
 namespace RestSharp.Extensions
 {
+    using System.IO;
+    using System.Text;
+
     /// <summary>
     /// Extension method overload!
     /// </summary>
@@ -87,7 +87,7 @@ namespace RestSharp.Extensions
         public static string AsString(this byte[] buffer)
         {
             if (buffer == null)
-                return "";
+                return string.Empty;
 
             // Ansi as default
             Encoding encoding = Encoding.UTF8;

@@ -330,7 +330,7 @@ namespace RestSharp.Tests
             root.Add(new XElement("Name", "Foo"),
                     new XElement("Age", 50),
                     new XElement("Price", 19.95m),
-                    new XElement("StartDate", new DateTime(2009, 12, 18, 10, 2, 23).ToString("s")));
+                    new XElement("StartDate", new DateTime(2009, 12, 18, 10, 2, 23).ToString("value")));
 
             doc.Add(root);
 
@@ -345,7 +345,7 @@ namespace RestSharp.Tests
             root.Add(new XElement("Name", "Foo"),
                 new XElement("Age", 50),
                 new XElement("Price", 19.95m),
-                new XElement("StartDate", new DateTime(2009, 12, 18, 10, 2, 23).ToString("s")),
+                new XElement("StartDate", new DateTime(2009, 12, 18, 10, 2, 23).ToString("value")),
                 new XElement("IsCool", false));
 
             doc.Add(root);

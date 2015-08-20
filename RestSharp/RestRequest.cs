@@ -14,22 +14,99 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text.RegularExpressions;
-using RestSharp.Extensions;
-using RestSharp.Serializers;
-
 namespace RestSharp
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Text.RegularExpressions;
+    using Extensions;
+    using Serializers;
+
     /// <summary>
     /// Container for data used to make requests
     /// </summary>
     public class RestRequest : IRestRequest
     {
+        private Method method = Method.GET;
+        private DataFormat requestFormat = DataFormat.Xml;
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public RestRequest()
+        {
+            this.Parameters = new List<Parameter>();
+            this.Files = new List<FileParameter>();
+            this.XmlSerializer = new XmlSerializer();
+            this.JsonSerializer = new JsonSerializer();
+
+            this.OnBeforeDeserialization = r => { };
+        }
+
+        /// <summary>
+        /// Sets Method property to value of method
+        /// </summary>
+        /// <param name="method">Method to use for this request</param>
+        public RestRequest(Method method) : this()
+        {
+            this.Method = method;
+        }
+
+        /// <summary>
+        /// Sets Resource property
+        /// </summary>
+        /// <param name="resource">Resource to use for this request</param>
+        public RestRequest(string resource) : 
+            this(resource, Method.GET) 
+        { 
+        }
+
+        /// <summary>
+        /// Sets Resource and Method properties
+        /// </summary>
+        /// <param name="resource">Resource to use for this request</param>
+        /// <param name="method">Method to use for this request</param>
+        public RestRequest(string resource, Method method) : 
+            this()
+        {
+            this.Resource = resource;
+            this.Method = method;
+        }
+
+        /// <summary>
+        /// Sets Resource property
+        /// </summary>
+        /// <param name="resource">Resource to use for this request</param>
+        public RestRequest(Uri resource) : 
+            this(resource, Method.GET) 
+        { 
+        }
+
+        /// <summary>
+        /// Sets Resource and Method properties
+        /// </summary>
+        /// <param name="resource">Resource to use for this request</param>
+        /// <param name="method">Method to use for this request</param>
+        public RestRequest(Uri resource, Method method)
+            : this(resource.IsAbsoluteUri ? resource.AbsolutePath + resource.Query : resource.OriginalString, method)
+        {
+            // resource.PathAndQuery not supported by Silverlight :(
+        }
+
+        /// <summary>
+        /// Container of all HTTP parameters to be passed with the request. 
+        /// See AddParameter() for explanation of the types of parameters that can be passed
+        /// </summary>
+        public IList<Parameter> Parameters { get; private set; }
+
+        /// <summary>
+        /// Container of all the files to be uploaded with the request.
+        /// </summary>
+        public IList<FileParameter> Files { get; private set; }
+
         /// <summary>
         /// Always send a multipart/form-data request - even when no Files are present.
         /// </summary>
@@ -59,60 +136,101 @@ namespace RestSharp
         public bool UseDefaultCredentials { get; set; }
 
         /// <summary>
-        /// Default constructor
+        /// How many attempts were made to send this Request?
         /// </summary>
-        public RestRequest()
-        {
-            this.Parameters = new List<Parameter>();
-            this.Files = new List<FileParameter>();
-            this.XmlSerializer = new XmlSerializer();
-            this.JsonSerializer = new JsonSerializer();
+        /// <remarks>
+        /// This Number is incremented each time the RestClient sends the request.
+        /// Useful when using Asynchronous Execution with Callbacks
+        /// </remarks>
+        public int Attempts { get; private set; }
 
-            this.OnBeforeDeserialization = r => { };
+        /// <summary>
+        /// Determines what HTTP method to use for this request. Supported methods: GET, POST, PUT, DELETE, HEAD, OPTIONS
+        /// Default is GET
+        /// </summary>
+        public Method Method
+        {
+            get
+            {
+                return this.method;
+            }
+            set
+            {
+                this.method = value;
+            }
         }
 
         /// <summary>
-        /// Sets Method property to value of method
+        /// The Resource URL to make the request against.
+        /// Tokens are substituted with UrlSegment parameters and match by name.
+        /// Should not include the scheme or domain. Do not include leading slash.
+        /// Combined with RestClient.BaseUrl to assemble final URL:
+        /// {BaseUrl}/{Resource} (BaseUrl is scheme + domain, e.g. http://example.com)
         /// </summary>
-        /// <param name="method">Method to use for this request</param>
-        public RestRequest(Method method) : this()
+        /// <example>
+        /// // example for url token replacement
+        /// request.Resource = "Products/{ProductId}";
+        /// request.AddParameter("ProductId", 123, ParameterType.UrlSegment);
+        /// </example>
+        public string Resource { get; set; }
+
+        /// <summary>
+        /// Serializer to use when writing XML request bodies. Used if RequestFormat is Xml.
+        /// By default XmlSerializer is used.
+        /// </summary>
+        public DataFormat RequestFormat
         {
-            this.Method = method;
+            get
+            {
+                return this.requestFormat;
+            }
+            set
+            {
+                this.requestFormat = value;
+            }
         }
 
         /// <summary>
-        /// Sets Resource property
+        /// Used by the default deserializers to determine where to start deserializing from.
+        /// Can be used to skip container or root elements that do not have corresponding deserialzation targets.
         /// </summary>
-        /// <param name="resource">Resource to use for this request</param>
-        public RestRequest(string resource) : this(resource, Method.GET) { }
+        public string RootElement { get; set; }
 
         /// <summary>
-        /// Sets Resource and Method properties
+        /// A function to run prior to deserializing starting (e.g. change settings if error encountered)
         /// </summary>
-        /// <param name="resource">Resource to use for this request</param>
-        /// <param name="method">Method to use for this request</param>
-        public RestRequest(string resource, Method method) : this()
-        {
-            this.Resource = resource;
-            this.Method = method;
-        }
+        public Action<IRestResponse> OnBeforeDeserialization { get; set; }
 
         /// <summary>
-        /// Sets Resource property
+        /// Used by the default deserializers to explicitly set which date format string to use when parsing dates.
         /// </summary>
-        /// <param name="resource">Resource to use for this request</param>
-        public RestRequest(Uri resource) : this(resource, Method.GET) { }
+        public string DateFormat { get; set; }
 
         /// <summary>
-        /// Sets Resource and Method properties
+        /// Used by XmlDeserializer. If not specified, XmlDeserializer will flatten response by removing namespaces from element names.
         /// </summary>
-        /// <param name="resource">Resource to use for this request</param>
-        /// <param name="method">Method to use for this request</param>
-        public RestRequest(Uri resource, Method method)
-            : this(resource.IsAbsoluteUri ? resource.AbsolutePath + resource.Query : resource.OriginalString, method)
-        {
-            //resource.PathAndQuery not supported by Silverlight :(
-        }
+        public string XmlNamespace { get; set; }
+
+        /// <summary>
+        /// In general you would not need to set this directly. Used by the NtlmAuthenticator. 
+        /// </summary>
+        public ICredentials Credentials { get; set; }
+
+        /// <summary>
+        /// Gets or sets a user-defined state object that contains information about a request and which can be later 
+        /// retrieved when the request completes.
+        /// </summary>
+        public object UserState { get; set; }
+
+        /// <summary>
+        /// Timeout in milliseconds to be used for the request. This timeout value overrides a timeout set on the RestClient.
+        /// </summary>
+        public int Timeout { get; set; }
+
+        /// <summary>
+        /// The number of milliseconds before the writing or reading times out.  This timeout value overrides a timeout set on the RestClient.
+        /// </summary>
+        public int ReadWriteTimeout { get; set; }
 
         /// <summary>
         /// Adds a file to the Files collection to be included with a POST or PUT request 
@@ -127,20 +245,20 @@ namespace RestSharp
             FileInfo f = new FileInfo(path);
             long fileLength = f.Length;
 
-            return AddFile(new FileParameter
-                           {
-                               Name = name,
-                               FileName = Path.GetFileName(path),
-                               ContentLength = fileLength,
-                               Writer = s =>
-                                        {
-                                            using (var file = new StreamReader(path))
-                                            {
-                                                file.BaseStream.CopyTo(s);
-                                            }
-                                        },
-                                ContentType = contentType
-                           });
+            return this.AddFile(new FileParameter
+            {
+                Name = name,
+                FileName = Path.GetFileName(path),
+                ContentLength = fileLength,
+                Writer = s =>
+                         {
+                             using (var file = new StreamReader(path))
+                             {
+                                 file.BaseStream.CopyTo(s);
+                             }
+                         },
+                ContentType = contentType
+            });
         }
 
         /// <summary>
@@ -166,19 +284,13 @@ namespace RestSharp
         /// <returns>This request</returns>
         public IRestRequest AddFile(string name, Action<Stream> writer, string fileName, string contentType = null)
         {
-            return AddFile(new FileParameter
-                           {
-                               Name = name,
-                               Writer = writer,
-                               FileName = fileName,
-                               ContentType = contentType
-                           });
-        }
-
-        private IRestRequest AddFile(FileParameter file)
-        {
-            this.Files.Add(file);
-            return this;
+            return this.AddFile(new FileParameter
+            {
+                Name = name,
+                Writer = writer,
+                FileName = fileName,
+                ContentType = contentType
+            });
         }
 
         /// <summary>
@@ -193,28 +305,28 @@ namespace RestSharp
             string serialized;
             string contentType;
 
-            switch (RequestFormat)
+            switch (this.RequestFormat)
             {
                 case DataFormat.Json:
-                    serialized = JsonSerializer.Serialize(obj);
-                    contentType = JsonSerializer.ContentType;
+                    serialized = this.JsonSerializer.Serialize(obj);
+                    contentType = this.JsonSerializer.ContentType;
                     break;
 
                 case DataFormat.Xml:
                     this.XmlSerializer.Namespace = xmlNamespace;
-                    serialized = XmlSerializer.Serialize(obj);
-                    contentType = XmlSerializer.ContentType;
+                    serialized = this.XmlSerializer.Serialize(obj);
+                    contentType = this.XmlSerializer.ContentType;
                     break;
 
                 default:
-                    serialized = "";
-                    contentType = "";
+                    serialized = string.Empty;
+                    contentType = string.Empty;
                     break;
             }
 
             // passing the content type as the parameter name because there can only be
             // one parameter with ParameterType.RequestBody so name isn't used otherwise
-            // it's a hack, but it works :)
+            // it'value a hack, but it works :)
             return this.AddParameter(contentType, serialized, ParameterType.RequestBody);
         }
 
@@ -226,7 +338,7 @@ namespace RestSharp
         /// <returns>This request</returns>
         public IRestRequest AddBody(object obj)
         {
-            return this.AddBody(obj, "");
+            return this.AddBody(obj, string.Empty);
         }
 
         /// <summary>
@@ -237,7 +349,7 @@ namespace RestSharp
         public IRestRequest AddJsonBody(object obj)
         {
             this.RequestFormat = DataFormat.Json;
-            return this.AddBody(obj, "");
+            return this.AddBody(obj, string.Empty);
         }
 
         /// <summary>
@@ -248,7 +360,7 @@ namespace RestSharp
         public IRestRequest AddXmlBody(object obj)
         {
             this.RequestFormat = DataFormat.Xml;
-            return this.AddBody(obj, "");
+            return this.AddBody(obj, string.Empty);
         }
 
         /// <summary>
@@ -299,7 +411,7 @@ namespace RestSharp
 
                     if (((Array)val).Length > 0 &&
                         elementType != null &&
-                        (elementType.IsPrimitive|| elementType.IsValueType || elementType == typeof(string)))
+                        (elementType.IsPrimitive || elementType.IsValueType || elementType == typeof(string)))
                     {
                         // convert the array to an array of strings
                         var values = (from object item in ((Array)val)
@@ -352,17 +464,17 @@ namespace RestSharp
         public IRestRequest AddParameter(string name, object value)
         {
             return this.AddParameter(new Parameter
-                                     {
-                                         Name = name,
-                                         Value = value,
-                                         Type = ParameterType.GetOrPost
-                                     });
+            {
+                Name = name,
+                Value = value,
+                Type = ParameterType.GetOrPost
+            });
         }
 
         /// <summary>
         /// Adds a parameter to the request. There are four types of parameters:
         /// - GetOrPost: Either a QueryString value or encoded form value based on method
-        /// - HttpHeader: Adds the name/value pair to the HTTP request's Headers collection
+        /// - HttpHeader: Adds the name/value pair to the HTTP request'value Headers collection
         /// - UrlSegment: Inserted into URL if there is a matching url token e.g. {AccountId}
         /// - RequestBody: Used by AddBody() (not recommended to use directly)
         /// </summary>
@@ -373,11 +485,11 @@ namespace RestSharp
         public IRestRequest AddParameter(string name, object value, ParameterType type)
         {
             return this.AddParameter(new Parameter
-                                     {
-                                         Name = name,
-                                         Value = value,
-                                         Type = type
-                                     });
+            {
+                Name = name,
+                Value = value,
+                Type = type
+            });
         }
 
         /// <summary>
@@ -389,9 +501,9 @@ namespace RestSharp
         public IRestRequest AddHeader(string name, string value)
         {
 #if !SILVERLIGHT
-            const string portSplit = @":\d+";
+            const string PortSplit = @":\d+";
             Func<string, bool> invalidHost =
-                host => Uri.CheckHostName(Regex.Split(host, portSplit)[0]) == UriHostNameType.Unknown;
+                host => Uri.CheckHostName(Regex.Split(host, PortSplit)[0]) == UriHostNameType.Unknown;
 
             if (name == "Host" && invalidHost(value))
             {
@@ -435,97 +547,6 @@ namespace RestSharp
         }
 
         /// <summary>
-        /// Container of all HTTP parameters to be passed with the request. 
-        /// See AddParameter() for explanation of the types of parameters that can be passed
-        /// </summary>
-        public List<Parameter> Parameters { get; private set; }
-
-        /// <summary>
-        /// Container of all the files to be uploaded with the request.
-        /// </summary>
-        public List<FileParameter> Files { get; private set; }
-
-        private Method method = Method.GET;
-
-        /// <summary>
-        /// Determines what HTTP method to use for this request. Supported methods: GET, POST, PUT, DELETE, HEAD, OPTIONS
-        /// Default is GET
-        /// </summary>
-        public Method Method
-        {
-            get { return this.method; }
-            set { this.method = value; }
-        }
-
-        /// <summary>
-        /// The Resource URL to make the request against.
-        /// Tokens are substituted with UrlSegment parameters and match by name.
-        /// Should not include the scheme or domain. Do not include leading slash.
-        /// Combined with RestClient.BaseUrl to assemble final URL:
-        /// {BaseUrl}/{Resource} (BaseUrl is scheme + domain, e.g. http://example.com)
-        /// </summary>
-        /// <example>
-        /// // example for url token replacement
-        /// request.Resource = "Products/{ProductId}";
-        /// request.AddParameter("ProductId", 123, ParameterType.UrlSegment);
-        /// </example>
-        public string Resource { get; set; }
-
-        private DataFormat requestFormat = DataFormat.Xml;
-
-        /// <summary>
-        /// Serializer to use when writing XML request bodies. Used if RequestFormat is Xml.
-        /// By default XmlSerializer is used.
-        /// </summary>
-        public DataFormat RequestFormat
-        {
-            get { return this.requestFormat; }
-            set { this.requestFormat = value; }
-        }
-
-        /// <summary>
-        /// Used by the default deserializers to determine where to start deserializing from.
-        /// Can be used to skip container or root elements that do not have corresponding deserialzation targets.
-        /// </summary>
-        public string RootElement { get; set; }
-
-        /// <summary>
-        /// A function to run prior to deserializing starting (e.g. change settings if error encountered)
-        /// </summary>
-        public Action<IRestResponse> OnBeforeDeserialization { get; set; }
-
-        /// <summary>
-        /// Used by the default deserializers to explicitly set which date format string to use when parsing dates.
-        /// </summary>
-        public string DateFormat { get; set; }
-
-        /// <summary>
-        /// Used by XmlDeserializer. If not specified, XmlDeserializer will flatten response by removing namespaces from element names.
-        /// </summary>
-        public string XmlNamespace { get; set; }
-
-        /// <summary>
-        /// In general you would not need to set this directly. Used by the NtlmAuthenticator. 
-        /// </summary>
-        public ICredentials Credentials { get; set; }
-
-        /// <summary>
-        /// Gets or sets a user-defined state object that contains information about a request and which can be later 
-        /// retrieved when the request completes.
-        /// </summary>
-        public object UserState { get; set; }
-
-        /// <summary>
-        /// Timeout in milliseconds to be used for the request. This timeout value overrides a timeout set on the RestClient.
-        /// </summary>
-        public int Timeout { get; set; }
-
-        /// <summary>
-        /// The number of milliseconds before the writing or reading times out.  This timeout value overrides a timeout set on the RestClient.
-        /// </summary>
-        public int ReadWriteTimeout { get; set; }
-
-        /// <summary>
         /// Internal Method so that RestClient can increase the number of attempts
         /// </summary>
         public void IncreaseNumAttempts()
@@ -533,13 +554,10 @@ namespace RestSharp
             this.Attempts++;
         }
 
-        /// <summary>
-        /// How many attempts were made to send this Request?
-        /// </summary>
-        /// <remarks>
-        /// This Number is incremented each time the RestClient sends the request.
-        /// Useful when using Asynchronous Execution with Callbacks
-        /// </remarks>
-        public int Attempts { get; private set; }
+        private IRestRequest AddFile(FileParameter file)
+        {
+            this.Files.Add(file);
+            return this;
+        }
     }
 }

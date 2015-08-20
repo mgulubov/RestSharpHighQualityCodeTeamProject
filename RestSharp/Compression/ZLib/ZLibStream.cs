@@ -27,11 +27,11 @@
 
 #if WINDOWS_PHONE
 
-using System;
-using System.IO;
-
 namespace RestSharp.Compression.ZLib
 {
+    using System;
+    using System.IO;
+
     /// <summary>
     /// Represents a Zlib stream for compression or decompression.
     /// </summary>

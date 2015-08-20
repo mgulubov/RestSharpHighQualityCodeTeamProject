@@ -1,9 +1,9 @@
-using System;
-using System.Security.Cryptography;
-using System.Text;
-
 namespace RestSharp.Authenticators.OAuth.Extensions
 {
+    using System;
+    using System.Security.Cryptography;
+    using System.Text;
+
     internal static class OAuthExtensions
     {
         public static string ToRequestValue(this OAuthSignatureMethod signatureMethod)

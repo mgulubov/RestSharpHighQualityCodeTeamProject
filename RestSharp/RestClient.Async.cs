@@ -14,16 +14,15 @@
 //   limitations under the License. 
 #endregion
 
-using System;
-using System.Threading;
-#if NET4 || MONODROID || MONOTOUCH || WP8
-using System.Threading.Tasks;
-#endif
-using System.Net;
-using RestSharp.Extensions;
-
 namespace RestSharp
 {
+    using System;
+    using System.Threading;
+#if NET4 || MONODROID || MONOTOUCH || WP8
+    using System.Threading.Tasks;
+#endif
+    using System.Net;
+    using RestSharp.Extensions;
     public partial class RestClient
     {
         /// <summary>
@@ -37,7 +36,7 @@ namespace RestSharp
 #if PocketPC
             string method = request.Method.ToString();
 #else
-            string method = Enum.GetName(typeof (Method), request.Method);
+            string method = Enum.GetName(typeof(Method), request.Method);
 #endif
 
             switch (request.Method)
