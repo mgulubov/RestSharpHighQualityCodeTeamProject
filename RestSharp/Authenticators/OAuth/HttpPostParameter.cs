@@ -5,7 +5,9 @@ namespace RestSharp.Authenticators.OAuth
 
     internal class HttpPostParameter : WebParameter
     {
-        public HttpPostParameter(string name, string value) : base(name, value) { }
+        public HttpPostParameter(string name, string value) : base(name, value) 
+        { 
+        }
 
         public virtual HttpPostParameterType Type { get; private set; }
 

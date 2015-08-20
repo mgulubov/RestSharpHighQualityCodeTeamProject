@@ -9,15 +9,22 @@ namespace RestSharp.Authenticators.OAuth.Extensions
 
     internal static class StringExtensions
     {
+        private const RegexOptions Options =
+#if !WINDOWS_PHONE && !SILVERLIGHT && !PocketPC
+ RegexOptions.Compiled | RegexOptions.IgnoreCase;
+#else
+            RegexOptions.IgnoreCase;
+#endif
+
         public static bool IsNullOrBlank(this string value)
         {
-            return String.IsNullOrEmpty(value) ||
-                (!String.IsNullOrEmpty(value) && value.Trim() == String.Empty);
+            return string.IsNullOrEmpty(value) ||
+                (!string.IsNullOrEmpty(value) && value.Trim() == string.Empty);
         }
 
         public static bool EqualsIgnoreCase(this string left, string right)
         {
-            return String.Compare(left, right, StringComparison.OrdinalIgnoreCase) == 0;
+            return string.Compare(left, right, StringComparison.OrdinalIgnoreCase) == 0;
         }
 
         public static bool EqualsAny(this string input, params string[] args)
@@ -27,17 +34,17 @@ namespace RestSharp.Authenticators.OAuth.Extensions
 
         public static string FormatWith(this string format, params object[] args)
         {
-            return String.Format(format, args);
+            return string.Format(format, args);
         }
 
         public static string FormatWithInvariantCulture(this string format, params object[] args)
         {
-            return String.Format(CultureInfo.InvariantCulture, format, args);
+            return string.Format(CultureInfo.InvariantCulture, format, args);
         }
 
         public static string Then(this string input, string value)
         {
-            return String.Concat(input, value);
+            return string.Concat(input, value);
         }
 
         public static string UrlEncode(this string value)
@@ -72,7 +79,7 @@ namespace RestSharp.Authenticators.OAuth.Extensions
             var output = new StringBuilder();
             foreach (var b in bytes)
             {
-                output.Append(String.Format("%{0:X2}", b));
+                output.Append(string.Format("%{0:X2}", b));
             }
             return output.ToString();
         }
@@ -89,17 +96,7 @@ namespace RestSharp.Authenticators.OAuth.Extensions
 
             var parts = query.Split(new[] { '&' });
 
-            return parts.Select(
-                part => part.Split(new[] { '=' })).ToDictionary(
-                    pair => pair[0], pair => pair[1]
-                );
+            return parts.Select(part => part.Split(new[] { '=' })).ToDictionary(pair => pair[0], pair => pair[1]);
         }
-
-        private const RegexOptions Options =
-#if !WINDOWS_PHONE && !SILVERLIGHT && !PocketPC
-            RegexOptions.Compiled | RegexOptions.IgnoreCase;
-#else
-            RegexOptions.IgnoreCase;
-#endif
     }
 }

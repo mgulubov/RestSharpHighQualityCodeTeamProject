@@ -18,11 +18,6 @@ namespace RestSharp
 {
     using System;
     using System.Net;
-    using System.Collections.Generic;
-    using System.Security.Cryptography.X509Certificates;
-    using System.Text;
-    using Deserializers;
-
 #if NET4 || MONODROID || MONOTOUCH || WP8
     using System.Threading;
     using System.Threading.Tasks;
@@ -30,6 +25,10 @@ namespace RestSharp
 #if FRAMEWORK
     using System.Net.Cache;
 #endif
+    using System.Collections.Generic;
+    using System.Security.Cryptography.X509Certificates;
+    using System.Text;
+    using Deserializers;
 
     public interface IRestClient
     {
@@ -44,8 +43,6 @@ namespace RestSharp
 
         int ReadWriteTimeout { get; set; }
 
-        bool UseSynchronizationContext { get; set; }
-
         IAuthenticator Authenticator { get; set; }
 
         Uri BaseUrl { get; set; }
@@ -54,19 +51,11 @@ namespace RestSharp
 
         bool PreAuthenticate { get; set; }
 
+        bool FollowRedirects { get; set; }
+
+        bool UseSynchronizationContext { get; set; }
+
         IList<Parameter> DefaultParameters { get; }
-
-        RestRequestAsyncHandle ExecuteAsync(IRestRequest request, Action<IRestResponse, RestRequestAsyncHandle> callback);
-
-        RestRequestAsyncHandle ExecuteAsync<T>(IRestRequest request, Action<IRestResponse<T>, RestRequestAsyncHandle> callback);
-
-#if FRAMEWORK || PocketPC
-        IRestResponse Execute(IRestRequest request);
-
-        IRestResponse<T> Execute<T>(IRestRequest request) where T : new();
-
-        byte[] DownloadData(IRestRequest request);
-#endif
 
 #if FRAMEWORK
         /// <summary>
@@ -79,7 +68,17 @@ namespace RestSharp
         RequestCachePolicy CachePolicy { get; set; }
 #endif
 
-        bool FollowRedirects { get; set; }
+        RestRequestAsyncHandle ExecuteAsync(IRestRequest request, Action<IRestResponse, RestRequestAsyncHandle> callback);
+
+        RestRequestAsyncHandle ExecuteAsync<T>(IRestRequest request, Action<IRestResponse<T>, RestRequestAsyncHandle> callback);
+
+#if FRAMEWORK || PocketPC
+        IRestResponse Execute(IRestRequest request);
+
+        IRestResponse<T> Execute<T>(IRestRequest request) where T : new();
+
+        byte[] DownloadData(IRestRequest request);
+#endif
 
         Uri BuildUri(IRestRequest request);
 

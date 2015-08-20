@@ -24,7 +24,7 @@ namespace RestSharp
         /// <summary>
         /// .NET format string for ISO 8601 date format
         /// </summary>
-        public const string Iso8601 = "s";
+        public const string Iso8601 = "value";
 
         /// <summary>
         /// .NET format string for roundtrip date format

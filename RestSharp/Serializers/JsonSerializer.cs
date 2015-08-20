@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// Default JSON serializer for request bodies
-    /// Doesn't currently use the SerializeAs attribute, defers to Newtonsoft's attributes
+    /// Doesn't currently use the SerializeAs attribute, defers to Newtonsoft'value attributes
     /// </summary>
     public class JsonSerializer : ISerializer
     {
@@ -11,17 +11,7 @@
         /// </summary>
         public JsonSerializer()
         {
-            ContentType = "application/json";
-        }
-
-        /// <summary>
-        /// Serialize the object as JSON
-        /// </summary>
-        /// <param name="obj">Object to serialize</param>
-        /// <returns>JSON as String</returns>
-        public string Serialize(object obj)
-        {
-            return SimpleJson.SerializeObject(obj);
+            this.ContentType = "application/json";
         }
 
         /// <summary>
@@ -43,5 +33,15 @@
         /// Content type for serialized content
         /// </summary>
         public string ContentType { get; set; }
+
+        /// <summary>
+        /// Serialize the object as JSON
+        /// </summary>
+        /// <param name="obj">Object to serialize</param>
+        /// <returns>JSON as String</returns>
+        public string Serialize(object obj)
+        {
+            return SimpleJson.SerializeObject(obj);
+        }
     }
 }

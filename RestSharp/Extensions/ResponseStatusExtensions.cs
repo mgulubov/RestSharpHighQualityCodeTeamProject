@@ -13,47 +13,51 @@
         /// <exception cref="System.ArgumentOutOfRangeException">responseStatus</exception>
         public static WebException ToWebException(this ResponseStatus responseStatus)
         {
+            WebException exception;
+            string message;
             switch (responseStatus)
             {
                 case ResponseStatus.None:
-                    return new WebException("The request could not be processed.",
+                    message = "The request could not be processed.";
 #if !SILVERLIGHT
-                        WebExceptionStatus.ServerProtocolViolation
+                    exception = new WebException(message, WebExceptionStatus.ServerProtocolViolation);
 #else
-                        WebExceptionStatus.UnknownError
+                    exception = new WebException(message, WebExceptionStatus.UnknownError);
 #endif
-                        );
+                    break;
 
                 case ResponseStatus.Error:
-                    return new WebException("An error occurred while processing the request.",
+                    message = "An error occurred while processing the request.";
 #if !SILVERLIGHT
-                        WebExceptionStatus.ServerProtocolViolation
+                    exception = new WebException(message, WebExceptionStatus.ServerProtocolViolation);
 #else
-                        WebExceptionStatus.UnknownError
+                    exception = new WebException(message, WebExceptionStatus.UnknownError);
 #endif
-                        );
+                    break;
 
                 case ResponseStatus.TimedOut:
-                    return new WebException("The request timed-out.",
+                    message = "The request timed-out.";
 #if !SILVERLIGHT
-                        WebExceptionStatus.Timeout
+                    exception = new WebException(message, WebExceptionStatus.Timeout);
 #else
-                        WebExceptionStatus.UnknownError
+                    exception = new WebException(message, WebExceptionStatus.UnknownError);
 #endif
-                        );
+                    break;
 
                 case ResponseStatus.Aborted:
-                    return new WebException("The request was aborted.",
+                    message = "The request was aborted.";
 #if !SILVERLIGHT
-                        WebExceptionStatus.Timeout
+                    exception = new WebException(message, WebExceptionStatus.Timeout);
 #else
-                        WebExceptionStatus.RequestCanceled
+                    exception = new WebException(message, WebExceptionStatus.RequestCanceled);
 #endif
-                        );
+                    break;
 
                 default:
                     throw new ArgumentOutOfRangeException("responseStatus");
             }
+
+            return exception;
         }
     }
 }

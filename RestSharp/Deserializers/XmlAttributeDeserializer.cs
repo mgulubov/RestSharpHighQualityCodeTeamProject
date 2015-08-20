@@ -26,7 +26,7 @@ namespace RestSharp.Deserializers
         {
             var isAttribute = false;
 
-            //Check for the DeserializeAs attribute on the property
+            // Check for the DeserializeAs attribute on the property
             var options = prop.GetAttribute<DeserializeAsAttribute>();
 
             if (options != null)

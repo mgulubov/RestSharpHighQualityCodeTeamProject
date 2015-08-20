@@ -19,6 +19,7 @@ namespace RestSharp.Serializers
     using System;
     using System.Globalization;
     using Extensions;
+    using RestSharp.Enumerations;
 
     /// <summary>
     /// Allows control how class and property names and values are serialized by XmlSerializer
@@ -30,9 +31,9 @@ namespace RestSharp.Serializers
     {
         public SerializeAsAttribute()
         {
-            NameStyle = NameStyle.AsIs;
-            Index = int.MaxValue;
-            Culture = CultureInfo.InvariantCulture;
+            this.NameStyle = NameStyle.AsIs;
+            this.Index = int.MaxValue;
+            this.Culture = CultureInfo.InvariantCulture;
         }
 
         /// <summary>
@@ -69,13 +70,13 @@ namespace RestSharp.Serializers
         {
             var name = this.Name ?? input;
 
-            switch (NameStyle)
+            switch (this.NameStyle)
             {
                 case NameStyle.CamelCase:
-                    return name.ToCamelCase(Culture);
+                    return name.ToCamelCase(this.Culture);
 
                 case NameStyle.PascalCase:
-                    return name.ToPascalCase(Culture);
+                    return name.ToPascalCase(this.Culture);
 
                 case NameStyle.LowerCase:
                     return name.ToLower();
@@ -83,16 +84,5 @@ namespace RestSharp.Serializers
 
             return input;
         }
-    }
-
-    /// <summary>
-    /// OPTIONS for transforming casing of element names
-    /// </summary>
-    public enum NameStyle
-    {
-        AsIs,
-        CamelCase,
-        LowerCase,
-        PascalCase
     }
 }

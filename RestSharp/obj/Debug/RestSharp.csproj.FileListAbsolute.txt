@@ -30,3 +30,11 @@ C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\bin\Debug\RestSharp.Build.pd
 C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\obj\Debug\RestSharp.csprojResolveAssemblyReference.cache
 C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\obj\Debug\RestSharp.dll
 C:\Users\astod\Documents\GitHub\RestSharp\RestSharp\obj\Debug\RestSharp.pdb
+C:\Users\wolfy\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\obj\Debug\RestSharp.csprojResolveAssemblyReference.cache
+C:\Users\wolfy\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\obj\Debug\RestSharp.dll
+C:\Users\wolfy\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\obj\Debug\RestSharp.pdb
+C:\Users\wolfy\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.xml
+C:\Users\wolfy\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.dll
+C:\Users\wolfy\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.pdb
+C:\Users\wolfy\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.Build.dll
+C:\Users\wolfy\Documents\GitHub\RestSharpHighQualityCodeTeamProject\RestSharp\bin\Debug\RestSharp.Build.pdb

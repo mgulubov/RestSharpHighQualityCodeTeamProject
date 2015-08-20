@@ -39,35 +39,43 @@ namespace RestSharp.Contrib
 #if NET_4_0
     public
 #endif
-    class HttpEncoder
+    public class HttpEncoder
     {
-        static char[] hexChars = "0123456789abcdef".ToCharArray();
-        static object entitiesLock = new object();
+#if NET_4_0
+        protected internal virtual
+#else
+        // internal static
+        private static
+#endif
+#if NET_4_0
+        static Lazy <HttpEncoder> DefaultEncoder;
+        static Lazy <HttpEncoder> currentEncoderLazy;
+#else
+ HttpEncoder DefaultEncoder;
+#endif
+
+        private static HttpEncoder currentEncoder;
+        private static char[] hexChars = "0123456789abcdef".ToCharArray();
+        private static object entitiesLock = new object();
 #if PocketPC
         static Dictionary<string, char> entities;
 #else
-        static SortedDictionary<string, char> entities;
+        private static SortedDictionary<string, char> entities;
 #endif
-#if NET_4_0
-        static Lazy <HttpEncoder> defaultEncoder;
-        static Lazy <HttpEncoder> currentEncoderLazy;
-#else
-        static HttpEncoder defaultEncoder;
-#endif
-        static HttpEncoder currentEncoder;
 
-        static IDictionary<string, char> Entities
+        static HttpEncoder()
         {
-            get
-            {
-                lock (entitiesLock)
-                {
-                    if (entities == null)
-                        InitEntities();
+#if NET_4_0
+            defaultEncoder = new Lazy <HttpEncoder> (() => new HttpEncoder ());
+            currentEncoderLazy = new Lazy <HttpEncoder> (new Func <HttpEncoder> (GetCustomEncoderFromConfig));
+#else
+            DefaultEncoder = new HttpEncoder();
+            currentEncoder = DefaultEncoder;
+#endif
+        }
 
-                    return entities;
-                }
-            }
+        public HttpEncoder() 
+        { 
         }
 
         public static HttpEncoder Current
@@ -97,67 +105,23 @@ namespace RestSharp.Contrib
 #if NET_4_0
                 return defaultEncoder.Value;
 #else
-                return defaultEncoder;
+                return DefaultEncoder;
 #endif
             }
         }
 
-        static HttpEncoder()
+        private static IDictionary<string, char> Entities
         {
-#if NET_4_0
-            defaultEncoder = new Lazy <HttpEncoder> (() => new HttpEncoder ());
-            currentEncoderLazy = new Lazy <HttpEncoder> (new Func <HttpEncoder> (GetCustomEncoderFromConfig));
-#else
-            defaultEncoder = new HttpEncoder();
-            currentEncoder = defaultEncoder;
-#endif
-        }
-
-        public HttpEncoder() { }
-
-#if NET_4_0
-        protected internal virtual
-#else
-        internal static
-#endif
- void HeaderNameValueEncode(string headerName, string headerValue, out string encodedHeaderName, out string encodedHeaderValue)
-        {
-            if (String.IsNullOrEmpty(headerName))
-                encodedHeaderName = headerName;
-            else
-                encodedHeaderName = EncodeHeaderString(headerName);
-
-            if (String.IsNullOrEmpty(headerValue))
-                encodedHeaderValue = headerValue;
-            else
-                encodedHeaderValue = EncodeHeaderString(headerValue);
-        }
-
-        static void StringBuilderAppend(string s, ref StringBuilder output)
-        {
-            if (output == null)
-                output = new StringBuilder(s);
-            else
-                output.Append(s);
-        }
-
-        static string EncodeHeaderString(string input)
-        {
-            StringBuilder output = null;
-            char character;
-
-            for (int i = 0; i < input.Length; i++)
+            get
             {
-                character = input[i];
+                lock (entitiesLock)
+                {
+                    if (entities == null)
+                        InitEntities();
 
-                if ((character < 32 && character != 9) || character == 127)
-                    StringBuilderAppend(String.Format("%{0:x2}", (int)character), ref output);
+                    return entities;
+                }
             }
-
-            if (output != null)
-                return output.ToString();
-
-            return input;
         }
 
 #if NET_4_0
@@ -221,16 +185,20 @@ namespace RestSharp.Contrib
 #else
         internal static
 #endif
- string UrlPathEncode(string value)
+        string UrlPathEncode(string value)
         {
-            if (String.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
+            {
                 return value;
+            }
 
             MemoryStream result = new MemoryStream();
             int length = value.Length;
 
             for (int i = 0; i < length; i++)
+            {
                 UrlPathEncodeChar(value[i], result);
+            }
 
             byte[] bytes = result.ToArray();
             return Encoding.ASCII.GetString(bytes, 0, bytes.Length);
@@ -239,24 +207,34 @@ namespace RestSharp.Contrib
         internal static byte[] UrlEncodeToBytes(byte[] bytes, int offset, int count)
         {
             if (bytes == null)
+            {
                 throw new ArgumentNullException("bytes");
+            }
 
             int blen = bytes.Length;
 
             if (blen == 0)
+            {
                 return new byte[0];
+            }
 
             if (offset < 0 || offset >= blen)
+            {
                 throw new ArgumentOutOfRangeException("offset");
+            }
 
             if (count < 0 || count > blen - offset)
+            {
                 throw new ArgumentOutOfRangeException("count");
+            }
 
             MemoryStream result = new MemoryStream(count);
             int end = offset + count;
 
             for (int i = offset; i < end; i++)
+            {
                 UrlEncodeChar((char)bytes[i], result, false);
+            }
 
             return result.ToArray();
         }
@@ -264,10 +242,14 @@ namespace RestSharp.Contrib
         internal static string HtmlEncode(string s)
         {
             if (s == null)
+            {
                 return null;
+            }
 
             if (s.Length == 0)
-                return String.Empty;
+            {
+                return string.Empty;
+            }
 
             bool needEncode = false;
 
@@ -286,7 +268,9 @@ namespace RestSharp.Contrib
             }
 
             if (!needEncode)
+            {
                 return s;
+            }
 
             StringBuilder output = new StringBuilder();
             char ch;
@@ -336,7 +320,10 @@ namespace RestSharp.Contrib
                             output.Append(";");
                         }
                         else
+                        {
                             output.Append(ch);
+                        }
+
                         break;
                 }
             }
@@ -352,10 +339,14 @@ namespace RestSharp.Contrib
 #else
 
             if (s == null)
+            {
                 return null;
+            }
 
             if (s.Length == 0)
-                return String.Empty;
+            {
+                return string.Empty;
+            }
 #endif
 
             bool needEncode = false;
@@ -375,7 +366,9 @@ namespace RestSharp.Contrib
             }
 
             if (!needEncode)
+            {
                 return s;
+            }
 
             StringBuilder output = new StringBuilder();
             int len = s.Length;
@@ -412,13 +405,19 @@ namespace RestSharp.Contrib
         internal static string HtmlDecode(string s)
         {
             if (s == null)
+            {
                 return null;
+            }
 
             if (s.Length == 0)
-                return String.Empty;
+            {
+                return string.Empty;
+            }
 
             if (s.IndexOf('&') == -1)
+            {
                 return s;
+            }
 #if NET_4_0
             StringBuilder rawEntity = new StringBuilder ();
 #endif
@@ -511,7 +510,9 @@ namespace RestSharp.Contrib
                         string key = entity.ToString();
 
                         if (key.Length > 1 && Entities.ContainsKey(key.Substring(1, key.Length - 2)))
+                        {
                             key = Entities[key.Substring(1, key.Length - 2)].ToString();
+                        }
 
                         output.Append(key);
                         state = 0;
@@ -550,15 +551,15 @@ namespace RestSharp.Contrib
                     }
                     else if (is_hex_value && Uri.IsHexDigit(c))
                     {
-                        number = number * 16 + Uri.FromHex(c);
+                        number = (number * 16) + Uri.FromHex(c);
                         have_trailing_digits = true;
 #if NET_4_0
                         rawEntity.Append (c);
 #endif
                     }
-                    else if (Char.IsDigit(c))
+                    else if (char.IsDigit(c))
                     {
-                        number = number * 10 + ((int)c - '0');
+                        number = (number * 10) + ((int)c - '0');
                         have_trailing_digits = true;
 #if NET_4_0
                         rawEntity.Append (c);
@@ -600,20 +601,23 @@ namespace RestSharp.Contrib
 
         internal static bool NotEncoded(char c)
         {
-            return (c == '!' || c == '(' || c == ')' || c == '*' || c == '-' || c == '.' || c == '_'
+            return c == '!' || c == '(' || c == ')' || c == '*' || c == '-' || c == '.' || c == '_'
 #if !NET_4_0
                     || c == '\''
 #endif
-                    );
+                    ;
         }
 
         internal static void UrlEncodeChar(char c, Stream result, bool isUnicode)
         {
             if (c > 255)
             {
-                //FIXME: what happens when there is an internal error?
-                //if (!isUnicode)
-                //    throw new ArgumentOutOfRangeException ("c", c, "c must be less than 256");
+                // FIXME: what happens when there is an internal error?
+                if (!isUnicode)
+                { 
+                    throw new ArgumentOutOfRangeException("c", c, "c must be less than 256"); 
+                }
+
                 int idx;
                 int i = (int)c;
 
@@ -656,7 +660,9 @@ namespace RestSharp.Contrib
                     result.WriteByte((byte)'0');
                 }
                 else
+                {
                     result.WriteByte((byte)'%');
+                }
 
                 int idx = ((int)c) >> 4;
 
@@ -665,7 +671,9 @@ namespace RestSharp.Contrib
                 result.WriteByte((byte)hexChars[idx]);
             }
             else
+            {
                 result.WriteByte((byte)c);
+            }
         }
 
         internal static void UrlPathEncodeChar(char c, Stream result)
@@ -692,10 +700,47 @@ namespace RestSharp.Contrib
                 result.WriteByte((byte)'0');
             }
             else
+            {
                 result.WriteByte((byte)c);
+            }
         }
 
-        static void InitEntities()
+        private static void StringBuilderAppend(string s, ref StringBuilder output)
+        {
+            if (output == null)
+            {
+                output = new StringBuilder(s);
+            }
+            else
+            {
+                output.Append(s);
+            }
+        }
+
+        private static string EncodeHeaderString(string input)
+        {
+            StringBuilder output = null;
+            char character;
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                character = input[i];
+
+                if ((character < 32 && character != 9) || character == 127)
+                {
+                    StringBuilderAppend(string.Format("%{0:x2}", (int)character), ref output);
+                }
+            }
+
+            if (output != null)
+            {
+                return output.ToString();
+            }
+
+            return input;
+        }
+
+        private static void InitEntities()
         {
             // Build the hash table of HTML entity references.  This list comes
             // from the HTML 4.01 W3C recommendation.
@@ -956,6 +1001,27 @@ namespace RestSharp.Contrib
             entities.Add("lsaquo", '\u2039');
             entities.Add("rsaquo", '\u203A');
             entities.Add("euro", '\u20AC');
+        }
+
+        void HeaderNameValueEncode(string headerName, string headerValue, out string encodedHeaderName, out string encodedHeaderValue)
+        {
+            if (string.IsNullOrEmpty(headerName))
+            {
+                encodedHeaderName = headerName;
+            }
+            else
+            {
+                encodedHeaderName = EncodeHeaderString(headerName);
+            }
+
+            if (string.IsNullOrEmpty(headerValue))
+            {
+                encodedHeaderValue = headerValue;
+            }
+            else
+            {
+                encodedHeaderValue = EncodeHeaderString(headerValue);
+            }
         }
     }
 }

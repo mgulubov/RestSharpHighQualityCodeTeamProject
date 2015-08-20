@@ -37,7 +37,7 @@ namespace RestSharp
 
         public override void Authenticate(IRestClient client, IRestRequest request)
         {
-            request.AddParameter("oauth_token", AccessToken, ParameterType.GetOrPost);
+            request.AddParameter("oauth_token", this.AccessToken, ParameterType.GetOrPost);
         }
     }
 }

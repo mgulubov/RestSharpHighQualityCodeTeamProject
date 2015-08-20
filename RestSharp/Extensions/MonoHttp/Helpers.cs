@@ -28,7 +28,7 @@ namespace RestSharp.Contrib
 {
     using System.Globalization;
 
-    class Helpers
+    public class Helpers
     {
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
     }

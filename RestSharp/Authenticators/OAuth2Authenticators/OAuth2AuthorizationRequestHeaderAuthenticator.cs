@@ -56,8 +56,8 @@ namespace RestSharp.Authenticators
         public OAuth2AuthorizationRequestHeaderAuthenticator(string accessToken, string tokenType)
             : base(accessToken)
         {
-            // Conatenate during constructor so that it is only done once. can improve performance.
-            authorizationValue = tokenType + " " + accessToken;
+            // Concatenate during constructor so that it is only done once. can improve performance.
+            this.authorizationValue = tokenType + " " + accessToken;
         }
 
         public override void Authenticate(IRestClient client, IRestRequest request)
@@ -65,7 +65,7 @@ namespace RestSharp.Authenticators
             // only add the Authorization parameter if it hasn't been added.
             if (!request.Parameters.Any(p => p.Name.Equals("Authorization", StringComparison.OrdinalIgnoreCase)))
             {
-                request.AddParameter("Authorization", authorizationValue, ParameterType.HttpHeader);
+                request.AddParameter("Authorization", this.authorizationValue, ParameterType.HttpHeader);
             }
         }
     }

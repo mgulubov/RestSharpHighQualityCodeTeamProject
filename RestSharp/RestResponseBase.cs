@@ -27,14 +27,15 @@ namespace RestSharp
     public abstract class RestResponseBase
     {
         private string content;
+        private ResponseStatus responseStatus = ResponseStatus.None;
 
         /// <summary>
         /// Default constructor
         /// </summary>
         protected RestResponseBase()
         {
-            Headers = new List<Parameter>();
-            Cookies = new List<RestResponseCookie>();
+            this.Headers = new List<Parameter>();
+            this.Cookies = new List<RestResponseCookie>();
         }
 
         /// <summary>
@@ -67,14 +68,14 @@ namespace RestSharp
         {
             get
             {
-                if (content == null)
+                if (this.content == null)
                 {
-                    content = RawBytes.AsString();
+                    this.content = this.RawBytes.AsString();
                 }
 
-                return content;
+                return this.content;
             }
-            set { content = value; }
+            set { this.content = value; }
         }
 
         /// <summary>
@@ -112,16 +113,14 @@ namespace RestSharp
         /// </summary>
         public IList<Parameter> Headers { get; protected internal set; }
 
-        private ResponseStatus responseStatus = ResponseStatus.None;
-
         /// <summary>
         /// Status of the request. Will return Error for transport errors.
         /// HTTP errors will still return ResponseStatus.Completed, check StatusCode instead
         /// </summary>
         public ResponseStatus ResponseStatus
         {
-            get { return responseStatus; }
-            set { responseStatus = value; }
+            get { return this.responseStatus; }
+            set { this.responseStatus = value; }
         }
 
         /// <summary>

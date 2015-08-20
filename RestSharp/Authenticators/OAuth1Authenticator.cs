@@ -91,8 +91,11 @@ using System.Windows.Browser;
             return authenticator;
         }
 
-        public static OAuth1Authenticator ForAccessToken(string consumerKey, string consumerSecret, string token,
-            string tokenSecret)
+        public static OAuth1Authenticator ForAccessToken(
+                                        string consumerKey, 
+                                        string consumerSecret, 
+                                        string token,
+                                        string tokenSecret)
         {
             var authenticator = new OAuth1Authenticator
             {
@@ -108,24 +111,37 @@ using System.Windows.Browser;
             return authenticator;
         }
 
-        public static OAuth1Authenticator ForAccessToken(string consumerKey, string consumerSecret, string token,
-            string tokenSecret, string verifier)
+        public static OAuth1Authenticator ForAccessToken(
+            string consumerKey, 
+            string consumerSecret, 
+            string token, 
+            string tokenSecret, 
+            string verifier)
         {
             var authenticator = ForAccessToken(consumerKey, consumerSecret, token, tokenSecret);
             authenticator.Verifier = verifier;
             return authenticator;
         }
 
-        public static OAuth1Authenticator ForAccessTokenRefresh(string consumerKey, string consumerSecret, string token,
-            string tokenSecret, string sessionHandle)
+        public static OAuth1Authenticator ForAccessTokenRefresh(
+            string consumerKey, 
+            string consumerSecret, 
+            string token,
+            string tokenSecret, 
+            string sessionHandle)
         {
             var authenticator = ForAccessToken(consumerKey, consumerSecret, token, tokenSecret);
             authenticator.SessionHandle = sessionHandle;
             return authenticator;
         }
 
-        public static OAuth1Authenticator ForAccessTokenRefresh(string consumerKey, string consumerSecret, string token,
-            string tokenSecret, string verifier, string sessionHandle)
+        public static OAuth1Authenticator ForAccessTokenRefresh(
+            string consumerKey, 
+            string consumerSecret, 
+            string token,
+            string tokenSecret, 
+            string verifier, 
+            string sessionHandle)
         {
             var authenticator = ForAccessToken(consumerKey, consumerSecret, token, tokenSecret);
             authenticator.SessionHandle = sessionHandle;
@@ -133,8 +149,11 @@ using System.Windows.Browser;
             return authenticator;
         }
 
-        public static OAuth1Authenticator ForClientAuthentication(string consumerKey, string consumerSecret,
-            string username, string password)
+        public static OAuth1Authenticator ForClientAuthentication(
+            string consumerKey, 
+            string consumerSecret,
+            string username, 
+            string password)
         {
             var authenticator = new OAuth1Authenticator
             {
@@ -150,8 +169,11 @@ using System.Windows.Browser;
             return authenticator;
         }
 
-        public static OAuth1Authenticator ForProtectedResource(string consumerKey, string consumerSecret,
-            string accessToken, string accessTokenSecret)
+        public static OAuth1Authenticator ForProtectedResource(
+            string consumerKey, 
+            string consumerSecret,
+            string accessToken, 
+            string accessTokenSecret)
         {
             var authenticator = new OAuth1Authenticator
             {
@@ -171,22 +193,22 @@ using System.Windows.Browser;
         {
             var workflow = new OAuthWorkflow
             {
-                ConsumerKey = ConsumerKey,
-                ConsumerSecret = ConsumerSecret,
-                ParameterHandling = ParameterHandling,
-                SignatureMethod = SignatureMethod,
-                SignatureTreatment = SignatureTreatment,
-                Verifier = Verifier,
-                Version = Version,
-                CallbackUrl = CallbackUrl,
-                SessionHandle = SessionHandle,
-                Token = Token,
-                TokenSecret = TokenSecret,
-                ClientUsername = ClientUsername,
-                ClientPassword = ClientPassword
+                ConsumerKey = this.ConsumerKey,
+                ConsumerSecret = this.ConsumerSecret,
+                ParameterHandling = this.ParameterHandling,
+                SignatureMethod = this.SignatureMethod,
+                SignatureTreatment = this.SignatureTreatment,
+                Verifier = this.Verifier,
+                Version = this.Version,
+                CallbackUrl = this.CallbackUrl,
+                SessionHandle = this.SessionHandle,
+                Token = this.Token,
+                TokenSecret = this.TokenSecret,
+                ClientUsername = this.ClientUsername,
+                ClientPassword = this.ClientPassword
             };
 
-            AddOAuthData(client, request, workflow);
+            this.AddOAuthData(client, request, workflow);
         }
 
         private void AddOAuthData(IRestClient client, IRestRequest request, OAuthWorkflow workflow)
@@ -239,7 +261,7 @@ using System.Windows.Browser;
                 }
             }
 
-            switch (Type)
+            switch (this.Type)
             {
                 case OAuthType.RequestToken:
                     workflow.RequestTokenUrl = url;
@@ -264,11 +286,11 @@ using System.Windows.Browser;
                     throw new ArgumentOutOfRangeException();
             }
 
-            switch (ParameterHandling)
+            switch (this.ParameterHandling)
             {
                 case OAuthParameterHandling.HttpAuthorizationHeader:
                     parameters.Add("oauth_signature", oauth.Signature);
-                    request.AddHeader("Authorization", GetAuthorizationHeader(parameters));
+                    request.AddHeader("Authorization", this.GetAuthorizationHeader(parameters));
                     break;
 
                 case OAuthParameterHandling.UrlOrPostParameters:
@@ -291,9 +313,9 @@ using System.Windows.Browser;
         {
             var output = new StringBuilder("OAuth ");
 
-            if (!Realm.IsNullOrBlank())
+            if (!this.Realm.IsNullOrBlank())
             {
-                output.Append("realm=\"{0}\",".FormatWith(OAuthTools.UrlEncodeRelaxed(Realm)));
+                output.Append("realm=\"{0}\",".FormatWith(OAuthTools.UrlEncodeRelaxed(this.Realm)));
             }
 
             parameters.Sort((l, r) => l.Name.CompareTo(r.Name));

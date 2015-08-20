@@ -16,9 +16,9 @@
 
 namespace RestSharp
 {
-    ///<summary>
+    /// <summary>
     /// Types of parameters that can be added to requests
-    ///</summary>
+    /// </summary>
     public enum ParameterType
     {
         Cookie,

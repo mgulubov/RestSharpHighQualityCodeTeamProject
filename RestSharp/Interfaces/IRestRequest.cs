@@ -129,6 +129,8 @@ namespace RestSharp
         /// </summary>
         bool UseDefaultCredentials { get; set; }
 
+        Action<IRestResponse> OnBeforeDeserialization { get; set; }
+
 #if FRAMEWORK
         /// <summary>
         /// Adds a file to the Files collection to be included with a POST or PUT request 
@@ -237,9 +239,9 @@ namespace RestSharp
         /// <summary>
         /// Adds a parameter to the request. There are five types of parameters:
         /// - GetOrPost: Either a QueryString value or encoded form value based on method
-        /// - HttpHeader: Adds the name/value pair to the HTTP request's Headers collection
+        /// - HttpHeader: Adds the name/value pair to the HTTP request'value Headers collection
         /// - UrlSegment: Inserted into URL if there is a matching url token e.g. {AccountId}
-        /// - Cookie: Adds the name/value pair to the HTTP request's Cookies collection
+        /// - Cookie: Adds the name/value pair to the HTTP request'value Cookies collection
         /// - RequestBody: Used by AddBody() (not recommended to use directly)
         /// </summary>
         /// <param name="name">Name of the parameter</param>
@@ -279,8 +281,6 @@ namespace RestSharp
         /// <param name="value">Value of the parameter to add</param>
         /// <returns></returns>
         IRestRequest AddQueryParameter(string name, string value);
-
-        Action<IRestResponse> OnBeforeDeserialization { get; set; }
 
         void IncreaseNumAttempts();
     }

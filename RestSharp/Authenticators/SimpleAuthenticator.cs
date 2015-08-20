@@ -33,8 +33,8 @@ namespace RestSharp
 
         public void Authenticate(IRestClient client, IRestRequest request)
         {
-            request.AddParameter(usernameKey, username);
-            request.AddParameter(passwordKey, password);
+            request.AddParameter(this.usernameKey, this.username);
+            request.AddParameter(this.passwordKey, this.password);
         }
     }
 }

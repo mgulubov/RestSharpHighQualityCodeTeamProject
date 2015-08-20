@@ -82,6 +82,10 @@ namespace RestSharp
         RequestCachePolicy CachePolicy { get; set; }
 #endif
 
+#if FRAMEWORK || PocketPC
+        IWebProxy Proxy { get; set; }
+#endif
+
         /// <summary>
         /// An alternative to RequestBody, for when the caller already has the byte array.
         /// </summary>
@@ -129,8 +133,6 @@ namespace RestSharp
         HttpResponse AsPost(string httpMethod);
 
         HttpResponse AsGet(string httpMethod);
-
-        IWebProxy Proxy { get; set; }
 #endif
     }
 }

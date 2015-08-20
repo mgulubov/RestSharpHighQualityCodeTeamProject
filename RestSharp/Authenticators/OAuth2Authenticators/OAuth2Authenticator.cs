@@ -52,7 +52,7 @@ namespace RestSharp
         {
             get
             {
-                return accessToken;
+                return this.accessToken;
             }
         }
 

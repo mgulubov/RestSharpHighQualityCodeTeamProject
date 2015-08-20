@@ -10,14 +10,34 @@ namespace RestSharp.Authenticators.OAuth
     {
         private IList<WebPair> parameters;
 
-        public virtual WebPair this[string name]
+        public WebPairCollection(IEnumerable<WebPair> parameters)
         {
-            get
-            {
-                return this.SingleOrDefault(p => p.Name.Equals(name));
-            }
+            this.parameters = new List<WebPair>(parameters);
         }
 
+        public WebPairCollection(IDictionary<string, string> collection)
+            : this()
+        {
+            this.AddCollection(collection);
+        }
+
+        public WebPairCollection()
+        {
+            this.parameters = new List<WebPair>(0);
+        }
+
+        public WebPairCollection(int capacity)
+        {
+            this.parameters = new List<WebPair>(capacity);
+        }
+
+#if !WINDOWS_PHONE && !SILVERLIGHT && !PocketPC
+        public WebPairCollection(NameValueCollection collection)
+            : this()
+        {
+            this.AddCollection(collection);
+        }
+#endif
         public virtual IEnumerable<string> Names
         {
             get
@@ -34,37 +54,40 @@ namespace RestSharp.Authenticators.OAuth
             }
         }
 
-        public WebPairCollection(IEnumerable<WebPair> parameters)
+        public virtual int Count
         {
-            this.parameters = new List<WebPair>(parameters);
-        }
-
-#if !WINDOWS_PHONE && !SILVERLIGHT && !PocketPC
-        public WebPairCollection(NameValueCollection collection)
-            : this()
-        {
-            this.AddCollection(collection);
-        }
-
-        public virtual void AddRange(NameValueCollection collection)
-        {
-            this.AddCollection(collection);
-        }
-
-        private void AddCollection(NameValueCollection collection)
-        {
-            var parameters = collection.AllKeys.Select(key => new WebPair(key, collection[key]));
-            foreach (var parameter in parameters)
+            get
             {
-                this.parameters.Add(parameter);
+                return this.parameters.Count;
             }
         }
-#endif
 
-        public WebPairCollection(IDictionary<string, string> collection)
-            : this()
+        public virtual bool IsReadOnly
         {
-            this.AddCollection(collection);
+            get
+            {
+                return this.parameters.IsReadOnly;
+            }
+        }
+
+        public virtual WebPair this[string name]
+        {
+            get
+            {
+                return this.SingleOrDefault(p => p.Name.Equals(name));
+            }
+        }
+
+        public virtual WebPair this[int index]
+        {
+            get
+            {
+                return this.parameters[index];
+            }
+            set
+            {
+                this.parameters[index] = value;
+            }
         }
 
         public void AddCollection(IDictionary<string, string> collection)
@@ -72,28 +95,16 @@ namespace RestSharp.Authenticators.OAuth
             foreach (var key in collection.Keys)
             {
                 var parameter = new WebPair(key, collection[key]);
-                parameters.Add(parameter);
+                this.parameters.Add(parameter);
             }
         }
 
-        public WebPairCollection()
+#if !WINDOWS_PHONE && !SILVERLIGHT && !PocketPC
+        public virtual void AddRange(NameValueCollection collection)
         {
-            this.parameters = new List<WebPair>(0);
+            this.AddCollection(collection);
         }
-
-        public WebPairCollection(int capacity)
-        {
-            this.parameters = new List<WebPair>(capacity);
-        }
-
-        private void AddCollection(IEnumerable<WebPair> collection)
-        {
-            foreach (var parameter in collection)
-            {
-                var pair = new WebPair(parameter.Name, parameter.Value);
-                this.parameters.Add(pair);
-            }
-        }
+#endif
 
         public virtual void AddRange(WebPairCollection collection)
         {
@@ -107,7 +118,7 @@ namespace RestSharp.Authenticators.OAuth
 
         public virtual void Sort(Comparison<WebPair> comparison)
         {
-            var sorted = new List<WebPair>(parameters);
+            var sorted = new List<WebPair>(this.parameters);
             sorted.Sort(comparison);
             this.parameters = sorted;
         }
@@ -115,7 +126,7 @@ namespace RestSharp.Authenticators.OAuth
         public virtual bool RemoveAll(IEnumerable<WebPair> parameters)
         {
             var success = true;
-            var array = parameters.ToArray();
+            var array = this.parameters.ToArray();
 
             for (var p = 0; p < array.Length; p++)
             {
@@ -169,22 +180,6 @@ namespace RestSharp.Authenticators.OAuth
             return this.parameters.Remove(parameter);
         }
 
-        public virtual int Count
-        {
-            get
-            {
-                return parameters.Count;
-            }
-        }
-
-        public virtual bool IsReadOnly
-        {
-            get
-            {
-                return this.parameters.IsReadOnly;
-            }
-        }
-
         public virtual int IndexOf(WebPair parameter)
         {
             return this.parameters.IndexOf(parameter);
@@ -200,18 +195,25 @@ namespace RestSharp.Authenticators.OAuth
             this.parameters.RemoveAt(index);
         }
 
-        public virtual WebPair this[int index]
+        private void AddCollection(IEnumerable<WebPair> collection)
         {
-            get
+            foreach (var parameter in collection)
             {
-                return this.parameters[index];
-            }
-            set
-            {
-                this.parameters[index] = value;
+                var pair = new WebPair(parameter.Name, parameter.Value);
+                this.parameters.Add(pair);
             }
         }
 
+#if !WINDOWS_PHONE && !SILVERLIGHT && !PocketPC
+        private void AddCollection(NameValueCollection collection)
+        {
+            var parameters = collection.AllKeys.Select(key => new WebPair(key, collection[key]));
+            foreach (var parameter in parameters)
+            {
+                this.parameters.Add(parameter);
+            }
+        }
+#endif
         #endregion
     }
 }

@@ -310,7 +310,7 @@
         /// <summary>
         /// Adds a parameter to the request. There are four types of parameters:
         ///    - GetOrPost: Either a QueryString value or encoded form value based on method
-        ///    - HttpHeader: Adds the name/value pair to the HTTP request's Headers collection
+        ///    - HttpHeader: Adds the name/value pair to the HTTP request'value Headers collection
         ///    - UrlSegment: Inserted into URL if there is a matching url token e.g. {AccountId}
         ///    - RequestBody: Used by AddBody() (not recommended to use directly)
         /// </summary>

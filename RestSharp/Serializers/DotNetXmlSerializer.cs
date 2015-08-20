@@ -13,8 +13,8 @@
         /// </summary>
         public DotNetXmlSerializer()
         {
-            ContentType = "application/xml";
-            Encoding = Encoding.UTF8;
+            this.ContentType = "application/xml";
+            this.Encoding = Encoding.UTF8;
         }
 
         /// <summary>
@@ -24,26 +24,7 @@
         public DotNetXmlSerializer(string @namespace)
             : this()
         {
-            Namespace = @namespace;
-        }
-
-        /// <summary>
-        /// Serialize the object as XML
-        /// </summary>
-        /// <param name="obj">Object to serialize</param>
-        /// <returns>XML as string</returns>
-        public string Serialize(object obj)
-        {
-            var ns = new XmlSerializerNamespaces();
-
-            ns.Add(string.Empty, Namespace);
-
-            var serializer = new System.Xml.Serialization.XmlSerializer(obj.GetType());
-            var writer = new EncodingStringWriter(Encoding);
-
-            serializer.Serialize(writer, obj, ns);
-
-            return writer.ToString();
+           this.Namespace = @namespace;
         }
 
         /// <summary>
@@ -72,6 +53,25 @@
         public Encoding Encoding { get; set; }
 
         /// <summary>
+        /// Serialize the object as XML
+        /// </summary>
+        /// <param name="obj">Object to serialize</param>
+        /// <returns>XML as string</returns>
+        public string Serialize(object obj)
+        {
+            var ns = new XmlSerializerNamespaces();
+
+            ns.Add(string.Empty, this.Namespace);
+
+            var serializer = new System.Xml.Serialization.XmlSerializer(obj.GetType());
+            var writer = new EncodingStringWriter(Encoding);
+
+            serializer.Serialize(writer, obj, ns);
+
+            return writer.ToString();
+        }
+
+        /// <summary>
         /// Need to subclass StringWriter in order to override Encoding
         /// </summary>
         private class EncodingStringWriter : StringWriter
@@ -85,7 +85,7 @@
 
             public override Encoding Encoding
             {
-                get { return encoding; }
+                get { return this.encoding; }
             }
         }
     }

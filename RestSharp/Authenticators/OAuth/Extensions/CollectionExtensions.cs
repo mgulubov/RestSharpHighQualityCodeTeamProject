@@ -4,8 +4,13 @@ namespace RestSharp.Authenticators.OAuth.Extensions
     using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.Text;
+
+    /// <summary>
+    /// Extensions for collections :)
+    /// </summary>
     internal static class CollectionExtensions
     {
+
         public static IEnumerable<T> AsEnumerable<T>(this T item)
         {
             return new[] { item };
@@ -76,6 +81,7 @@ namespace RestSharp.Authenticators.OAuth.Extensions
                 {
                     continue;
                 }
+
                 sb.Append("&");
             }
 

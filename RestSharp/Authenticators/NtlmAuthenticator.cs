@@ -63,7 +63,7 @@ namespace RestSharp
 
         public void Authenticate(IRestClient client, IRestRequest request)
         {
-            request.Credentials = credentials;
+            request.Credentials = this.credentials;
         }
     }
 }

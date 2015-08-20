@@ -87,7 +87,7 @@ namespace RestSharp.Extensions
         public static string AsString(this byte[] buffer)
         {
             if (buffer == null)
-                return "";
+                return string.Empty;
 
             // Ansi as default
             Encoding encoding = Encoding.UTF8;

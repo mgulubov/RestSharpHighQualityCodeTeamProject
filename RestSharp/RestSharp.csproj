@@ -116,9 +116,11 @@
     <Compile Include="Deserializers\XmlAttributeDeserializer.cs" />
     <Compile Include="Enumerations\DataFormat.cs" />
     <Compile Include="Enumerations\Method.cs" />
+    <Compile Include="Enumerations\NameStyle.cs" />
     <Compile Include="Enumerations\ResponseStatus.cs" />
     <Compile Include="Extensions\MonoHttp\Helpers.cs" />
     <Compile Include="Extensions\MonoHttp\HtmlEncoder.cs" />
+    <Compile Include="Extensions\MonoHttp\HttpQSCollection.cs" />
     <Compile Include="Extensions\MonoHttp\HttpUtility.cs" />
     <Compile Include="Extensions\ResponseExtensions.cs" />
     <Compile Include="Extensions\ResponseStatusExtensions.cs" />
@@ -134,7 +136,9 @@
     <Compile Include="Extensions\MiscExtensions.cs" />
     <Compile Include="Authenticators\HttpBasicAuthenticator.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
-    <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Extensions\XmlExtensions.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="FileParameter.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="HttpFile.cs" />

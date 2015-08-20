@@ -15,6 +15,7 @@ namespace RestSharp.Authenticators.OAuth
     {
         public WebParameter(string name, string value)
             : base(name, value)
-        { }
+        { 
+        }
     }
 }
